@@ -1,0 +1,142 @@
+
+/* assets/css/style.css - artisan lateral menu + basic layout */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+:root{
+  --cream: #fff6ef;
+  --pastel-1:#ffdfe6;
+  --pastel-2:#fff1c9;
+  --accent:#f08a5d;
+  --text:#4b3f3f;
+  --menu-width:320px;
+  --glass: rgba(255,255,255,0.85);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+body{color:var(--text);background-color:var(--cream);}
+
+/* index special texture */
+body.index-page{
+  background-image: url('../img/texture.png');
+  background-repeat: repeat;
+  background-size: 240px;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* hamburger */
+.menu-toggle{
+  position:fixed;
+  left:16px; top:16px;
+  z-index:1200;
+  width:46px;height:46px;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg, #fff,#fff0);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition: transform .25s ease;
+}
+.menu-toggle:active{transform:scale(.98)}
+.menu-toggle .bars{width:22px;height:2px;background:var(--text);border-radius:2px;position:relative}
+.menu-toggle .bars:before, .menu-toggle .bars:after{
+  content:"";position:absolute;left:0;width:22px;height:2px;background:var(--text);border-radius:2px;
+}
+.menu-toggle .bars:before{top:-7px}
+.menu-toggle .bars:after{top:7px}
+
+/* overlay */
+.menu-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.25);opacity:0;pointer-events:none;transition:opacity .28s ease;z-index:1100;
+}
+.menu-overlay.open{opacity:1;pointer-events:auto}
+
+/* side panel */
+.side-panel{
+  position:fixed;left:0;top:0;height:100vh;width:var(--menu-width);
+  transform:translateX(-110%);transition:transform .42s cubic-bezier(.22,1,.36,1);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,250,245,0.98));
+  box-shadow: 8px 18px 48px rgba(25,20,15,0.12);
+  border-top-right-radius:22px;border-bottom-right-radius:22px;padding:20px 18px;
+  z-index:1150;overflow:auto;
+  font-family: 'Pacifico', cursive;
+}
+.side-panel.open{transform:translateX(0)}
+
+/* logo */
+.side-panel .logo{
+  display:flex;align-items:center;gap:12px;margin-bottom:12px;
+}
+.side-panel .logo img{width:64px;height:64px;border-radius:12px;object-fit:cover;box-shadow:0 8px 18px rgba(0,0,0,0.08)}
+.side-panel .logo h1{font-family:'Pacifico',cursive;font-size:20px;margin:0;color:var(--accent)}
+
+.side-panel nav{margin-top:6px}
+.side-panel a.section{display:block;padding:10px 12px;border-radius:12px;margin:6px 0;color:var(--text);text-decoration:none;font-weight:600;background:transparent}
+.side-panel a.section:hover{background:linear-gradient(90deg,var(--pastel-2),#fff1);transform:translateX(6px)}
+
+.side-panel .submenu{padding-left:12px;margin-top:6px}
+.side-panel .submenu a{display:block;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--text);font-weight:500;font-size:14px}
+.side-panel .submenu a:hover{background:rgba(240,138,93,0.06);transform:translateX(6px)}
+
+.close-x{position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.close-x:before{content:"✕";font-size:18px;color:var(--text)}
+
+/* footer contact inside menu */
+.side-panel .contact{margin-top:20px;padding-top:10px;border-top:1px dashed rgba(0,0,0,0.06)}
+.side-panel .contact p{margin:6px 0;font-size:14px}
+
+/* page content */
+.container{max-width:1100px;margin:80px auto;padding:20px}
+.hero{background:var(--glass);padding:32px;border-radius:20px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+h2{font-family:'Pacifico',cursive;color:var(--accent)}
+
+/* responsive tweaks */
+@media (max-width:700px){
+  :root{--menu-width:92%}
+  .menu-toggle{left:12px;top:12px}
+}
+
+
+/* Icon style: paper/lino behind icons in menu */
+.side-panel .logo h1{font-size:18px}
+.side-panel nav a.section{display:flex;align-items:center;gap:10px}
+.side-panel nav a.section::before{content:'';display:inline-block;width:36px;height:36px;border-radius:8px;background:linear-gradient(180deg,#fff,#fff0);box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);padding:6px}
+.side-panel nav a.section[data-icon]::before{background-image: url('../img/icons/placeholder.svg');background-repeat:no-repeat;background-position:center;background-size:18px}
+.side-panel .submenu a::before{content:'';display:inline-block;width:20px;height:20px;margin-right:8px;background-size:18px;background-position:center;background-repeat:no-repeat;vertical-align:middle}
+
+
+/* Footer styles */
+.site-footer{
+  margin-top:40px;
+  padding:20px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,250,245,0.98), rgba(255,250,240,0.98));
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  text-align:center;
+  font-family:'Pacifico', cursive;
+  color:#6b4a3e;
+  max-width:1100px;
+  margin-left:auto;margin-right:auto;
+  transform: translateY(12px);
+  opacity:0;
+  animation: footerFadeUp .6s ease .18s forwards;
+}
+@keyframes footerFadeUp{
+  to{transform:none;opacity:1}
+}
+.site-footer .footer-inner{display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;padding:6px}
+.site-footer .socials{display:flex;gap:12px;align-items:center}
+.site-footer .socials a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:inherit;padding:6px;border-radius:8px}
+.site-footer .socials svg{width:20px;height:20px;display:inline-block}
+
+/* animated cup */
+.footer-cup{display:flex;align-items:center;gap:10px}
+.cup-wrap{width:42px;height:42px;border-radius:10px;overflow:visible}
+.cup-svg{width:42px;height:42px}
+.vapor{transform-origin:12px 8px;opacity:0.85;animation:vaporRise 3.6s ease-in-out infinite}
+@keyframes vaporRise{
+  0%{transform:translateY(4px) scale(.9);opacity:0}
+  30%{opacity:1}
+  60%{transform:translateY(-8px) scale(1.05);opacity:0.6}
+  100%{transform:translateY(-14px) scale(1.1);opacity:0}
+}

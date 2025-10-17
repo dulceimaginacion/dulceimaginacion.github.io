@@ -1,0 +1,25 @@
+
+/* assets/css/aguapanela.css - styles for the assistant widget */
+.aguapanela-button{
+  position:fixed;right:20px;bottom:20px;z-index:1400;
+  width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;
+  background:#fff;border:1px solid rgba(0,0,0,0.06);box-shadow:0 8px 30px rgba(0,0,0,0.12);
+  cursor:pointer;transition:transform .18s ease, box-shadow .18s ease;
+}
+.aguapanela-button:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,0.16)}
+.aguapanela-avatar{width:44px;height:44px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.aguapanela-panel{position:fixed;right:20px;bottom:100px;z-index:1400;width:320px;max-width:92%;border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,250,245,0.98), rgba(255,250,240,0.98));
+  box-shadow:0 20px 48px rgba(0,0,0,0.12);padding:12px 12px;display:none;flex-direction:column;gap:8px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+.aguapanela-panel.open{display:flex;animation:slideUp .32s ease}
+@keyframes slideUp{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+.aguapanela-header{display:flex;gap:10px;align-items:center}
+.aguapanela-header h4{margin:0;font-family:'Pacifico',cursive;color:#8c5a47;font-size:16px}
+.aguapanela-messages{max-height:260px;overflow:auto;padding:6px;border-radius:10px;background:rgba(255,255,255,0.6)}
+.aguapanela-msg{margin:6px 0;padding:8px 10px;border-radius:10px;background:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.04);font-size:14px;color:#4b3f3f}
+.aguapanela-msg.bot{background:linear-gradient(180deg,#fff,#fffdf6);border:1px solid rgba(0,0,0,0.03)}
+.aguapanela-input{display:flex;gap:8px}
+.aguapanela-input input{flex:1;padding:8px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)}
+.aguapanela-input button{padding:8px 10px;border-radius:8px;border:none;background:#f08a5d;color:white;cursor:pointer}

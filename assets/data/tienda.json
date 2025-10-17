@@ -1,0 +1,98 @@
+[
+  {
+    "id": "stk-001",
+    "categoria": "Stickers",
+    "nombre": "Sticker Capibara Zen",
+    "precio": 5000,
+    "imagen": "assets/img/products/stickers/capi-zen.png",
+    "descripcion": "Sticker vinilo resistente, 6cm."
+  },
+  {
+    "id": "stk-002",
+    "categoria": "Stickers",
+    "nombre": "Sticker Aguapanela Corazón",
+    "precio": 4500,
+    "imagen": "assets/img/products/stickers/aguapanela-corazon.png",
+    "descripcion": "Sticker brillante, 5cm."
+  },
+  {
+    "id": "pin-001",
+    "categoria": "Pines",
+    "nombre": "Pin Tacita Sonriente",
+    "precio": 12000,
+    "imagen": "assets/img/products/pines/tacita.png",
+    "descripcion": "Pin esmaltado 25mm."
+  },
+  {
+    "id": "pin-002",
+    "categoria": "Pines",
+    "nombre": "Pin Capibara Mini",
+    "precio": 14000,
+    "imagen": "assets/img/products/pines/capi-mini.png",
+    "descripcion": "Pin esmaltado con detalle en oro."
+  },
+  {
+    "id": "btn-001",
+    "categoria": "Botones",
+    "nombre": "Botón Vintage Dulce",
+    "precio": 3500,
+    "imagen": "assets/img/products/botones/vintage.png",
+    "descripcion": "Set de 2 botones 3cm."
+  },
+  {
+    "id": "btn-002",
+    "categoria": "Botones",
+    "nombre": "Botón Flores",
+    "precio": 3000,
+    "imagen": "assets/img/products/botones/flores.png",
+    "descripcion": "Botón tejido con ilustración."
+  },
+  {
+    "id": "tote-001",
+    "categoria": "Tote Bag",
+    "nombre": "Tote Bag Origen",
+    "precio": 25000,
+    "imagen": "assets/img/products/tote/origen.png",
+    "descripcion": "Tote algodón 38x42cm, impresión directa."
+  },
+  {
+    "id": "tote-002",
+    "categoria": "Tote Bag",
+    "nombre": "Tote Bag Capibara",
+    "precio": 27000,
+    "imagen": "assets/img/products/tote/capi.png",
+    "descripcion": "Tote edición limitada 2025."
+  },
+  {
+    "id": "tej-001",
+    "categoria": "Tejidos",
+    "nombre": "Bufanda Miel",
+    "precio": 45000,
+    "imagen": "assets/img/products/tejidos/bufanda.png",
+    "descripcion": "Bufanda tejida a mano, fibra acrílica suave."
+  },
+  {
+    "id": "tej-002",
+    "categoria": "Tejidos",
+    "nombre": "Gorro Pompon",
+    "precio": 30000,
+    "imagen": "assets/img/products/tejidos/gorro.png",
+    "descripcion": "Gorro hecho a mano, talla única."
+  },
+  {
+    "id": "pap-001",
+    "categoria": "Papelería",
+    "nombre": "Cuaderno Dulce",
+    "precio": 18000,
+    "imagen": "assets/img/products/papeleria/cuaderno.png",
+    "descripcion": "Cuaderno A5, 80 hojas, tapa suave."
+  },
+  {
+    "id": "pap-002",
+    "categoria": "Papelería",
+    "nombre": "Set Postales 6u",
+    "precio": 12000,
+    "imagen": "assets/img/products/papeleria/postales.png",
+    "descripcion": "Juego de 6 postales ilustradas."
+  }
+]
