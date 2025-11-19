@@ -128,9 +128,21 @@
 
         /* Footer */
         .footer { background-color: rgba(255,255,255,0.8); padding: 30px 20px; text-align: center; margin-top: 20px; }
-        .footer-links { margin-bottom: 20px; }
-        .footer-link { color: #5a3e2b; text-decoration: none; font-size: 12px; margin: 0 5px; font-weight: 500; cursor: pointer; }
-        .footer-link:hover { text-decoration: underline; color: #c97e58; }
+        
+        /* NUEVO ESTILO PARA EL BOTÓN DE HISTORIA */
+        .footer-story-container { display: flex; justify-content: center; margin-bottom: 25px; }
+        .story-btn {
+            display: flex; align-items: center; gap: 8px;
+            background-color: #fff; border: 1px solid #c97e58; color: #c97e58;
+            padding: 10px 25px; border-radius: 30px;
+            font-size: 13px; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(201, 126, 88, 0.1);
+        }
+        .story-btn:hover {
+            background-color: #c97e58; color: white;
+            transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 126, 88, 0.25);
+        }
+        .story-btn i { font-size: 18px; }
 
         .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
         .social-icon { width: 40px; height: 40px; background-color: #5a3e2b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
@@ -193,8 +205,8 @@
         .about-content h4 { color: #c97e58; font-size: 18px; margin-bottom: 15px; text-align: center; }
         .about-content p { margin-bottom: 15px; }
         .about-content strong { color: #c97e58; }
-        .about-content a { color: #c97e58; font-weight: 700; text-decoration: none; }
-        .about-content a:hover { text-decoration: underline; }
+        .about-content a { color: #c97e58; font-weight: 700; text-decoration: none; border-bottom: 1px dotted #c97e58; }
+        .about-content a:hover { color: #5a3e2b; border-bottom: 1px solid #5a3e2b; }
 
     </style>
 </head>
@@ -209,10 +221,10 @@
         </div>
         
         <div class="header-right">
-            <!-- Botón Nosotros -->
+            <!-- Botón Nosotrxs -->
             <div class="nav-btn" onclick="openAboutModal()">
                 <i class="material-icons">favorite_border</i>
-                <span>Nosotros</span>
+                <span>Nosotrxs</span>
             </div>
 
             <!-- Carrito -->
@@ -303,9 +315,14 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-links">
-            <a onclick="openAboutModal()" class="footer-link">Nuestra Historia</a>
+        <!-- Botón Elegante de Historia -->
+        <div class="footer-story-container">
+            <div class="story-btn" onclick="openAboutModal()">
+                <i class="material-icons">auto_stories</i>
+                <span>Nuestra Historia</span>
+            </div>
         </div>
+
         <div class="social-icons">
             <a href="https://www.facebook.com/AguapanelaDulceImaginacion" target="_blank" class="social-icon">
                 <i class="material-icons">facebook</i>
@@ -335,16 +352,16 @@
 <!-- MODAL ABOUT US -->
 <div class="about-modal" id="aboutModal">
     <div class="about-header">
-        <h3>Sobre Nosotros</h3>
+        <h3>Sobre Nosotrxs</h3>
         <i class="material-icons" style="cursor:pointer" onclick="closeAboutModal()">close</i>
     </div>
     <div class="about-content">
         <h4>Hecho con Amor ❤️</h4>
-        <p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas y sentimientos se transforman en piezas únicas y llenas de vida. Como la aguapanela, nuestra esencia es cálida, reconfortante y siempre te dejará un dulce recuerdo.</p>
+        <p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar lleno de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas, momentos y emociones se transforman en detalles únicos y llenas de vida. Como la aguapanela, nuestra esencia es cálida, tradicional y siempre te brindará un dulce recuerdo.</p>
         
-        <p>Nuestra historia es un legado de amor y creatividad, inspirada por la chispa de <a href="https://www.facebook.com/dianita.ortega.376" target="_blank">Diana</a> y la sabiduría de nuestra Madre <strong>Guiller</strong>, así como la pasión de Felipe (<a href="https://www.facebook.com/nellydafelly" target="_blank">Felly</a>). Juntos, hemos cultivado un espacio donde la imaginación no tiene límites y cada detalle cuenta una historia.</p>
+        <p>Nuestra historia es un legado de amor y creatividad, inspirada por la chispa de <a href="https://www.facebook.com/dianita.ortega.376" target="_blank">Diana</a> y la sabiduría de nuestra Madre <strong>Guiller</strong>, así como la pasión de Felipe (<a href="https://www.facebook.com/nellydafelly" target="_blank">Felly</a>). Juntos, hemos tejido un espacio donde la imaginación viaja sin límites y cada detalle cuenta una historia.</p>
         
-        <p>En AguaPanela Dulce Imaginación, creemos que los mejores regalos son aquellos que nacen del alma. Por eso, te invitamos a soñar con nosotros y personalizar todo aquello que desees: desde detalles y regalos que tocan el corazón, hasta camisas que visten tus ideas, estampados vibrantes, totebags para llevar tus historias a todos los lugares, amigurumis para acompañarte, mugs que alegran tus mañanas, llaveros 3D que guardan tus momentos, diseño gráfico que da voz a tus proyectos y cartas que susurran tus sentimientos más profundos.</p>
+        <p>En AguaPanela Dulce Imaginación, creemos que los mejores regalos son aquellos que nacen del alma. Por eso, te invitamos a soñar con nosotrxs y personalizar todo aquello que desees: desde detalles y regalos que tocan el corazón, hasta camisas que visten tus ideas, estampados vibrantes, totebags para llevar tus historias a todos los lugares, amigurumis para acompañarte, mugs que alegran tus mañanas, llaveros 3D que guardan tus momentos, diseño gráfico que da voz a tus proyectos y cartas que susurran tus sentimientos más profundos.</p>
         
         <p>Cada producto que creamos es una extensión de ti, una forma de expresar lo que llevas dentro. Ven y déjanos endulzar tus ideas y plasmarlas en algo verdaderamente especial. ¡Estamos aquí para hacer tu imaginación realidad!</p>
     </div>
@@ -404,9 +421,9 @@
     ];
 
     const products = [
-        { id: 101, name: "Amigurumi Capybara", category: "Amigurumis", price: 22000, images: ["img/ami_capi.png"] },
+        { id: 101, name: "Amigurumi Capybara", category: "Amigurumis", price: 22000, images: ["img/ami_capi1.png"] },
         { id: 102, name: "Cerezas Tejidas", category: "Amigurumis", price: 18000, images: ["img/ami_cerezas.png"] },
-        { id: 103, name: "Amigurumi Pingüino", category: "Amigurumis", price: 22000, images: ["img/ami_pingu.png"] },
+        { id: 103, name: "Amigurumi Pingüino", category: "Amigurumis", price: 22000, images: ["img/ami_pingu1.png"] },
         { id: 201, name: "Libreta Cali Mirá Ve", category: "Libretas", price: 12000, images: ["img/libreta_cali.png"] },
         { id: 301, name: "Tote Bag Capybara Faces", category: "Tote Bags", variable: true, images: ["img/tote_capi_faces_1.png", "img/tote_capi_faces_2.png"] },
         { id: 302, name: "Tote Bag Capybara Flowers", category: "Tote Bags", variable: true, images: ["img/tote_capi_flower_1.png", "img/tote_capi_flower_2.png"] },
@@ -578,7 +595,7 @@
         window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent("Hola! Me interesa saber más sobre: " + p.name)}`, '_blank');
     }
 
-    /* --- LÓGICA COMPARTIR (CORREGIDA) --- */
+    /* --- LÓGICA COMPARTIR --- */
     function openShareModal(id) {
         currentShareProduct = products.find(p => p.id === id);
         if (currentShareProduct) {
