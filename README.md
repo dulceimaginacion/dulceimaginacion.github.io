@@ -49,14 +49,11 @@ Detrás de cada línea de código y cada producto hay una historia de amor famil
 
 ---
 
-## 🚀 Instalación / Visualización
+## 🚀  Visualización
 
 No necesitas instalar nada complejo.
-1.  Clona este repositorio.
-2.  Asegúrate de tener la carpeta `img` con las fotos de los productos.
-3.  Abre `index.html` en tu navegador favorito.
 
-O visita nuestra tienda en vivo: **[https://dulceimaginacion.github.io/]**
+Visita nuestra tienda en vivo: **https://dulceimaginacion.github.io/**
 
 ---
 
