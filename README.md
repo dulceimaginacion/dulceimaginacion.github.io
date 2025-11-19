@@ -17,7 +17,7 @@ Esta **E-SHOP** fue diseñada para ser ligera, estética y centrada en la experi
 
 *   **Catálogo Interactivo:** Filtrado dinámico por categorías (Tote Bags, Amigurumis, Libretas) sin recargar la página.
 *   **Lógica de Precios:** Selección inteligente de tamaños para las Tote Bags con actualización de precios en tiempo real.
-*   **Carrito de Compras Humano:** 
+*   **Carrito de Compras:** 
     *   Cálculo automático de totales.
     *   **Alerta de Envío Gratis:** Motiva al cliente a alcanzar la meta de $120.000 COP.
     *   **Pedido vía WhatsApp:** Genera un mensaje detallado y ordenado listo para enviar.
