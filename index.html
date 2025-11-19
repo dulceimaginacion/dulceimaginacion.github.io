@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aguapanela Dulce Imaginación - E-SHOP</title>
+    
+    <!-- FAVICON (Tacita Rosa Fondo Café) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%235a3e2b' rx='10'/><path d='M14 22h28c0 10 5 20 14 20s14-10 14-20' fill='none'/><path d='M18 22h28v16c0 7.7-6.3 14-14 14s-14-6.3-14-14V22z' fill='%23ffc0cb'/><path d='M46 24h8c2.2 0 4 1.8 4 4v8c0 2.2-1.8 4-4 4h-8' fill='none' stroke='%23ffc0cb' stroke-width='5'/><path d='M22 16q4-6 8 0t8 0' fill='none' stroke='white' stroke-width='2' opacity='0.5'/></svg>" type="image/svg+xml">
+
+    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-    <!-- Script de Iconify para iconos vectoriales nítidos -->
+    
+    <!-- Iconos Vectoriales -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
 
     <style>
@@ -14,6 +20,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: #f8f5f2; color: #5a3e2b; line-height: 1.6; }
         
+        /* PROTECCIÓN DE IMÁGENES */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-select: none;
+            -webkit-touch-callout: none; 
+        }
+
         /* Contenedor principal */
         .poster-container {
             width: 100%;
@@ -95,7 +111,6 @@
             display: flex; flex-direction: column;
         }
         
-        /* Slider de imágenes */
         .product-image-wrapper {
             position: relative; height: 170px; overflow: hidden; background: #f4f4f4; cursor: zoom-in;
         }
@@ -105,7 +120,6 @@
             transition: opacity 0.8s ease-in-out;
         }
         .product-img.hidden { opacity: 0; }
-        /* Placeholder si no hay imagen */
         .img-placeholder {
             width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
             background: #eee; color: #aaa; font-size: 10px; text-align: center; padding: 10px;
@@ -127,12 +141,16 @@
             flex: 1; background-color: #5a3e2b; color: white; border: none;
             padding: 8px 0; border-radius: 8px; font-size: 10px; cursor: pointer; font-weight: 500;
         }
-        .whatsapp-btn {
-            width: 32px; background-color: #25D366; color: white; border: none;
+        /* Botones pequeños (Chat y Share) */
+        .icon-btn {
+            width: 32px; height: 32px; border: none;
             border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;
         }
+        .whatsapp-btn { background-color: #25D366; color: white; }
+        .share-btn { background-color: #f0e6dc; color: #5a3e2b; }
+        .share-btn:hover { background-color: #c97e58; color: white; }
 
-        /* SECCIÓN POR QUÉ ELEGIRNOS */
+        /* Features */
         .features {
             background-color: white; margin: 20px 20px; padding: 25px 10px;
             border-radius: 16px; box-shadow: 0 4px 20px rgba(90, 62, 43, 0.05);
@@ -160,15 +178,18 @@
             display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s;
         }
         .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
-        .social-icon svg { width: 20px; height: 20px; fill: white; }
-        
-        /* Estilo especial para icono WhatsApp en footer */
         .social-icon.wa-footer { background-color: #25D366; }
         .social-icon.wa-footer:hover { background-color: #128C7E; }
-
         .copyright { font-size: 10px; color: #8b6f47; border-top: 1px solid #e0e0e0; padding-top: 15px; }
 
-        /* Modal Carrito */
+        /* OVERLAY GENERAL */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 999; display: none;
+        }
+        .overlay.active { display: block; }
+
+        /* MODAL CARRITO */
         .cart-modal {
             position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh;
             background-color: white; z-index: 1000; transition: right 0.3s ease;
@@ -185,7 +206,6 @@
         .item-price { font-size: 12px; color: #c97e58; font-weight: 700; }
         .item-controls { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
         .qty-btn { width: 20px; height: 20px; background: #eee; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        
         .cart-footer { padding: 20px; background-color: #f9f9f9; border-top: 1px solid #eee; }
         .summary-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; }
         .total-row { font-weight: 700; font-size: 16px; color: #5a3e2b; margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px; }
@@ -199,50 +219,50 @@
             border-radius: 6px; margin-bottom: 10px; text-align: center;
         }
         .free-shipping-alert.success { background-color: #e8f5e9; color: #2e7d32; }
-        
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 999; display: none;
-        }
-        .overlay.active { display: block; }
 
-        /* --- LIGHTBOX (VISOR DE IMÁGENES) --- */
+        /* LIGHTBOX */
         .lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); 
-            backdrop-filter: blur(10px); /* Efecto de desenfoque */
-            z-index: 2000; display: none;
-            align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+            z-index: 2000; display: none; align-items: center; justify-content: center;
             opacity: 0; transition: opacity 0.3s ease;
         }
         .lightbox.active { display: flex; opacity: 1; }
-        
-        .lightbox-content {
-            position: relative;
-            width: 100%; height: 100%;
-            display: flex; align-items: center; justify-content: center;
-        }
-        
-        .lightbox-img {
-            max-height: 85vh; max-width: 90vw;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
-            cursor: zoom-in;
-            object-fit: contain;
-        }
-        
-        .lightbox-img.zoomed {
-            transform: scale(2); /* Zoom x2 */
-            cursor: zoom-out;
-        }
-        
+        .lightbox-content { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .lightbox-img { max-height: 85vh; max-width: 90vw; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transition: transform 0.3s ease; cursor: zoom-in; object-fit: contain; }
+        .lightbox-img.zoomed { transform: scale(2); cursor: zoom-out; }
         .close-lightbox {
-            position: absolute; top: 20px; right: 20px;
-            color: white; font-size: 30px; cursor: pointer;
-            z-index: 2001; background: rgba(0,0,0,0.3);
-            width: 40px; height: 40px; border-radius: 50%;
+            position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer;
+            z-index: 2001; background: rgba(0,0,0,0.3); width: 40px; height: 40px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
+        }
+
+        /* --- POPUP DE COMPARTIR --- */
+        .share-modal {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; width: 90%; max-width: 320px;
+            border-radius: 16px; padding: 25px; z-index: 2100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center; display: none;
+        }
+        .share-modal.active { display: block; animation: popIn 0.3s ease; }
+        @keyframes popIn { from { transform: translate(-50%, -40%); opacity: 0; } to { transform: translate(-50%, -50%); opacity: 1; } }
+        
+        .share-title { font-size: 18px; font-weight: 700; color: #5a3e2b; margin-bottom: 20px; }
+        .share-options { display: flex; flex-direction: column; gap: 10px; }
+        .share-btn-option {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px; border-radius: 10px; text-decoration: none;
+            font-weight: 600; font-size: 14px; transition: transform 0.2s; border: none; width: 100%; cursor: pointer;
+        }
+        .share-btn-option:hover { transform: translateY(-2px); }
+        
+        .share-wa { background-color: #E0F8E8; color: #128C7E; }
+        .share-fb { background-color: #E7F0FF; color: #1877F2; }
+        .share-copy { background-color: #f4f4f4; color: #5a3e2b; justify-content: center;}
+        
+        .close-share {
+            margin-top: 15px; color: #888; font-size: 12px; cursor: pointer; text-decoration: underline;
         }
 
     </style>
@@ -299,7 +319,7 @@
         </div>
     </section>
 
-    <!-- Features (Iconos Horizontales) -->
+    <!-- Features -->
     <section class="features">
         <div class="feature-item">
             <div class="feature-icon-circle"><i class="material-icons">local_shipping</i></div>
@@ -327,29 +347,24 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="social-icons">
-            <!-- Facebook -->
             <a href="https://www.facebook.com/AguapanelaDulceImaginacion" target="_blank" class="social-icon">
                 <i class="material-icons">facebook</i>
             </a>
-            <!-- Instagram -->
             <a href="https://instagram.com/aguapaneladulceimaginacion" target="_blank" class="social-icon">
                 <iconify-icon icon="mdi:instagram" width="24" height="24" style="color: white;"></iconify-icon>
             </a>
-            <!-- WhatsApp (Contacto) -->
             <a href="https://wa.me/573122665870" target="_blank" class="social-icon wa-footer">
                 <iconify-icon icon="ic:baseline-whatsapp" width="24" height="24" style="color: white;"></iconify-icon>
             </a>
-            <!-- Email -->
             <a href="mailto:dulceimaginacion.startup@gmail.com" class="social-icon">
                 <i class="material-icons">alternate_email</i>
             </a>
         </div>
-        
         <div class="copyright">© 2025-2026 Aguapanela Dulce Imaginación. Todos los derechos reservados.</div>
     </footer>
 </div>
 
-<!-- LIGHTBOX (VISOR DE IMÁGENES) -->
+<!-- LIGHTBOX -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <div class="close-lightbox" onclick="closeLightbox(event)">&times;</div>
     <div class="lightbox-content">
@@ -357,8 +372,25 @@
     </div>
 </div>
 
+<!-- MODAL DE COMPARTIR -->
+<div class="share-modal" id="shareModal">
+    <div class="share-title">Compartir Producto</div>
+    <div class="share-options">
+        <button class="share-btn-option share-wa" onclick="shareAction('wa')">
+            <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> Enviar por WhatsApp
+        </button>
+        <button class="share-btn-option share-fb" onclick="shareAction('fb')">
+            <iconify-icon icon="ic:baseline-facebook" width="20"></iconify-icon> Compartir en Facebook
+        </button>
+        <button class="share-btn-option share-copy" onclick="shareAction('copy')">
+            <i class="material-icons" style="font-size:18px">content_copy</i> Copiar enlace
+        </button>
+    </div>
+    <div class="close-share" onclick="closeShareModal()">Cancelar</div>
+</div>
+
 <!-- CARRITO OVERLAY -->
-<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="overlay" id="overlay" onclick="closeAllModals()"></div>
 <div class="cart-modal" id="cartModal">
     <div class="cart-header">
         <h3>Tu Carrito</h3>
@@ -377,14 +409,12 @@
 </div>
 
 <script>
-    // --- CONFIGURACIÓN ---
     const CONFIG = {
         phone: "573122665870",
         shippingCost: 15000,
         freeShippingThreshold: 120000
     };
 
-    // --- PRECIOS DE TOTE BAGS ---
     const totePrices = [
         { name: "Mini (20x22cm)", price: 20000 },
         { name: "Pequeño (26x33cm)", price: 26000 },
@@ -393,136 +423,36 @@
         { name: "Grandote (38x45cm)", price: 42000 }
     ];
 
-    // --- TUS PRODUCTOS (.png) ---
     const products = [
-        {
-            id: 101,
-            name: "Amigurumi Capybara",
-            category: "Amigurumis",
-            price: 22000,
-            images: ["img/ami_capi.png"] 
-        },
-        {
-            id: 102,
-            name: "Cerezas Tejidas",
-            category: "Amigurumis",
-            price: 18000,
-            images: ["img/ami_cerezas.png"]
-        },
-        {
-            id: 103,
-            name: "Amigurumi Pingüino",
-            category: "Amigurumis",
-            price: 22000,
-            images: ["img/ami_pingu.png"]
-        },
-        {
-            id: 201,
-            name: "Libreta Cali Mirá Ve",
-            category: "Libretas",
-            price: 12000,
-            images: ["img/libreta_cali.png"]
-        },
-        {
-            id: 301,
-            name: "Tote Bag Capybara Faces",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_capi_faces_1.png", "img/tote_capi_faces_2.png"]
-        },
-        {
-            id: 302,
-            name: "Tote Bag Capybara Flowers",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_capi_flower_1.png", "img/tote_capi_flower_2.png"]
-        },
-        {
-            id: 303,
-            name: "Tote Bag Harry Potter",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_harry_1.png", "img/tote_harry_2.png"]
-        },
-        {
-            id: 304,
-            name: "Tote Bag Mariposas",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_mariposa_1.png", "img/tote_mariposa_2.png"]
-        },
-        {
-            id: 305,
-            name: "Tote Bag El Principito",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_principito_1.png", "img/tote_principito_2.png"]
-        },
-        {
-            id: 306,
-            name: "Tote Bag Van Gogh",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_vangogh_1.png", "img/tote_vangogh_2.png"]
-        },
-        {
-            id: 307,
-            name: "Tote Bag Totoro",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_totoro.png"]
-        },
-        {
-            id: 308,
-            name: "Tote Bag David",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_david.png"]
-        },
-        {
-            id: 309,
-            name: "Tote Bag BMO",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_bmo.png"]
-        },
-        {
-            id: 310,
-            name: "Tote Bag Mafalda Bow",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_mafalda_bow.png"]
-        },
-        {
-            id: 311,
-            name: "Tote Bag Mafalda Vivos",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_mafalda_vivos.png"]
-        },
-        {
-            id: 312,
-            name: "Tote Bag Capybara Mago",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_capi_mago.png"]
-        },
-        {
-            id: 313,
-            name: "Tote Bag Chihiro",
-            category: "Tote Bags",
-            variable: true,
-            images: ["img/tote_chihiro.png"]
-        }
+        { id: 101, name: "Amigurumi Capybara", category: "Amigurumis", price: 22000, images: ["img/ami_capi.png"] },
+        { id: 102, name: "Cerezas Tejidas", category: "Amigurumis", price: 18000, images: ["img/ami_cerezas.png"] },
+        { id: 103, name: "Amigurumi Pingüino", category: "Amigurumis", price: 22000, images: ["img/ami_pingu.png"] },
+        { id: 201, name: "Libreta Cali Mirá Ve", category: "Libretas", price: 12000, images: ["img/libreta_cali.png"] },
+        { id: 301, name: "Tote Bag Capybara Faces", category: "Tote Bags", variable: true, images: ["img/tote_capi_faces_1.png", "img/tote_capi_faces_2.png"] },
+        { id: 302, name: "Tote Bag Capybara Flowers", category: "Tote Bags", variable: true, images: ["img/tote_capi_flower_1.png", "img/tote_capi_flower_2.png"] },
+        { id: 303, name: "Tote Bag Harry Potter", category: "Tote Bags", variable: true, images: ["img/tote_harry_1.png", "img/tote_harry_2.png"] },
+        { id: 304, name: "Tote Bag Mariposas", category: "Tote Bags", variable: true, images: ["img/tote_mariposa_1.png", "img/tote_mariposa_2.png"] },
+        { id: 305, name: "Tote Bag El Principito", category: "Tote Bags", variable: true, images: ["img/tote_principito_1.png", "img/tote_principito_2.png"] },
+        { id: 306, name: "Tote Bag Van Gogh", category: "Tote Bags", variable: true, images: ["img/tote_vangogh_1.png", "img/tote_vangogh_2.png"] },
+        { id: 307, name: "Tote Bag Totoro", category: "Tote Bags", variable: true, images: ["img/tote_totoro.png"] },
+        { id: 308, name: "Tote Bag David", category: "Tote Bags", variable: true, images: ["img/tote_david.png"] },
+        { id: 309, name: "Tote Bag BMO", category: "Tote Bags", variable: true, images: ["img/tote_bmo.png"] },
+        { id: 310, name: "Tote Bag Mafalda Bow", category: "Tote Bags", variable: true, images: ["img/tote_mafalda_bow.png"] },
+        { id: 311, name: "Tote Bag Mafalda Vivos", category: "Tote Bags", variable: true, images: ["img/tote_mafalda_vivos.png"] },
+        { id: 312, name: "Tote Bag Capybara Mago", category: "Tote Bags", variable: true, images: ["img/tote_capi_mago.png"] },
+        { id: 313, name: "Tote Bag Chihiro", category: "Tote Bags", variable: true, images: ["img/tote_chihiro.png"] }
     ];
 
     let cart = [];
-
-    // --- RENDERIZADO Y LÓGICA ---
+    let currentShareProduct = null; // Para saber qué producto se comparte
 
     function init() {
         renderProducts('Todo');
         startImageSlideshow();
+        // Bloqueo click derecho
+        document.addEventListener('contextmenu', e => {
+            if (e.target.tagName === 'IMG' || e.target.classList.contains('lightbox-img')) e.preventDefault();
+        });
     }
 
     function filterProducts(category, element) {
@@ -534,10 +464,7 @@
     function renderProducts(category) {
         const container = document.getElementById('productContainer');
         container.innerHTML = '';
-
-        const filtered = category === 'Todo' 
-            ? products 
-            : products.filter(p => p.category === category);
+        const filtered = category === 'Todo' ? products : products.filter(p => p.category === category);
 
         if(filtered.length === 0) {
             container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:20px; color:#999;">No hay productos en esta categoría.</div>';
@@ -545,37 +472,25 @@
         }
 
         filtered.forEach(p => {
-            // Generar imágenes con evento click para Lightbox
             let imagesHtml = p.images.map((src, i) => 
-                `<img src="${src}" 
-                      class="product-img ${i === 0 ? '' : 'hidden'}" 
-                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                      onclick="openLightbox('${src}')" 
-                      alt="${p.name}">
+                `<img src="${src}" class="product-img ${i === 0 ? '' : 'hidden'}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" onclick="openLightbox('${src}')">
                  <div class="img-placeholder" style="display:none">Foto no encontrada<br>${src}</div>`
             ).join('');
 
-            // Generar precios
-            let priceHtml = '';
-            let controlHtml = '';
-
-            if (p.variable) {
-                priceHtml = `<div class="product-price" id="price-display-${p.id}">Desde $${formatPrice(totePrices[0].price)}</div>`;
-                controlHtml = `
-                    <select class="size-select" id="size-${p.id}" onchange="updatePriceDisplay(${p.id})">
-                        ${totePrices.map((tp, idx) => `<option value="${idx}">${tp.name} - $${formatPrice(tp.price)}</option>`).join('')}
-                    </select>
-                `;
-            } else {
-                priceHtml = `<div class="product-price">$${formatPrice(p.price)}</div>`;
-            }
+            let priceHtml = p.variable 
+                ? `<div class="product-price" id="price-display-${p.id}">Desde $${formatPrice(totePrices[0].price)}</div>`
+                : `<div class="product-price">$${formatPrice(p.price)}</div>`;
+                
+            let controlHtml = p.variable 
+                ? `<select class="size-select" id="size-${p.id}" onchange="updatePriceDisplay(${p.id})">
+                    ${totePrices.map((tp, idx) => `<option value="${idx}">${tp.name} - $${formatPrice(tp.price)}</option>`).join('')}
+                   </select>` 
+                : '';
 
             const card = document.createElement('div');
             card.className = 'product-card';
             card.innerHTML = `
-                <div class="product-image-wrapper" id="slider-${p.id}">
-                    ${imagesHtml}
-                </div>
+                <div class="product-image-wrapper" id="slider-${p.id}">${imagesHtml}</div>
                 <div class="product-info">
                     <div class="product-cat">${p.category}</div>
                     <div class="product-name">${p.name}</div>
@@ -583,10 +498,10 @@
                     ${controlHtml}
                     <div class="btn-row">
                         <button class="add-btn" onclick="addToCart(${p.id})">AGREGAR</button>
-                        <button class="whatsapp-btn" onclick="askProduct(${p.id})"><iconify-icon icon="ic:baseline-whatsapp" width="18" height="18"></iconify-icon></button>
+                        <button class="icon-btn whatsapp-btn" onclick="askProduct(${p.id})"><iconify-icon icon="ic:baseline-whatsapp" width="18"></iconify-icon></button>
+                        <button class="icon-btn share-btn" onclick="openShareModal(${p.id})"><i class="material-icons" style="font-size:18px">share</i></button>
                     </div>
-                </div>
-            `;
+                </div>`;
             container.appendChild(card);
         });
     }
@@ -594,50 +509,33 @@
     function updatePriceDisplay(id) {
         const select = document.getElementById(`size-${id}`);
         const priceDisplay = document.getElementById(`price-display-${id}`);
-        const selectedPrice = totePrices[select.value].price;
-        priceDisplay.innerText = `$${formatPrice(selectedPrice)}`;
+        priceDisplay.innerText = `$${formatPrice(totePrices[select.value].price)}`;
     }
 
     function addToCart(id) {
         const product = products.find(p => p.id === id);
         let itemToAdd = { ...product };
-        
         if (product.variable) {
             const select = document.getElementById(`size-${id}`);
-            const variantIdx = select.value;
-            const variant = totePrices[variantIdx];
-            
-            itemToAdd.uniqueId = `${id}-${variantIdx}`; 
+            const variant = totePrices[select.value];
+            itemToAdd.uniqueId = `${id}-${select.value}`;
             itemToAdd.price = variant.price;
             itemToAdd.variantName = variant.name;
         } else {
             itemToAdd.uniqueId = `${id}-default`;
             itemToAdd.variantName = "";
         }
-
         const existing = cart.find(i => i.uniqueId === itemToAdd.uniqueId);
-        if (existing) {
-            existing.qty++;
-        } else {
-            itemToAdd.qty = 1;
-            cart.push(itemToAdd);
-        }
-        
+        existing ? existing.qty++ : (itemToAdd.qty = 1, cart.push(itemToAdd));
         updateCartUI();
         toggleCart();
     }
 
     function updateCartUI() {
-        const countBadge = document.getElementById('cartCount');
-        const container = document.getElementById('cartItemsContainer');
-        const subtotalEl = document.getElementById('subtotalPrice');
-        const shippingEl = document.getElementById('shippingPrice');
-        const totalEl = document.getElementById('totalPrice');
-        const alertEl = document.getElementById('shippingAlert');
-
         const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-        countBadge.innerText = totalQty;
-
+        document.getElementById('cartCount').innerText = totalQty;
+        
+        const container = document.getElementById('cartItemsContainer');
         if (cart.length === 0) {
             container.innerHTML = '<div style="text-align:center; padding:40px; color:#aaa"><i class="material-icons" style="font-size:40px">shopping_basket</i><br>Carrito vacío</div>';
         } else {
@@ -654,34 +552,30 @@
                         <span style="font-size:12px; font-weight:bold">${item.qty}</span>
                         <button class="qty-btn" onclick="changeQty('${item.uniqueId}', 1)">+</button>
                     </div>
-                </div>
-            `).join('');
+                </div>`).join('');
         }
 
         const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-        let shipping = CONFIG.shippingCost;
-        
+        let shipping = subtotal >= CONFIG.freeShippingThreshold ? 0 : CONFIG.shippingCost;
+        if (cart.length === 0) shipping = 0;
+
+        const alertEl = document.getElementById('shippingAlert');
         if (subtotal >= CONFIG.freeShippingThreshold) {
-            shipping = 0;
             alertEl.innerText = "¡Genial! Tienes ENVÍO GRATIS 🎉";
             alertEl.classList.add('success');
         } else {
-            const missing = CONFIG.freeShippingThreshold - subtotal;
-            alertEl.innerText = `Agrega $${formatPrice(missing)} más para Envío GRATIS`;
+            alertEl.innerText = `Agrega $${formatPrice(CONFIG.freeShippingThreshold - subtotal)} más para Envío GRATIS`;
             alertEl.classList.remove('success');
         }
-        
-        if (cart.length === 0) shipping = 0;
 
-        subtotalEl.innerText = `$${formatPrice(subtotal)}`;
-        shippingEl.innerText = shipping === 0 ? "GRATIS" : `$${formatPrice(shipping)}`;
-        totalEl.innerText = `$${formatPrice(subtotal + shipping)}`;
+        document.getElementById('subtotalPrice').innerText = `$${formatPrice(subtotal)}`;
+        document.getElementById('shippingPrice').innerText = shipping === 0 ? "GRATIS" : `$${formatPrice(shipping)}`;
+        document.getElementById('totalPrice').innerText = `$${formatPrice(subtotal + shipping)}`;
     }
 
     function changeQty(uniqueId, delta) {
         const idx = cart.findIndex(i => i.uniqueId === uniqueId);
         if (idx === -1) return;
-        
         cart[idx].qty += delta;
         if (cart[idx].qty <= 0) cart.splice(idx, 1);
         updateCartUI();
@@ -689,58 +583,90 @@
 
     function checkoutWhatsApp() {
         if (cart.length === 0) return alert("El carrito está vacío");
-        
         let msg = "Hola ADI! 👋 Me gustaría pedir lo siguiente:\n\n";
-        cart.forEach(i => {
-            msg += `▪️ ${i.name} ${i.variantName ? `(${i.variantName})` : ''} x${i.qty} - $${formatPrice(i.price * i.qty)}\n`;
-        });
-        
+        cart.forEach(i => msg += `- ${i.name} ${i.variantName ? `(${i.variantName})` : ''} x${i.qty} - $${formatPrice(i.price * i.qty)}\n`);
         const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
         const shipping = subtotal >= CONFIG.freeShippingThreshold ? 0 : CONFIG.shippingCost;
-        
         msg += `\nSubtotal: $${formatPrice(subtotal)}`;
         msg += `\nEnvío: ${shipping === 0 ? "GRATIS 🎉" : "$" + formatPrice(shipping)}`;
         msg += `\n*TOTAL: $${formatPrice(subtotal + shipping)}*`;
         msg += `\n\nQuedo pendiente para el pago. ¡Gracias!`;
-        
         window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     function askProduct(id) {
         const p = products.find(i => i.id === id);
-        const msg = `Hola! Me interesa saber más sobre: ${p.name}`;
-        window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent("Hola! Me interesa saber más sobre: " + p.name)}`, '_blank');
     }
 
+    // --- LÓGICA COMPARTIR ---
+    function openShareModal(id) {
+        currentShareProduct = products.find(p => p.id === id);
+        document.getElementById('shareModal').classList.add('active');
+        document.getElementById('overlay').classList.add('active');
+    }
+
+    function closeShareModal() {
+        document.getElementById('shareModal').classList.remove('active');
+        if(!document.getElementById('cartModal').classList.contains('open')) {
+            document.getElementById('overlay').classList.remove('active');
+        }
+    }
+
+    function shareAction(type) {
+        if (!currentShareProduct) return;
+        const url = window.location.href;
+        const text = `¡Mira este hermoso diseño de ADI! ${currentShareProduct.name} - Desde $${formatPrice(currentShareProduct.price)}. Visita: `;
+        
+        if (type === 'wa') {
+            window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`, '_blank');
+        } else if (type === 'fb') {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        } else if (type === 'copy') {
+            navigator.clipboard.writeText(text + url).then(() => {
+                alert('¡Enlace y mensaje copiados! Pégalos en Instagram o donde quieras.');
+            });
+        }
+        closeShareModal();
+    }
+
+    // --- UTILS ---
     function formatPrice(num) { return num.toLocaleString('es-CO'); }
     
     function toggleCart() {
         document.getElementById('cartModal').classList.toggle('open');
-        document.getElementById('overlay').classList.toggle('active');
+        const overlay = document.getElementById('overlay');
+        // Solo toggles si el share no está abierto
+        if (!document.getElementById('shareModal').classList.contains('active')) {
+            overlay.classList.toggle('active');
+        }
     }
 
-    // --- LOGICA LIGHTBOX (VISOR IMAGENES) ---
+    function closeAllModals() {
+        document.getElementById('cartModal').classList.remove('open');
+        document.getElementById('shareModal').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
+    }
+
+    // --- LIGHTBOX ---
     function openLightbox(src) {
         const lb = document.getElementById('lightbox');
         const img = document.getElementById('lightbox-img');
         img.src = src;
-        img.classList.remove('zoomed'); // Reset zoom al abrir
+        img.classList.remove('zoomed');
         lb.classList.add('active');
     }
-
     function closeLightbox(e) {
-        // Solo cierra si das click en el fondo o en la X, no en la imagen
-        if (e.target.classList.contains('lightbox') || e.target.classList.contains('close-lightbox')) {
+        if (e.target.id === 'lightbox' || e.target.classList.contains('close-lightbox')) {
             document.getElementById('lightbox').classList.remove('active');
         }
     }
-
     function toggleZoom(e) {
-        e.stopPropagation(); // Evita que el click cierre el lightbox
-        const img = document.getElementById('lightbox-img');
-        img.classList.toggle('zoomed');
+        e.stopPropagation();
+        document.getElementById('lightbox-img').classList.toggle('zoomed');
     }
 
+    // --- SLIDER AUTOMÁTICO ---
     function startImageSlideshow() {
         setInterval(() => {
             products.forEach(p => {
@@ -749,22 +675,19 @@
                     if (!wrapper) return;
                     const imgs = wrapper.querySelectorAll('img.product-img');
                     if(imgs.length === 0) return;
-
                     let visibleIdx = -1;
                     imgs.forEach((img, idx) => {
                         if (!img.classList.contains('hidden')) visibleIdx = idx;
                         img.classList.add('hidden');
                     });
-                    
                     let nextIdx = (visibleIdx + 1) % imgs.length;
                     imgs[nextIdx].classList.remove('hidden');
                 }
             });
-        }, 3000); 
+        }, 3000);
     }
 
     init();
-
 </script>
 </body>
 </html>
