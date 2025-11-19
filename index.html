@@ -45,7 +45,12 @@
         .logo-text { font-size: 15px; font-weight: 700; color: #5a3e2b; font-family: 'Quicksand', sans-serif; line-height: 1.2; }
         .logo-text span { display: block; font-size: 10px; font-weight: 600; color: #c97e58; letter-spacing: 1px; margin-top: 2px;}
         
-        .cart-trigger { position: relative; cursor: pointer; color: #5a3e2b; margin-right: 5px; }
+        .header-right { display: flex; align-items: center; gap: 15px; }
+        
+        .nav-btn { cursor: pointer; color: #5a3e2b; display: flex; flex-direction: column; align-items: center; }
+        .nav-btn span { font-size: 9px; font-weight: 600; }
+
+        .cart-trigger { position: relative; cursor: pointer; color: #5a3e2b; }
         .cart-count {
             position: absolute; top: -5px; right: -8px; background-color: #c97e58; color: white;
             font-size: 10px; width: 18px; height: 18px; border-radius: 50%;
@@ -123,6 +128,10 @@
 
         /* Footer */
         .footer { background-color: rgba(255,255,255,0.8); padding: 30px 20px; text-align: center; margin-top: 20px; }
+        .footer-links { margin-bottom: 20px; }
+        .footer-link { color: #5a3e2b; text-decoration: none; font-size: 12px; margin: 0 5px; font-weight: 500; cursor: pointer; }
+        .footer-link:hover { text-decoration: underline; color: #c97e58; }
+
         .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
         .social-icon { width: 40px; height: 40px; background-color: #5a3e2b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
         .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
@@ -175,6 +184,18 @@
         .share-copy { background-color: #f4f4f4; color: #5a3e2b; }
         .close-share { margin-top: 15px; color: #888; font-size: 12px; cursor: pointer; text-decoration: underline; }
 
+        /* MODAL ABOUT US (NUEVO) */
+        .about-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 500px; max-height: 85vh; border-radius: 16px; z-index: 2200; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; overflow: hidden; flex-direction: column; }
+        .about-modal.active { display: flex; animation: popIn 0.3s ease; }
+        .about-header { padding: 20px; background-color: #5a3e2b; color: white; display: flex; justify-content: space-between; align-items: center; }
+        .about-header h3 { font-size: 16px; font-weight: 700; }
+        .about-content { padding: 25px; overflow-y: auto; color: #5a3e2b; font-size: 14px; line-height: 1.7; }
+        .about-content h4 { color: #c97e58; font-size: 18px; margin-bottom: 15px; text-align: center; }
+        .about-content p { margin-bottom: 15px; }
+        .about-content strong { color: #c97e58; }
+        .about-content a { color: #c97e58; font-weight: 700; text-decoration: none; }
+        .about-content a:hover { text-decoration: underline; }
+
     </style>
 </head>
 <body>
@@ -186,9 +207,20 @@
             <div class="logo-icon"><i class="material-icons">local_cafe</i></div>
             <div class="logo-text">Aguapanela Dulce Imaginación<br><span>E-SHOP</span></div>
         </div>
-        <div class="cart-trigger" onclick="toggleCart()">
-            <i class="material-icons" style="font-size: 28px;">shopping_cart</i>
-            <div class="cart-count" id="cartCount">0</div>
+        
+        <div class="header-right">
+            <!-- Botón Nosotros -->
+            <div class="nav-btn" onclick="openAboutModal()">
+                <i class="material-icons">favorite_border</i>
+                <span>Nosotros</span>
+            </div>
+
+            <!-- Carrito -->
+            <div class="cart-trigger nav-btn" onclick="toggleCart()">
+                <i class="material-icons" style="font-size: 24px;">shopping_cart</i>
+                <div class="cart-count" id="cartCount">0</div>
+                <span>Carrito</span>
+            </div>
         </div>
     </header>
 
@@ -271,6 +303,9 @@
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-links">
+            <a onclick="openAboutModal()" class="footer-link">Nuestra Historia</a>
+        </div>
         <div class="social-icons">
             <a href="https://www.facebook.com/AguapanelaDulceImaginacion" target="_blank" class="social-icon">
                 <i class="material-icons">facebook</i>
@@ -294,6 +329,24 @@
     <div class="close-lightbox" onclick="closeLightbox(event)">&times;</div>
     <div class="lightbox-content">
         <img id="lightbox-img" class="lightbox-img" src="" onclick="toggleZoom(event)">
+    </div>
+</div>
+
+<!-- MODAL ABOUT US -->
+<div class="about-modal" id="aboutModal">
+    <div class="about-header">
+        <h3>Sobre Nosotros</h3>
+        <i class="material-icons" style="cursor:pointer" onclick="closeAboutModal()">close</i>
+    </div>
+    <div class="about-content">
+        <h4>Hecho con Amor ❤️</h4>
+        <p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas y sentimientos se transforman en piezas únicas y llenas de vida. Como la aguapanela, nuestra esencia es cálida, reconfortante y siempre te dejará un dulce recuerdo.</p>
+        
+        <p>Nuestra historia es un legado de amor y creatividad, inspirada por la chispa de <a href="https://www.facebook.com/dianita.ortega.376" target="_blank">Diana</a> y la sabiduría de nuestra Madre <strong>Guiller</strong>, así como la pasión de Felipe (<a href="https://www.facebook.com/nellydafelly" target="_blank">Felly</a>). Juntos, hemos cultivado un espacio donde la imaginación no tiene límites y cada detalle cuenta una historia.</p>
+        
+        <p>En AguaPanela Dulce Imaginación, creemos que los mejores regalos son aquellos que nacen del alma. Por eso, te invitamos a soñar con nosotros y personalizar todo aquello que desees: desde detalles y regalos que tocan el corazón, hasta camisas que visten tus ideas, estampados vibrantes, totebags para llevar tus historias a todos los lugares, amigurumis para acompañarte, mugs que alegran tus mañanas, llaveros 3D que guardan tus momentos, diseño gráfico que da voz a tus proyectos y cartas que susurran tus sentimientos más profundos.</p>
+        
+        <p>Cada producto que creamos es una extensión de ti, una forma de expresar lo que llevas dentro. Ven y déjanos endulzar tus ideas y plasmarlas en algo verdaderamente especial. ¡Estamos aquí para hacer tu imaginación realidad!</p>
     </div>
 </div>
 
@@ -351,9 +404,9 @@
     ];
 
     const products = [
-        { id: 101, name: "Amigurumi Capybara", category: "Amigurumis", price: 22000, images: ["img/ami_capi1.png"] },
+        { id: 101, name: "Amigurumi Capybara", category: "Amigurumis", price: 22000, images: ["img/ami_capi.png"] },
         { id: 102, name: "Cerezas Tejidas", category: "Amigurumis", price: 18000, images: ["img/ami_cerezas.png"] },
-        { id: 103, name: "Amigurumi Pingüino", category: "Amigurumis", price: 22000, images: ["img/ami_pingu1.png"] },
+        { id: 103, name: "Amigurumi Pingüino", category: "Amigurumis", price: 22000, images: ["img/ami_pingu.png"] },
         { id: 201, name: "Libreta Cali Mirá Ve", category: "Libretas", price: 12000, images: ["img/libreta_cali.png"] },
         { id: 301, name: "Tote Bag Capybara Faces", category: "Tote Bags", variable: true, images: ["img/tote_capi_faces_1.png", "img/tote_capi_faces_2.png"] },
         { id: 302, name: "Tote Bag Capybara Flowers", category: "Tote Bags", variable: true, images: ["img/tote_capi_flower_1.png", "img/tote_capi_flower_2.png"] },
@@ -536,7 +589,7 @@
 
     function closeShareModal() {
         document.getElementById('shareModal').classList.remove('active');
-        if (!document.getElementById('cartModal').classList.contains('open')) {
+        if (!document.getElementById('cartModal').classList.contains('open') && !document.getElementById('aboutModal').classList.contains('active')) {
             document.getElementById('overlay').classList.remove('active');
         }
     }
@@ -556,7 +609,6 @@
             } else if (type === 'fb') {
                 window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`, '_blank');
             } else if (type === 'copy') {
-                // Intentamos copiar con API moderna
                 if (navigator.clipboard && window.isSecureContext) {
                     navigator.clipboard.writeText(text).then(() => {
                         showCopyFeedback();
@@ -565,14 +617,13 @@
                         manualCopyFallback(text);
                     });
                 } else {
-                    // Fallback para entornos no seguros (http/file)
                     manualCopyFallback(text);
                 }
             }
             if(type !== 'copy') closeShareModal();
         } catch (e) {
             console.error("Error en compartir:", e);
-            alert("Hubo un problema al intentar compartir. Por favor intenta de nuevo.");
+            alert("Hubo un problema al intentar compartir.");
         }
     }
 
@@ -587,7 +638,6 @@
     }
 
     function manualCopyFallback(text) {
-        // Método antiguo para copiar si la API moderna falla
         const textArea = document.createElement("textarea");
         textArea.value = text;
         textArea.style.position = "fixed";
@@ -599,21 +649,39 @@
             document.execCommand('copy');
             showCopyFeedback();
         } catch (err) {
-            alert("No se pudo copiar automáticamente. Por favor copia manualmente este texto:\n\n" + text);
+            alert("No se pudo copiar automáticamente.");
         }
         document.body.removeChild(textArea);
+    }
+
+    /* --- LÓGICA SOBRE NOSOTROS --- */
+    function openAboutModal() {
+        document.getElementById('aboutModal').classList.add('active');
+        document.getElementById('overlay').classList.add('active');
+    }
+
+    function closeAboutModal() {
+        document.getElementById('aboutModal').classList.remove('active');
+        if (!document.getElementById('cartModal').classList.contains('open') && !document.getElementById('shareModal').classList.contains('active')) {
+            document.getElementById('overlay').classList.remove('active');
+        }
     }
 
     function formatPrice(num) { return num.toLocaleString('es-CO'); }
     
     function toggleCart() {
         document.getElementById('cartModal').classList.toggle('open');
-        document.getElementById('overlay').classList.toggle('active');
+        const overlay = document.getElementById('overlay');
+        // Solo toggle si no hay otro modal abierto
+        if (!document.getElementById('shareModal').classList.contains('active') && !document.getElementById('aboutModal').classList.contains('active')) {
+            overlay.classList.toggle('active');
+        }
     }
 
     function closeAllModals() {
         document.getElementById('cartModal').classList.remove('open');
         document.getElementById('shareModal').classList.remove('active');
+        document.getElementById('aboutModal').classList.remove('active');
         document.getElementById('overlay').classList.remove('active');
     }
 
@@ -660,5 +728,3 @@
 </script>
 </body>
 </html>
-
-
