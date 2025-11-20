@@ -4,7 +4,7 @@
 
 Bienvenidx al repositorio oficial de la tienda online de **Aguapanela Dulce Imaginación (ADI)**. Este proyecto no es solo código; es la vitrina digital de un emprendimiento familiar nacido en el corazón de Cali, Colombia, dedicado a transformar sentimientos en piezas únicas.
 
-<!-- Aquí insertamos el banner usando sintaxis Markdown -->
+<!-- Banner principal de la E-SHOP, visible en el README.md -->
 ![Banner Principal Aguapanela Dulce Imaginación](https://dulceimaginacion.github.io/img/og-image-3.jpg) 
 
 ![Estado](https://img.shields.io/badge/Estado-Dulce%20y%20Funcional-ffc0cb?style=for-the-badge&labelColor=5a3e2b)
