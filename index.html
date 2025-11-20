@@ -184,7 +184,8 @@
         .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
         .social-icon.wa-footer { background-color: #25D366; }
         .social-icon.wa-footer:hover { background-color: #128C7E; }
-        .copyright { font-size: 10px; color: #8b6f47; border-top: 1px solid #e0e0e0; padding-top: 15px; }
+        .social-icon.mail-footer { background-color: #c97e58; } /* Added mail specific color */
+        .social-icon.mail-footer:hover { background-color: #5a3e2b; }
 
         /* Overlays & Modals */
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
@@ -373,7 +374,7 @@
             <a href="https://wa.me/573122665870" target="_blank" class="social-icon wa-footer">
                 <iconify-icon icon="ic:baseline-whatsapp" width="24" height="24" style="color: white;"></iconify-icon>
             </a>
-            <a href="mailto:dulceimaginacion.startup@gmail.com" class="social-icon">
+            <a href="mailto:dulceimaginacion.startup@gmail.com" class="social-icon mail-footer">
                 <i class="material-icons">alternate_email</i>
             </a>
         </div>
@@ -443,7 +444,7 @@
         phone: "573122665870",
         shippingCost: 15000,
         freeShippingThreshold: 120000,
-        repoUrl: "https://dulceimaginacion.github.io/"
+        repoUrl: "https://dulceimaginacion.github.io/" // Esta es la URL de tu página principal
     };
 
     const totePrices = [
@@ -651,21 +652,32 @@
             alert("Error: Producto no seleccionado");
             return;
         }
-        const imageAbsoluteUrl = CONFIG.repoUrl + currentShareProduct.images[0];
-        const text = `¡Mira este hermoso diseño de ADI! 🌟\n\n*${currentShareProduct.name}*\nPrecio: $${formatPrice(currentShareProduct.price)}\n\nVer aquí: ${imageAbsoluteUrl}`;
+
+        // === INICIO DE LA CORRECCIÓN ===
+        // Usamos la URL base de la página para compartir
+        const pageShareUrl = CONFIG.repoUrl; 
+        
+        // El texto ahora solo incluye la información del producto y la URL de la página.
+        // Las plataformas de mensajería y redes sociales tomarán la imagen y el título
+        // de los metadatos Open Graph definidos en el <head> de la página.
+        const text = `¡Mira este hermoso diseño de ADI! 🌟\n\n*${currentShareProduct.name}*\nPrecio: $${formatPrice(currentShareProduct.price)}\n\nVisita nuestra tienda aquí: ${pageShareUrl}`;
 
         try {
             if (type === 'native') {
                 if (navigator.share) {
                     try {
-                        await navigator.share({ title: currentShareProduct.name, text: text, url: imageAbsoluteUrl });
+                        // Pasamos la URL de la página principal
+                        await navigator.share({ title: currentShareProduct.name, text: text, url: pageShareUrl });
                     } catch (err) { console.log('Error sharing or cancelled', err); }
                 } else {
+                    // Para WhatsApp, también pasamos la URL de la página principal
                     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
                 }
             } else if (type === 'fb') {
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(imageAbsoluteUrl)}&quote=${encodeURIComponent(text)}`, '_blank');
+                // Para Facebook, pasamos la URL de la página principal
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageShareUrl)}&quote=${encodeURIComponent(text)}`, '_blank');
             } else if (type === 'copy') {
+                // Para copiar, el texto ya contiene la URL de la página
                 if (navigator.clipboard && window.isSecureContext) {
                     navigator.clipboard.writeText(text).then(() => { showCopyFeedback(); }).catch(err => { manualCopyFallback(text); });
                 } else { manualCopyFallback(text); }
@@ -673,6 +685,7 @@
             if(type !== 'copy' && type !== 'native') closeShareModal();
         } catch (e) { console.error("Error en compartir:", e); }
     }
+    // === FIN DE LA CORRECCIÓN ===
 
     function showCopyFeedback() {
         const copySpan = document.getElementById('copyText');
@@ -778,5 +791,3 @@
 </script>
 </body>
 </html>
-
-
