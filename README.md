@@ -2,7 +2,7 @@
 
 > **¡Tú Tienda de Dulces Emociones!** ✨
 
-Bienvenidx al repositorio oficial de la tienda online de **Aguapanela Dulce Imaginación (ADI)**. Este proyecto no es solo código; es la vitrina digital de un emprendimiento familiar nacido en el corazón de Cali, Colombia, dedicado a transformar sentimientos en piezas únicas.
+Bienvenidx al repositorio oficial de la tienda online de **Aguapanela Dulce Imaginación (ADI)**. Este proyecto no es solo código; es la vitrina digital de un emprendimiento familiar nacido en el corazón de Cali, Colombia, dedicado a transformar emociones en piezas únicas.
 
 <!-- Banner principal de la E-SHOP, visible en el README.md -->
 ![Banner Principal Aguapanela Dulce Imaginación](https://dulceimaginacion.github.io/img/og-image-3.jpg) 
