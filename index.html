@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Metadatos para Redes Sociales (Open Graph) -->
-<meta property="og:title" content="Aguapanela Dulce Imaginación - E-SHOP">
-<meta property="og:description" content="Diseños únicos, libretas, tote bags y amigurumis hechos con amor. ¡Visita nuestra tienda!">
-<meta property="og:image" content="https://dulceimaginacion.github.io/img/og-image.jpg">
-<meta property="og:url" content="https://dulceimaginacion.github.io/img/">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#c97e58">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aguapanela Dulce Imaginación - E-SHOP</title>
+    
+    <!-- --- METADATOS PARA REDES SOCIALES (OPEN GRAPH) --- -->
+    <meta property="og:title" content="Aguapanela Dulce Imaginación | E-SHOP">
+    <meta property="og:description" content="Diseños únicos, libretas, tote bags y amigurumis hechos con amor en Cali.">
+    <!-- Ajusta esta URL si tu usuario de GitHub es diferente -->
+    <meta property="og:image" content="https://dulceimaginacion.github.io/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://dulceimaginacion.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#c97e58">
     
     <!-- FAVICON -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%235a3e2b' rx='10'/><path d='M14 22h28c0 10 5 20 14 20s14-10 14-20' fill='none'/><path d='M18 22h28v16c0 7.7-6.3 14-14 14s-14-6.3-14-14V22z' fill='%23ffc0cb'/><path d='M46 24h8c2.2 0 4 1.8 4 4v8c0 2.2-1.8 4-4 4h-8' fill='none' stroke='%23ffc0cb' stroke-width='5'/><path d='M22 16q4-6 8 0t8 0' fill='none' stroke='white' stroke-width='2' opacity='0.5'/></svg>" type="image/svg+xml">
@@ -23,7 +27,7 @@
     <style>
         /* --- ESTILOS BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: #f8f5f2; color: #5a3e2b; line-height: 1.6; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f8f5f2; color: #5a3e2b; line-height: 1.6; scroll-behavior: smooth; }
         
         /* PROTECCIÓN DE IMÁGENES */
         img {
@@ -53,10 +57,8 @@
         .logo-text span { display: block; font-size: 10px; font-weight: 600; color: #c97e58; letter-spacing: 1px; margin-top: 2px;}
         
         .header-right { display: flex; align-items: center; gap: 15px; }
-        
         .nav-btn { cursor: pointer; color: #5a3e2b; display: flex; flex-direction: column; align-items: center; }
         .nav-btn span { font-size: 9px; font-weight: 600; }
-
         .cart-trigger { position: relative; cursor: pointer; color: #5a3e2b; }
         .cart-count {
             position: absolute; top: -5px; right: -8px; background-color: #c97e58; color: white;
@@ -64,8 +66,19 @@
             display: flex; align-items: center; justify-content: center; font-weight: bold;
         }
 
+        /* BANNER VISUAL EN TIENDA */
+        .banner-section { padding: 20px 20px 0 20px; display: flex; justify-content: center; }
+        .banner-img {
+            width: 100%; max-width: 100%; border-radius: 20px; 
+            box-shadow: 0 8px 25px rgba(90, 62, 43, 0.15);
+            height: auto; display: block; 
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background-color: #e8dfd5; /* Color de fondo por si no carga */
+            min-height: 150px; /* Altura mínima para reservar espacio */
+        }
+
         /* Hero */
-        .hero { padding: 30px 20px; text-align: center; }
+        .hero { padding: 20px 20px 30px 20px; text-align: center; }
         .hero-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; color: #5a3e2b; font-family: 'Quicksand', sans-serif; }
         .hero-subtitle { font-size: 14px; color: #8b6f47; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;}
         .cta-button {
@@ -95,7 +108,20 @@
         .product-card {
             background-color: white; border-radius: 16px; overflow: hidden;
             box-shadow: 0 4px 15px rgba(90, 62, 43, 0.05); display: flex; flex-direction: column;
+            scroll-margin-top: 100px; /* Espacio para el header fijo al anclar */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+        /* Efecto de resaltado al llegar desde un enlace compartido */
+        .product-card.highlight {
+            animation: highlightPulse 2s ease-in-out;
+            border: 2px solid #c97e58;
+        }
+        @keyframes highlightPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 10px 30px rgba(201, 126, 88, 0.4); }
+            100% { transform: scale(1); }
+        }
+
         .product-image-wrapper { position: relative; height: 170px; overflow: hidden; background: #f4f4f4; cursor: zoom-in; }
         .product-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: opacity 0.8s ease-in-out; }
         .product-img.hidden { opacity: 0; }
@@ -135,22 +161,10 @@
 
         /* Footer */
         .footer { background-color: rgba(255,255,255,0.8); padding: 30px 20px; text-align: center; margin-top: 20px; }
-        
-        /* NUEVO ESTILO PARA EL BOTÓN DE HISTORIA */
         .footer-story-container { display: flex; justify-content: center; margin-bottom: 25px; }
-        .story-btn {
-            display: flex; align-items: center; gap: 8px;
-            background-color: #fff; border: 1px solid #c97e58; color: #c97e58;
-            padding: 10px 25px; border-radius: 30px;
-            font-size: 13px; font-weight: 600; cursor: pointer;
-            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(201, 126, 88, 0.1);
-        }
-        .story-btn:hover {
-            background-color: #c97e58; color: white;
-            transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 126, 88, 0.25);
-        }
+        .story-btn { display: flex; align-items: center; gap: 8px; background-color: #fff; border: 1px solid #c97e58; color: #c97e58; padding: 10px 25px; border-radius: 30px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(201, 126, 88, 0.1); }
+        .story-btn:hover { background-color: #c97e58; color: white; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 126, 88, 0.25); }
         .story-btn i { font-size: 18px; }
-
         .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
         .social-icon { width: 40px; height: 40px; background-color: #5a3e2b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
         .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
@@ -203,7 +217,7 @@
         .share-copy { background-color: #f4f4f4; color: #5a3e2b; }
         .close-share { margin-top: 15px; color: #888; font-size: 12px; cursor: pointer; text-decoration: underline; }
 
-        /* MODAL ABOUT US (NUEVO) */
+        /* MODAL ABOUT US */
         .about-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 500px; max-height: 85vh; border-radius: 16px; z-index: 2200; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; overflow: hidden; flex-direction: column; }
         .about-modal.active { display: flex; animation: popIn 0.3s ease; }
         .about-header { padding: 20px; background-color: #5a3e2b; color: white; display: flex; justify-content: space-between; align-items: center; }
@@ -242,6 +256,12 @@
             </div>
         </div>
     </header>
+
+    <!-- BANNER VISUAL -->
+    <section class="banner-section">
+        <!-- Si el archivo se llama og-image.jpg y está en la carpeta img, esto lo mostrará -->
+        <img src="img/og-image.jpg" alt="Bienvenidos a ADI" class="banner-img" onerror="this.style.display='none'">
+    </section>
 
     <!-- Hero -->
     <section class="hero">
@@ -285,51 +305,33 @@
             ¿Por Qué Elegirnos?
         </h2>
         <div class="features-grid">
-            <!-- 1. Envío -->
             <div class="feature-card">
                 <div class="icon-circle"><i class="material-icons">local_shipping</i></div>
-                <div class="feature-content">
-                    <h4>Envío Gratis</h4>
-                    <p>En pedidos mayores a <span class="price-highlight">$120.000 COP</span></p>
-                </div>
+                <div class="feature-content"><h4>Envío Gratis</h4><p>En pedidos mayores a <span class="price-highlight">$120.000 COP</span></p></div>
             </div>
-            <!-- 2. Sostenibilidad -->
             <div class="feature-card">
                 <div class="icon-circle"><i class="material-icons">spa</i></div>
-                <div class="feature-content">
-                    <h4>100% Sostenible</h4>
-                    <p>Materiales de calidad amigables con el planeta</p>
-                </div>
+                <div class="feature-content"><h4>100% Sostenible</h4><p>Materiales de calidad amigables con el planeta</p></div>
             </div>
-            <!-- 3. Pagos Seguros -->
             <div class="feature-card">
                 <div class="icon-circle"><i class="material-icons">lock</i></div>
-                <div class="feature-content">
-                    <h4>Pago Seguro</h4>
-                    <p>Tus datos están protegidos</p>
-                </div>
+                <div class="feature-content"><h4>Pago Seguro</h4><p>Tus datos están protegidos</p></div>
             </div>
-            <!-- 4. Garantía -->
             <div class="feature-card">
                 <div class="icon-circle"><i class="material-icons">thumb_up_alt</i></div>
-                <div class="feature-content">
-                    <h4>Calidad</h4>
-                    <p>Garantía en cada uno de nuestros productos</p>
-                </div>
+                <div class="feature-content"><h4>Calidad</h4><p>Garantía en cada uno de nuestros productos</p></div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <!-- Botón Elegante de Historia -->
         <div class="footer-story-container">
             <div class="story-btn" onclick="openAboutModal()">
                 <i class="material-icons">auto_stories</i>
                 <span>Nuestra Historia</span>
             </div>
         </div>
-
         <div class="social-icons">
             <a href="https://www.facebook.com/AguapanelaDulceImaginacion" target="_blank" class="social-icon">
                 <i class="material-icons">facebook</i>
@@ -359,17 +361,14 @@
 <!-- MODAL ABOUT US -->
 <div class="about-modal" id="aboutModal">
     <div class="about-header">
-        <h3>Sobre Nosotrxs</h3>
+        <h3>Sobre Nosotros</h3>
         <i class="material-icons" style="cursor:pointer" onclick="closeAboutModal()">close</i>
     </div>
     <div class="about-content">
         <h4>Hecho con Amor ❤️</h4>
-        <p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar lleno de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas, momentos y emociones se transforman en detalles únicos y llenas de vida. Como la aguapanela, nuestra esencia es cálida, tradicional y siempre te brindará un dulce recuerdo.</p>
-        
-        <p>Nuestra historia es un legado de amor y creatividad, inspirada por la chispa de <a href="https://www.facebook.com/dianita.ortega.376" target="_blank">Diana</a> y la sabiduría de nuestra Madre <strong>Guiller</strong>, así como la pasión de Felipe (<a href="https://www.facebook.com/nellydafelly" target="_blank">Felly</a>). Juntos, hemos tejido un espacio donde la imaginación viaja sin límites y cada detalle cuenta una historia.</p>
-        
+        <p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas y sentimientos se transforman en piezas únicas y llenas de vida. Como la aguapanela, nuestra esencia es cálida, reconfortante y siempre te dejará un dulce recuerdo.</p>
+        <p>Nuestra historia es un legado de amor y creatividad, inspirada por la chispa de <a href="https://www.facebook.com/dianita.ortega.376" target="_blank">Diana</a> y la sabiduría de nuestra Madre <strong>Guiller</strong>, así como la pasión de Felipe (<a href="https://www.facebook.com/nellydafelly" target="_blank">Felly</a>). Juntos, hemos cultivado un espacio donde la imaginación no tiene límites y cada detalle cuenta una historia.</p>
         <p>En AguaPanela Dulce Imaginación, creemos que los mejores regalos son aquellos que nacen del alma. Por eso, te invitamos a soñar con nosotrxs y personalizar todo aquello que desees: desde detalles y regalos que tocan el corazón, hasta camisas que visten tus ideas, estampados vibrantes, totebags para llevar tus historias a todos los lugares, amigurumis para acompañarte, mugs que alegran tus mañanas, llaveros 3D que guardan tus momentos, diseño gráfico que da voz a tus proyectos y cartas que susurran tus sentimientos más profundos.</p>
-        
         <p>Cada producto que creamos es una extensión de ti, una forma de expresar lo que llevas dentro. Ven y déjanos endulzar tus ideas y plasmarlas en algo verdaderamente especial. ¡Estamos aquí para hacer tu imaginación realidad!</p>
     </div>
 </div>
@@ -378,11 +377,12 @@
 <div class="share-modal" id="shareModal">
     <div class="share-title">Compartir Producto</div>
     <div class="share-options">
-        <button class="share-btn-option share-wa" onclick="shareAction('wa')">
-            <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> Enviar por WhatsApp
+        <!-- NATIVA para móviles (WhatsApp, etc) -->
+        <button class="share-btn-option share-wa" onclick="shareAction('native')">
+            <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> WhatsApp (Estado / Contacto)
         </button>
         <button class="share-btn-option share-fb" onclick="shareAction('fb')">
-            <iconify-icon icon="ic:baseline-facebook" width="20"></iconify-icon> Compartir en Facebook
+            <iconify-icon icon="ic:baseline-facebook" width="20"></iconify-icon> Facebook
         </button>
         <button class="share-btn-option share-copy" onclick="shareAction('copy')">
             <iconify-icon icon="material-symbols:content-copy" width="20"></iconify-icon> <span id="copyText">Copiar enlace</span>
@@ -413,10 +413,13 @@
 </div>
 
 <script>
+    // === CONFIGURACIÓN GENERAL ===
     const CONFIG = {
         phone: "573122665870",
         shippingCost: 15000,
-        freeShippingThreshold: 120000
+        freeShippingThreshold: 120000,
+        // URL DE TU TIENDA (IMPORTANTE: Debe terminar en /)
+        repoUrl: "https://dulceimaginacion.github.io/" 
     };
 
     const totePrices = [
@@ -448,7 +451,7 @@
     ];
 
     let cart = [];
-    let currentShareProduct = null; // VARIABLE GLOBAL IMPORTANTE
+    let currentShareProduct = null;
 
     function init() {
         renderProducts('Todo');
@@ -456,6 +459,19 @@
         document.addEventListener('contextmenu', e => {
             if (e.target.tagName === 'IMG' || e.target.classList.contains('lightbox-img')) e.preventDefault();
         });
+        
+        // LÓGICA DE ANCLAJE (DEEP LINKING)
+        // Si la URL tiene #product-101, bajar hasta ese producto
+        if(window.location.hash) {
+            setTimeout(() => {
+                const id = window.location.hash.replace('#', '');
+                const el = document.getElementById(id);
+                if(el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    el.classList.add('highlight'); // Efecto visual
+                }
+            }, 500); // Pequeño retraso para asegurar carga
+        }
     }
 
     function filterProducts(category, element) {
@@ -492,6 +508,7 @@
 
             const card = document.createElement('div');
             card.className = 'product-card';
+            card.id = `product-${p.id}`; // ID PARA EL ANCLAJE
             card.innerHTML = `
                 <div class="product-image-wrapper" id="slider-${p.id}">${imagesHtml}</div>
                 <div class="product-info">
@@ -602,7 +619,7 @@
         window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent("Hola! Me interesa saber más sobre: " + p.name)}`, '_blank');
     }
 
-    /* --- LÓGICA COMPARTIR --- */
+    /* --- LÓGICA COMPARTIR ACTUALIZADA --- */
     function openShareModal(id) {
         currentShareProduct = products.find(p => p.id === id);
         if (currentShareProduct) {
@@ -618,36 +635,45 @@
         }
     }
 
-    function shareAction(type) {
+    async function shareAction(type) {
         if (!currentShareProduct) {
             alert("Error: Producto no seleccionado");
             return;
         }
 
-        const url = window.location.href;
-        const text = `¡Mira este hermoso diseño de ADI! 🌟\n\n*${currentShareProduct.name}*\nPrecio: $${formatPrice(currentShareProduct.price)}\n\nVer aquí: ${url}`;
+        // URL del producto específico (usando Hash)
+        const productUrl = `${CONFIG.repoUrl}#product-${currentShareProduct.id}`;
+        const text = `¡Mira este hermoso diseño de ADI! 🌟\n\n*${currentShareProduct.name}*\nPrecio: $${formatPrice(currentShareProduct.price)}\n\nVer aquí: ${productUrl}`;
 
         try {
-            if (type === 'wa') {
-                window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-            } else if (type === 'fb') {
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`, '_blank');
-            } else if (type === 'copy') {
+            if (type === 'native') {
+                if (navigator.share) {
+                    await navigator.share({
+                        title: currentShareProduct.name,
+                        text: text,
+                        url: productUrl
+                    });
+                } else {
+                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+                }
+            } 
+            else if (type === 'fb') {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(productUrl)}&quote=${encodeURIComponent(text)}`, '_blank');
+            } 
+            else if (type === 'copy') {
                 if (navigator.clipboard && window.isSecureContext) {
                     navigator.clipboard.writeText(text).then(() => {
                         showCopyFeedback();
-                    }).catch(err => {
-                        console.error("Error copiando:", err);
-                        manualCopyFallback(text);
-                    });
+                    }).catch(err => manualCopyFallback(text));
                 } else {
                     manualCopyFallback(text);
                 }
             }
-            if(type !== 'copy') closeShareModal();
+            
+            if(type !== 'copy' && type !== 'native') closeShareModal();
+
         } catch (e) {
             console.error("Error en compartir:", e);
-            alert("Hubo un problema al intentar compartir.");
         }
     }
 
@@ -678,7 +704,6 @@
         document.body.removeChild(textArea);
     }
 
-    /* --- LÓGICA SOBRE NOSOTROS --- */
     function openAboutModal() {
         document.getElementById('aboutModal').classList.add('active');
         document.getElementById('overlay').classList.add('active');
@@ -696,7 +721,6 @@
     function toggleCart() {
         document.getElementById('cartModal').classList.toggle('open');
         const overlay = document.getElementById('overlay');
-        // Solo toggle si no hay otro modal abierto
         if (!document.getElementById('shareModal').classList.contains('active') && !document.getElementById('aboutModal').classList.contains('active')) {
             overlay.classList.toggle('active');
         }
@@ -709,7 +733,6 @@
         document.getElementById('overlay').classList.remove('active');
     }
 
-    // --- LIGHTBOX ---
     function openLightbox(src) {
         const lb = document.getElementById('lightbox');
         const img = document.getElementById('lightbox-img');
@@ -727,7 +750,6 @@
         document.getElementById('lightbox-img').classList.toggle('zoomed');
     }
 
-    // --- SLIDER ---
     function startImageSlideshow() {
         setInterval(() => {
             products.forEach(p => {
@@ -752,5 +774,3 @@
 </script>
 </body>
 </html>
-
-
