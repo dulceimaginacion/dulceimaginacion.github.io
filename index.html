@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aguapanela Dulce Imaginación - E-SHOP</title>
     
-    <!-- --- METADATOS CORREGIDOS PARA GITHUB PAGES --- -->
+    <!-- --- METADATOS --- -->
     <meta property="og:title" content="Aguapanela Dulce Imaginación | E-SHOP">
     <meta property="og:description" content="Diseños únicos, libretas, tote bags y amigurumis hechos con amor en Cali.">
-    <!-- Ruta absoluta a tu imagen de banner - AQUI SE PONE LA MINIATURA FIJA -->
+    
+    <!-- MINIATURA PARA WHATSAPP/FACEBOOK (Esta es la que se ve al compartir) -->
     <meta property="og:image" content="https://dulceimaginacion.github.io/img/og-image1.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -29,10 +30,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: #f8f5f2; color: #5a3e2b; line-height: 1.6; }
         
-        /* PROTECCIÓN DE IMÁGENES */
-        img {
-            -webkit-user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; pointer-events: auto;
-        }
+        img { -webkit-user-drag: none; user-select: none; pointer-events: auto; }
 
         /* Contenedor principal */
         .poster-container {
@@ -66,34 +64,43 @@
             display: flex; align-items: center; justify-content: center; font-weight: bold;
         }
 
-        /* BANNER VISUAL EN TIENDA - Actualizado para carrusel */
-        .banner-section { padding: 20px 20px 0 20px; display: flex; justify-content: center; }
+        /* --- BANNER RESPONSIVE 1200x630 --- */
+        .banner-section { 
+            padding: 20px 20px 0 20px; 
+            display: flex; 
+            justify-content: center;
+            width: 100%;
+        }
         
         .banner-slider {
             position: relative;
             width: 100%;
-            max-width: 100%;
+            /* Esto asegura que no se estire más allá del ancho original de la imagen si se ve en PC grande */
+            max-width: 1200px; 
+            /* LA MAGIA: Mantiene la proporción 1200x630 automáticamente */
+            aspect-ratio: 1200 / 630;
+            
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(90, 62, 43, 0.15);
-            height: 250px; /* Altura fija o ajusta según necesites */
-            overflow: hidden; /* Para que las imágenes se queden dentro del borde redondeado */
+            overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.5);
+            background-color: #f0e6dc; /* Fondo mientras carga */
         }
 
         .banner-slider .banner-img {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; /* Llena el contenedor sin distorsionar */
             opacity: 0;
-            transition: opacity 1s ease-in-out; /* Transición suave entre imágenes */
+            transform: scale(1);
+            transition: opacity 1s ease-in-out, transform 4s ease; /* Transición suave + Zoom lento */
+            will-change: opacity, transform;
         }
 
         .banner-slider .banner-img.active {
             opacity: 1;
-            /* La imagen activa no necesita position: static aquí, ya que el contenedor tiene una altura definida. */
+            transform: scale(1.05); /* Pequeño zoom al activarse para dar vida */
         }
 
 
@@ -195,7 +202,7 @@
         .item-variant { font-size: 11px; color: #888; display: block; }
         .item-price { font-size: 12px; color: #c97e58; font-weight: 700; }
         .item-controls { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
-        .qty-btn { width: 20px; height: 20px; background: #eee; border: none; border-radius: 44px; cursor: pointer; font-weight: bold; }
+        .qty-btn { width: 20px; height: 20px; background: #eee; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
         .cart-footer { padding: 20px; background-color: #f9f9f9; border-top: 1px solid #eee; }
         .summary-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; }
         .total-row { font-weight: 700; font-size: 16px; color: #5a3e2b; margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px; }
@@ -224,7 +231,7 @@
         .share-copy { background-color: #f4f4f4; color: #5a3e2b; }
         .close-share { margin-top: 15px; color: #888; font-size: 12px; cursor: pointer; text-decoration: underline; }
 
-        /* MODAL ABOUT US (NUEVO) */
+        /* MODAL ABOUT US */
         .about-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 500px; max-height: 85vh; border-radius: 16px; z-index: 2200; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; overflow: hidden; flex-direction: column; }
         .about-modal.active { display: flex; animation: popIn 0.3s ease; }
         .about-header { padding: 20px; background-color: #5a3e2b; color: white; display: flex; justify-content: space-between; align-items: center; }
@@ -264,12 +271,13 @@
         </div>
     </header>
 
-    <!-- BANNER VISUAL EN PAGINA (AHORA CON CARRUSEL) -->
+    <!-- BANNER PRINCIPAL (SLIDER AUTOMÁTICO) -->
     <section class="banner-section">
         <div class="banner-slider" id="mainBannerSlider">
-            <img src="img/og-image1.jpg" alt="Banner 1 Aguapanela" class="banner-img active" onerror="this.style.display='none'">
-            <img src="img/og-image2.jpg" alt="Banner 2 Aguapanela" class="banner-img" onerror="this.style.display='none'">
-            <img src="img/og-image3.jpg" alt="Banner 3 Aguapanela" class="banner-img" onerror="this.style.display='none'">
+            <!-- Tus 3 imágenes aquí. La primera tiene la clase 'active' -->
+            <img src="img/og-image1.jpg" alt="Banner 1" class="banner-img active" onerror="this.style.display='none'">
+            <img src="img/og-image2.jpg" alt="Banner 2" class="banner-img" onerror="this.style.display='none'">
+            <img src="img/og-image3.jpg" alt="Banner 3" class="banner-img" onerror="this.style.display='none'">
         </div>
     </section>
 
@@ -315,7 +323,6 @@
             ¿Por Qué Elegirnos?
         </h2>
         <div class="features-grid">
-            <!-- 1. Envío -->
             <div class="feature-card">
                 <div class="icon-circle"><i class="material-icons">local_shipping</i></div>
                 <div class="feature-content">
@@ -323,7 +330,6 @@
                     <p>En pedidos mayores a <span class="price-highlight">$120.000 COP</span></p>
                 </div>
             </div>
-            <!-- 2. Sostenibilidad -->
             <div class="feature-card">
                 <div class="icon-circle"><i class="material-icons">spa</i></div>
                 <div class="feature-content">
@@ -331,7 +337,6 @@
                     <p>Materiales de calidad amigables con el planeta</p>
                 </div>
             </div>
-            <!-- 3. Pagos Seguros -->
             <div class="feature-card">
                 <div class="icon-circle"><i class="material-icons">lock</i></div>
                 <div class="feature-content">
@@ -339,7 +344,6 @@
                     <p>Tus datos están protegidos</p>
                 </div>
             </div>
-            <!-- 4. Garantía -->
             <div class="feature-card">
                 <div class="icon-circle"><i class="material-icons">thumb_up_alt</i></div>
                 <div class="feature-content">
@@ -352,7 +356,6 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <!-- Botón Elegante de Historia -->
         <div class="footer-story-container">
             <div class="story-btn" onclick="openAboutModal()">
                 <i class="material-icons">auto_stories</i>
@@ -378,7 +381,7 @@
     </footer>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- LIGHTBOX, MODALES Y OVERLAY (Igual que antes) -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <div class="close-lightbox" onclick="closeLightbox(event)">&times;</div>
     <div class="lightbox-content">
@@ -386,7 +389,6 @@
     </div>
 </div>
 
-<!-- MODAL ABOUT US -->
 <div class="about-modal" id="aboutModal">
     <div class="about-header">
         <h3>Sobre Nosotros</h3>
@@ -395,28 +397,21 @@
     <div class="about-content">
         <h4>Hecho con Amor ❤️</h4>
         <p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas y sentimientos se transforman en piezas únicas y llenas de vida. Como la aguapanela, nuestra esencia es cálida, reconfortante y siempre te dejará un dulce recuerdo.</p>
-        
         <p>Nuestra historia es un legado de amor y creatividad, inspirada por la chispa de <a href="https://www.facebook.com/dianita.ortega.376" target="_blank">Diana</a> y la sabiduría de nuestra Madre <strong>Guiller</strong>, así como la pasión de Felipe (<a href="https://www.facebook.com/nellydafelly" target="_blank">Felly</a>). Juntos, hemos cultivado un espacio donde la imaginación no tiene límites y cada detalle cuenta una historia.</p>
-        
         <p>En AguaPanela Dulce Imaginación, creemos que los mejores regalos son aquellos que nacen del alma. Por eso, te invitamos a soñar con nosotrxs y personalizar todo aquello que desees: desde detalles y regalos que tocan el corazón, hasta camisas que visten tus ideas, estampados vibrantes, totebags para llevar tus historias a todos los lugares, amigurumis para acompañarte, mugs que alegran tus mañanas, llaveros 3D que guardan tus momentos, diseño gráfico que da voz a tus proyectos y cartas que susurran tus sentimientos más profundos.</p>
-        
         <p>Cada producto que creamos es una extensión de ti, una forma de expresar lo que llevas dentro. Ven y déjanos endulzar tus ideas y plasmarlas en algo verdaderamente especial. ¡Estamos aquí para hacer tu imaginación realidad!</p>
     </div>
 </div>
 
-<!-- MODAL SHARE -->
 <div class="share-modal" id="shareModal">
     <div class="share-title">Compartir Producto</div>
     <div class="share-options">
-        <!-- Opción NATIVA para elegir Estado o Contacto -->
         <button class="share-btn-option share-wa" onclick="shareAction('native')">
             <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> WhatsApp (Estado / Contacto)
         </button>
-        
         <button class="share-btn-option share-fb" onclick="shareAction('fb')">
             <iconify-icon icon="ic:baseline-facebook" width="20"></iconify-icon> Facebook
         </button>
-        
         <button class="share-btn-option share-copy" onclick="shareAction('copy')">
             <iconify-icon icon="material-symbols:content-copy" width="20"></iconify-icon> <span id="copyText">Copiar enlace</span>
         </button>
@@ -424,10 +419,8 @@
     <div class="close-share" onclick="closeShareModal()">Cancelar</div>
 </div>
 
-<!-- OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeAllModals()"></div>
 
-<!-- CARRITO -->
 <div class="cart-modal" id="cartModal">
     <div class="cart-header">
         <h3>Tu Carrito</h3>
@@ -450,7 +443,7 @@
         phone: "573122665870",
         shippingCost: 15000,
         freeShippingThreshold: 120000,
-        repoUrl: "https://dulceimaginacion.github.io/" // URL BASE DE TU TIENDA
+        repoUrl: "https://dulceimaginacion.github.io/"
     };
 
     const totePrices = [
@@ -482,12 +475,12 @@
     ];
 
     let cart = [];
-    let currentShareProduct = null; // VARIABLE GLOBAL IMPORTANTE
+    let currentShareProduct = null;
 
     function init() {
         renderProducts('Todo');
-        startImageSlideshow(); // Carrusel para imágenes de productos
-        startMainBannerSlideshow(); // Carrusel para el banner principal
+        startImageSlideshow();
+        startMainBannerSlideshow(); // Inicia el banner principal
         document.addEventListener('contextmenu', e => {
             if (e.target.tagName === 'IMG' || e.target.classList.contains('lightbox-img')) e.preventDefault();
         });
@@ -658,59 +651,34 @@
             alert("Error: Producto no seleccionado");
             return;
         }
-
-        // Construimos la URL completa a la imagen del producto
         const imageAbsoluteUrl = CONFIG.repoUrl + currentShareProduct.images[0];
         const text = `¡Mira este hermoso diseño de ADI! 🌟\n\n*${currentShareProduct.name}*\nPrecio: $${formatPrice(currentShareProduct.price)}\n\nVer aquí: ${imageAbsoluteUrl}`;
 
         try {
             if (type === 'native') {
-                // Si el navegador soporta la API nativa (Móviles)
                 if (navigator.share) {
                     try {
-                        await navigator.share({
-                            title: currentShareProduct.name,
-                            text: text,
-                            url: imageAbsoluteUrl
-                        });
-                    } catch (err) {
-                        console.log('Error sharing or cancelled', err);
-                    }
+                        await navigator.share({ title: currentShareProduct.name, text: text, url: imageAbsoluteUrl });
+                    } catch (err) { console.log('Error sharing or cancelled', err); }
                 } else {
-                    // Fallback para escritorio: abre WhatsApp Web
                     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
                 }
-            } 
-            else if (type === 'fb') {
+            } else if (type === 'fb') {
                 window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(imageAbsoluteUrl)}&quote=${encodeURIComponent(text)}`, '_blank');
-            } 
-            else if (type === 'copy') {
+            } else if (type === 'copy') {
                 if (navigator.clipboard && window.isSecureContext) {
-                    navigator.clipboard.writeText(text).then(() => {
-                        showCopyFeedback();
-                    }).catch(err => {
-                        manualCopyFallback(text);
-                    });
-                } else {
-                    manualCopyFallback(text);
-                }
+                    navigator.clipboard.writeText(text).then(() => { showCopyFeedback(); }).catch(err => { manualCopyFallback(text); });
+                } else { manualCopyFallback(text); }
             }
-            
             if(type !== 'copy' && type !== 'native') closeShareModal();
-
-        } catch (e) {
-            console.error("Error en compartir:", e);
-        }
+        } catch (e) { console.error("Error en compartir:", e); }
     }
 
     function showCopyFeedback() {
         const copySpan = document.getElementById('copyText');
         const originalText = copySpan.innerText;
         copySpan.innerText = "¡Copiado!";
-        setTimeout(() => {
-            copySpan.innerText = originalText;
-            closeShareModal();
-        }, 1500);
+        setTimeout(() => { copySpan.innerText = originalText; closeShareModal(); }, 1500);
     }
 
     function manualCopyFallback(text) {
@@ -721,16 +689,10 @@
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
-        try {
-            document.execCommand('copy');
-            showCopyFeedback();
-        } catch (err) {
-            alert("No se pudo copiar automáticamente.");
-        }
+        try { document.execCommand('copy'); showCopyFeedback(); } catch (err) { alert("No se pudo copiar automáticamente."); }
         document.body.removeChild(textArea);
     }
 
-    /* --- LÓGICA SOBRE NOSOTROS --- */
     function openAboutModal() {
         document.getElementById('aboutModal').classList.add('active');
         document.getElementById('overlay').classList.add('active');
@@ -748,7 +710,6 @@
     function toggleCart() {
         document.getElementById('cartModal').classList.toggle('open');
         const overlay = document.getElementById('overlay');
-        // Solo toggle si no hay otro modal abierto
         if (!document.getElementById('shareModal').classList.contains('active') && !document.getElementById('aboutModal').classList.contains('active')) {
             overlay.classList.toggle('active');
         }
@@ -761,7 +722,6 @@
         document.getElementById('overlay').classList.remove('active');
     }
 
-    // --- LIGHTBOX ---
     function openLightbox(src) {
         const lb = document.getElementById('lightbox');
         const img = document.getElementById('lightbox-img');
@@ -779,7 +739,6 @@
         document.getElementById('lightbox-img').classList.toggle('zoomed');
     }
 
-    // --- Carrusel para imágenes de productos (individuales) ---
     function startImageSlideshow() {
         setInterval(() => {
             products.forEach(p => {
@@ -800,31 +759,20 @@
         }, 3000);
     }
 
-    // --- NUEVO: Carrusel automático para el banner principal ---
+    // --- LÓGICA DEL BANNER PRINCIPAL (SIMPLIFICADA) ---
     let currentBannerIndex = 0;
     function startMainBannerSlideshow() {
         const bannerSlider = document.getElementById('mainBannerSlider');
         if (!bannerSlider) return;
         const bannerImages = bannerSlider.querySelectorAll('.banner-img');
         if (bannerImages.length === 0) return;
-
-        // Ajustar la altura del contenedor del slider al cargar la primera imagen
-        // Esto previene un salto de contenido al cargar la página
-        if (bannerImages[0].complete) {
-            bannerSlider.style.height = `${bannerImages[0].offsetHeight}px`;
-        } else {
-            bannerImages[0].onload = () => {
-                bannerSlider.style.height = `${bannerImages[0].offsetHeight}px`;
-            };
-        }
         
         setInterval(() => {
             bannerImages[currentBannerIndex].classList.remove('active');
             currentBannerIndex = (currentBannerIndex + 1) % bannerImages.length;
             bannerImages[currentBannerIndex].classList.add('active');
-        }, 3500); // 3.5 segundos
+        }, 3500);
     }
-
 
     init();
 </script>
