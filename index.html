@@ -1,796 +1,848 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aguapanela Dulce Imaginación - E-SHOP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aguapanela Dulce Imaginación - E-SHOP</title>
+code
+Code
+<!-- --- METADATOS (Vista previa general para redes) --- -->
+<meta property="og:title" content="Aguapanela Dulce Imaginación | E-SHOP">
+<meta property="og:description" content="Diseños Especiales, stickers, libretas, tote bags y amigurumis hechos con amor en Cali.">
+<meta property="og:image" content="https://dulceimaginacion.github.io/img/og-image-1.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://dulceimaginacion.github.io/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#c97e58">
+
+<!-- FAVICON -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%235a3e2b' rx='10'/><path d='M14 22h28c0 10 5 20 14 20s14-10 14-20' fill='none'/><path d='M18 22h28v16c0 7.7-6.3 14-14 14s-14-6.3-14-14V22z' fill='%23ffc0cb'/><path d='M46 24h8c2.2 0 4 1.8 4 4v8c0 2.2-1.8 4-4 4h-8' fill='none' stroke='%23ffc0cb' stroke-width='5'/><path d='M22 16q4-6 8 0t8 0' fill='none' stroke='white' stroke-width='2' opacity='0.5'/></svg>" type="image/svg+xml">
+
+<!-- Fuentes e Iconos -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+
+<style>
+    /* --- ESTILOS BASE --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background-color: #f8f5f2; color: #5a3e2b; line-height: 1.6; }
     
-    <!-- --- METADATOS --- -->
-    <meta property="og:title" content="Aguapanela Dulce Imaginación | E-SHOP">
-    <meta property="og:description" content="Diseños Especiales, stickers, libretas, tote bags y amigurumis hechos con amor en Cali.">
+    img { -webkit-user-drag: none; user-select: none; pointer-events: auto; }
+
+    /* Contenedor principal */
+    .poster-container {
+        width: 100%; max-width: 720px; min-height: 100vh; margin: 0 auto;
+        background: linear-gradient(135deg, #f8f5f2 0%, #e8dfd5 100%);
+        position: relative; overflow-x: hidden;
+        box-shadow: 0 10px 30px rgba(90, 62, 43, 0.1); padding-bottom: 60px;
+    }
     
-    <!-- MINIATURA PARA WHATSAPP/FACEBOOK (Esta es la que se ve al compartir) -->
-    <meta property="og:image" content="https://dulceimaginacion.github.io/img/og-image-1.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://dulceimaginacion.github.io/">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#c97e58">
+    /* Header */
+    .header {
+        padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
+        position: sticky; top: 0; z-index: 100; background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+        width: 45px; height: 45px; background-color: #c97e58; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; color: white;
+    }
+    .logo-text { font-size: 15px; font-weight: 700; color: #5a3e2b; font-family: 'Quicksand', sans-serif; line-height: 1.2; }
+    .logo-text span { display: block; font-size: 10px; font-weight: 600; color: #c97e58; letter-spacing: 1px; margin-top: 2px;}
     
-    <!-- FAVICON -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%235a3e2b' rx='10'/><path d='M14 22h28c0 10 5 20 14 20s14-10 14-20' fill='none'/><path d='M18 22h28v16c0 7.7-6.3 14-14 14s-14-6.3-14-14V22z' fill='%23ffc0cb'/><path d='M46 24h8c2.2 0 4 1.8 4 4v8c0 2.2-1.8 4-4 4h-8' fill='none' stroke='%23ffc0cb' stroke-width='5'/><path d='M22 16q4-6 8 0t8 0' fill='none' stroke='white' stroke-width='2' opacity='0.5'/></svg>" type="image/svg+xml">
+    .header-right { display: flex; align-items: center; gap: 15px; }
+    .nav-btn { cursor: pointer; color: #5a3e2b; display: flex; flex-direction: column; align-items: center; }
+    .nav-btn span { font-size: 9px; font-weight: 600; }
+    .cart-trigger { position: relative; cursor: pointer; color: #5a3e2b; }
+    .cart-count {
+        position: absolute; top: -5px; right: -8px; background-color: #c97e58; color: white;
+        font-size: 10px; width: 18px; height: 18px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; font-weight: bold;
+    }
 
-    <!-- Fuentes e Iconos -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+    /* --- BANNER RESPONSIVE --- */
+    .banner-section { 
+        padding: 20px 20px 0 20px; 
+        display: flex; 
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .banner-slider {
+        position: relative;
+        width: 100%;
+        max-width: 1200px; 
+        aspect-ratio: 1200 / 630;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(90, 62, 43, 0.15);
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background-color: #f0e6dc;
+    }
 
-    <style>
-        /* --- ESTILOS BASE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: #f8f5f2; color: #5a3e2b; line-height: 1.6; }
-        
-        img { -webkit-user-drag: none; user-select: none; pointer-events: auto; }
+    .banner-slider .banner-img {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: scale(1);
+        transition: opacity 1s ease-in-out, transform 4s ease;
+        will-change: opacity, transform;
+    }
 
-        /* Contenedor principal */
-        .poster-container {
-            width: 100%; max-width: 720px; min-height: 100vh; margin: 0 auto;
-            background: linear-gradient(135deg, #f8f5f2 0%, #e8dfd5 100%);
-            position: relative; overflow-x: hidden;
-            box-shadow: 0 10px 30px rgba(90, 62, 43, 0.1); padding-bottom: 60px;
-        }
-        
-        /* Header */
-        .header {
-            padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100; background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .logo { display: flex; align-items: center; gap: 10px; }
-        .logo-icon {
-            width: 45px; height: 45px; background-color: #c97e58; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; color: white;
-        }
-        .logo-text { font-size: 15px; font-weight: 700; color: #5a3e2b; font-family: 'Quicksand', sans-serif; line-height: 1.2; }
-        .logo-text span { display: block; font-size: 10px; font-weight: 600; color: #c97e58; letter-spacing: 1px; margin-top: 2px;}
-        
-        .header-right { display: flex; align-items: center; gap: 15px; }
-        .nav-btn { cursor: pointer; color: #5a3e2b; display: flex; flex-direction: column; align-items: center; }
-        .nav-btn span { font-size: 9px; font-weight: 600; }
-        .cart-trigger { position: relative; cursor: pointer; color: #5a3e2b; }
-        .cart-count {
-            position: absolute; top: -5px; right: -8px; background-color: #c97e58; color: white;
-            font-size: 10px; width: 18px; height: 18px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-weight: bold;
-        }
+    .banner-slider .banner-img.active {
+        opacity: 1;
+        transform: scale(1.05);
+    }
 
-        /* --- BANNER RESPONSIVE 1200x630 --- */
-        .banner-section { 
-            padding: 20px 20px 0 20px; 
-            display: flex; 
-            justify-content: center;
-            width: 100%;
-        }
-        
-        .banner-slider {
-            position: relative;
-            width: 100%;
-            /* Esto asegura que no se estire más allá del ancho original de la imagen si se ve en PC grande */
-            max-width: 1200px; 
-            /* LA MAGIA: Mantiene la proporción 1200x630 automáticamente */
-            aspect-ratio: 1200 / 630;
-            
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(90, 62, 43, 0.15);
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            background-color: #f0e6dc; /* Fondo mientras carga */
-        }
+    /* Hero */
+    .hero { padding: 20px 20px 30px 20px; text-align: center; }
+    .hero-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; color: #5a3e2b; font-family: 'Quicksand', sans-serif; }
+    .hero-subtitle { font-size: 14px; color: #8b6f47; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;}
+    .cta-button {
+        background-color: #c97e58; color: white; border: none; padding: 10px 25px;
+        border-radius: 30px; font-size: 14px; font-weight: 500; cursor: pointer;
+        box-shadow: 0 4px 15px rgba(201, 126, 88, 0.3); text-decoration: none; display: inline-block;
+    }
 
-        .banner-slider .banner-img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover; /* Llena el contenedor sin distorsionar */
-            opacity: 0;
-            transform: scale(1);
-            transition: opacity 1s ease-in-out, transform 4s ease; /* Transición suave + Zoom lento */
-            will-change: opacity, transform;
-        }
+    /* Categorías */
+    .categories { padding: 0 0 20px 0; }
+    .section-title {
+        font-size: 18px; font-weight: 600; margin: 20px 20px 10px;
+        color: #5a3e2b; font-family: 'Quicksand', sans-serif; display: flex; align-items: center; gap: 8px;
+    }
+    .category-cards { display: flex; gap: 10px; padding: 0 20px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+    .category-card {
+        min-width: 90px; background-color: white; border-radius: 12px; padding: 12px 8px; text-align: center;
+        box-shadow: 0 2px 8px rgba(90, 62, 43, 0.05); cursor: pointer; transition: all 0.2s; border: 1px solid transparent;
+    }
+    .category-card.active { background-color: #f0e6dc; border-color: #c97e58; }
+    .category-icon { font-size: 24px; margin-bottom: 5px; color: #c97e58; }
+    .category-name { font-size: 11px; font-weight: 600; color: #5a3e2b; }
 
-        .banner-slider .banner-img.active {
-            opacity: 1;
-            transform: scale(1.05); /* Pequeño zoom al activarse para dar vida */
-        }
+    /* Productos */
+    .products { padding: 0 20px 20px; min-height: 400px;}
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .product-card {
+        background-color: white; border-radius: 16px; overflow: hidden;
+        box-shadow: 0 4px 15px rgba(90, 62, 43, 0.05); display: flex; flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    }
 
+    /* --- ANIMACIÓN DE RESALTADO --- */
+    @keyframes highlightPulse {
+        0% { box-shadow: 0 0 0 0 rgba(201, 126, 88, 0.7); transform: scale(1.02); }
+        70% { box-shadow: 0 0 0 15px rgba(201, 126, 88, 0); transform: scale(1.02); }
+        100% { box-shadow: 0 0 0 0 rgba(201, 126, 88, 0); transform: scale(1); }
+    }
 
-        /* Hero */
-        .hero { padding: 20px 20px 30px 20px; text-align: center; }
-        .hero-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; color: #5a3e2b; font-family: 'Quicksand', sans-serif; }
-        .hero-subtitle { font-size: 14px; color: #8b6f47; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;}
-        .cta-button {
-            background-color: #c97e58; color: white; border: none; padding: 10px 25px;
-            border-radius: 30px; font-size: 14px; font-weight: 500; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(201, 126, 88, 0.3); text-decoration: none; display: inline-block;
-        }
+    .product-card.highlighted {
+        animation: highlightPulse 2s ease-in-out 3; /* Pulsa 3 veces */
+        border: 2px solid #c97e58;
+        z-index: 10;
+    }
 
-        /* Categorías */
-        .categories { padding: 0 0 20px 0; }
-        .section-title {
-            font-size: 18px; font-weight: 600; margin: 20px 20px 10px;
-            color: #5a3e2b; font-family: 'Quicksand', sans-serif; display: flex; align-items: center; gap: 8px;
-        }
-        .category-cards { display: flex; gap: 10px; padding: 0 20px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
-        .category-card {
-            min-width: 90px; background-color: white; border-radius: 12px; padding: 12px 8px; text-align: center;
-            box-shadow: 0 2px 8px rgba(90, 62, 43, 0.05); cursor: pointer; transition: all 0.2s; border: 1px solid transparent;
-        }
-        .category-card.active { background-color: #f0e6dc; border-color: #c97e58; }
-        .category-icon { font-size: 24px; margin-bottom: 5px; color: #c97e58; }
-        .category-name { font-size: 11px; font-weight: 600; color: #5a3e2b; }
+    .product-image-wrapper { position: relative; height: 170px; overflow: hidden; background: #f4f4f4; cursor: zoom-in; }
+    .product-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: opacity 0.8s ease-in-out; }
+    .product-img.hidden { opacity: 0; }
+    .img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #eee; color: #aaa; font-size: 10px; text-align: center; padding: 10px; }
+    
+    .product-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; }
+    .product-cat { font-size: 9px; text-transform: uppercase; color: #8b6f47; letter-spacing: 1px; margin-bottom: 4px;}
+    .product-name { font-size: 13px; font-weight: 700; color: #5a3e2b; line-height: 1.3; margin-bottom: 5px; height: 34px; overflow: hidden;}
+    .product-price { font-size: 15px; font-weight: 700; color: #c97e58; margin-bottom: 8px; }
+    
+    .size-select { width: 100%; padding: 5px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 11px; color: #5a3e2b; background-color: #fff; }
+    
+    .btn-row { display: flex; gap: 5px; margin-top: auto; }
+    .add-btn {
+        flex: 1; background-color: #5a3e2b; color: white; border: none; padding: 8px 0; border-radius: 8px; font-size: 10px; cursor: pointer; font-weight: 500;
+    }
+    .icon-btn {
+        width: 32px; height: 32px; border: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;
+    }
+    .whatsapp-btn { background-color: #25D366; color: white; }
+    .share-btn { background-color: #f0e6dc; color: #5a3e2b; }
+    .share-btn:hover { background-color: #c97e58; color: white; }
 
-        /* Productos */
-        .products { padding: 0 20px 20px; min-height: 400px;}
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .product-card {
-            background-color: white; border-radius: 16px; overflow: hidden;
-            box-shadow: 0 4px 15px rgba(90, 62, 43, 0.05); display: flex; flex-direction: column;
-        }
-        .product-image-wrapper { position: relative; height: 170px; overflow: hidden; background: #f4f4f4; cursor: zoom-in; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: opacity 0.8s ease-in-out; }
-        .product-img.hidden { opacity: 0; }
-        .img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #eee; color: #aaa; font-size: 10px; text-align: center; padding: 10px; }
-        
-        .product-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; }
-        .product-cat { font-size: 9px; text-transform: uppercase; color: #8b6f47; letter-spacing: 1px; margin-bottom: 4px;}
-        .product-name { font-size: 13px; font-weight: 700; color: #5a3e2b; line-height: 1.3; margin-bottom: 5px; height: 34px; overflow: hidden;}
-        .product-price { font-size: 15px; font-weight: 700; color: #c97e58; margin-bottom: 8px; }
-        
-        .size-select { width: 100%; padding: 5px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 11px; color: #5a3e2b; background-color: #fff; }
-        
-        .btn-row { display: flex; gap: 5px; margin-top: auto; }
-        .add-btn {
-            flex: 1; background-color: #5a3e2b; color: white; border: none; padding: 8px 0; border-radius: 8px; font-size: 10px; cursor: pointer; font-weight: 500;
-        }
-        .icon-btn {
-            width: 32px; height: 32px; border: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;
-        }
-        .whatsapp-btn { background-color: #25D366; color: white; }
-        .share-btn { background-color: #f0e6dc; color: #5a3e2b; }
-        .share-btn:hover { background-color: #c97e58; color: white; }
+    /* Trust Section */
+    .trust-section { padding: 20px; margin-bottom: 20px; }
+    .trust-title { text-align: center; margin-bottom: 25px; color: #5a3e2b; font-size: 18px; font-weight: 600; font-family: 'Quicksand', sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .trust-title i { color: #c97e58; font-size: 24px; }
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .feature-card { background: white; padding: 20px 15px; border-radius: 16px; text-align: center; box-shadow: 0 4px 20px rgba(90, 62, 43, 0.06); display: flex; flex-direction: column; align-items: center; transition: transform 0.2s; height: 100%; }
+    .feature-card:hover { transform: translateY(-3px); }
+    .icon-circle { width: 50px; height: 50px; background-color: #f0e6dc; color: #c97e58; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .icon-circle i { font-size: 26px; }
+    .feature-content h4 { font-size: 12px; font-weight: 700; color: #5a3e2b; margin-bottom: 4px; text-transform: uppercase; }
+    .feature-content p { font-size: 10px; color: #8b6f47; line-height: 1.3; margin: 0; }
+    .price-highlight { color: #c97e58; font-weight: bold; }
 
-        /* Trust Section */
-        .trust-section { padding: 20px; margin-bottom: 20px; }
-        .trust-title { text-align: center; margin-bottom: 25px; color: #5a3e2b; font-size: 18px; font-weight: 600; font-family: 'Quicksand', sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .trust-title i { color: #c97e58; font-size: 24px; }
-        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .feature-card { background: white; padding: 20px 15px; border-radius: 16px; text-align: center; box-shadow: 0 4px 20px rgba(90, 62, 43, 0.06); display: flex; flex-direction: column; align-items: center; transition: transform 0.2s; height: 100%; }
-        .feature-card:hover { transform: translateY(-3px); }
-        .icon-circle { width: 50px; height: 50px; background-color: #f0e6dc; color: #c97e58; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
-        .icon-circle i { font-size: 26px; }
-        .feature-content h4 { font-size: 12px; font-weight: 700; color: #5a3e2b; margin-bottom: 4px; text-transform: uppercase; }
-        .feature-content p { font-size: 10px; color: #8b6f47; line-height: 1.3; margin: 0; }
-        .price-highlight { color: #c97e58; font-weight: bold; }
-        @media (max-width: 350px) { .features-grid { grid-template-columns: 1fr; } .feature-card { flex-direction: row; text-align: left; padding: 15px; } .icon-circle { margin-bottom: 0; margin-right: 15px; width: 40px; height: 40px; min-width: 40px;} .icon-circle i { font-size: 20px; } }
+    /* Footer */
+    .footer { background-color: rgba(255,255,255,0.8); padding: 30px 20px; text-align: center; margin-top: 20px; }
+    .footer-story-container { display: flex; justify-content: center; margin-bottom: 25px; }
+    .story-btn { display: flex; align-items: center; gap: 8px; background-color: #fff; border: 1px solid #c97e58; color: #c97e58; padding: 10px 25px; border-radius: 30px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(201, 126, 88, 0.1); }
+    .story-btn:hover { background-color: #c97e58; color: white; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 126, 88, 0.25); }
+    .story-btn i { font-size: 18px; }
+    .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+    .social-icon { width: 40px; height: 40px; background-color: #5a3e2b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
+    .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
+    .social-icon.wa-footer { background-color: #25D366; }
+    .social-icon.wa-footer:hover { background-color: #128C7E; }
+    .social-icon.mail-footer { background-color: #c97e58; } 
+    .social-icon.mail-footer:hover { background-color: #5a3e2b; }
 
-        /* Footer */
-        .footer { background-color: rgba(255,255,255,0.8); padding: 30px 20px; text-align: center; margin-top: 20px; }
-        .footer-story-container { display: flex; justify-content: center; margin-bottom: 25px; }
-        .story-btn { display: flex; align-items: center; gap: 8px; background-color: #fff; border: 1px solid #c97e58; color: #c97e58; padding: 10px 25px; border-radius: 30px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(201, 126, 88, 0.1); }
-        .story-btn:hover { background-color: #c97e58; color: white; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 126, 88, 0.25); }
-        .story-btn i { font-size: 18px; }
-        .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
-        .social-icon { width: 40px; height: 40px; background-color: #5a3e2b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
-        .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
-        .social-icon.wa-footer { background-color: #25D366; }
-        .social-icon.wa-footer:hover { background-color: #128C7E; }
-        .social-icon.mail-footer { background-color: #c97e58; } /* Added mail specific color */
-        .social-icon.mail-footer:hover { background-color: #5a3e2b; }
+    /* Overlays & Modals */
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
+    .overlay.active { display: block; }
 
-        /* Overlays & Modals */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
-        .overlay.active { display: block; }
+    /* Carrito */
+    .cart-modal { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; background-color: white; z-index: 1000; transition: right 0.3s ease; box-shadow: -5px 0 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
+    .cart-modal.open { right: 0; }
+    .cart-header { padding: 20px; background-color: #5a3e2b; color: white; display: flex; justify-content: space-between; align-items: center; }
+    .cart-items { flex-grow: 1; overflow-y: auto; padding: 20px; }
+    .cart-item { display: flex; gap: 10px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+    .cart-item img { width: 50px; height: 50px; border-radius: 6px; object-fit: cover; }
+    .item-info { flex-grow: 1; }
+    .item-name { font-size: 13px; font-weight: 600; line-height: 1.2; }
+    .item-variant { font-size: 11px; color: #888; display: block; }
+    .item-price { font-size: 12px; color: #c97e58; font-weight: 700; }
+    .item-controls { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+    .qty-btn { width: 20px; height: 20px; background: #eee; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+    .cart-footer { padding: 20px; background-color: #f9f9f9; border-top: 1px solid #eee; }
+    .summary-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; }
+    .total-row { font-weight: 700; font-size: 16px; color: #5a3e2b; margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px; }
+    .checkout-btn { width: 100%; background-color: #25D366; color: white; border: none; padding: 15px; border-radius: 30px; font-size: 16px; font-weight: 600; margin-top: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .free-shipping-alert { background-color: #e3f2fd; color: #1565c0; font-size: 11px; padding: 8px; border-radius: 6px; margin-bottom: 10px; text-align: center; }
+    .free-shipping-alert.success { background-color: #e8f5e9; color: #2e7d32; }
 
-        /* Carrito */
-        .cart-modal { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; background-color: white; z-index: 1000; transition: right 0.3s ease; box-shadow: -5px 0 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
-        .cart-modal.open { right: 0; }
-        .cart-header { padding: 20px; background-color: #5a3e2b; color: white; display: flex; justify-content: space-between; align-items: center; }
-        .cart-items { flex-grow: 1; overflow-y: auto; padding: 20px; }
-        .cart-item { display: flex; gap: 10px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
-        .cart-item img { width: 50px; height: 50px; border-radius: 6px; object-fit: cover; }
-        .item-info { flex-grow: 1; }
-        .item-name { font-size: 13px; font-weight: 600; line-height: 1.2; }
-        .item-variant { font-size: 11px; color: #888; display: block; }
-        .item-price { font-size: 12px; color: #c97e58; font-weight: 700; }
-        .item-controls { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
-        .qty-btn { width: 20px; height: 20px; background: #eee; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        .cart-footer { padding: 20px; background-color: #f9f9f9; border-top: 1px solid #eee; }
-        .summary-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; }
-        .total-row { font-weight: 700; font-size: 16px; color: #5a3e2b; margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px; }
-        .checkout-btn { width: 100%; background-color: #25D366; color: white; border: none; padding: 15px; border-radius: 30px; font-size: 16px; font-weight: 600; margin-top: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .free-shipping-alert { background-color: #e3f2fd; color: #1565c0; font-size: 11px; padding: 8px; border-radius: 6px; margin-bottom: 10px; text-align: center; }
-        .free-shipping-alert.success { background-color: #e8f5e9; color: #2e7d32; }
+    /* Lightbox */
+    .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+    .lightbox.active { display: flex; opacity: 1; }
+    .lightbox-content { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-img { max-height: 85vh; max-width: 90vw; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transition: transform 0.3s ease; cursor: zoom-in; object-fit: contain; }
+    .lightbox-img.zoomed { transform: scale(2); cursor: zoom-out; }
+    .close-lightbox { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer; z-index: 2001; background: rgba(0,0,0,0.3); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        /* Lightbox */
-        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
-        .lightbox.active { display: flex; opacity: 1; }
-        .lightbox-content { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-        .lightbox-img { max-height: 85vh; max-width: 90vw; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transition: transform 0.3s ease; cursor: zoom-in; object-fit: contain; }
-        .lightbox-img.zoomed { transform: scale(2); cursor: zoom-out; }
-        .close-lightbox { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer; z-index: 2001; background: rgba(0,0,0,0.3); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    /* MODAL COMPARTIR */
+    .share-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 340px; border-radius: 16px; padding: 25px; z-index: 2100; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; display: none; }
+    .share-modal.active { display: block; animation: popIn 0.3s ease; }
+    @keyframes popIn { from { transform: translate(-50%, -40%); opacity: 0; } to { transform: translate(-50%, -50%); opacity: 1; } }
+    .share-title { font-size: 18px; font-weight: 700; color: #5a3e2b; margin-bottom: 10px; }
+    .share-subtitle { font-size: 12px; color: #888; margin-bottom: 20px; display: block; }
+    .share-options { display: flex; flex-direction: column; gap: 10px; }
+    .share-btn-option { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px; transition: transform 0.2s; border: none; width: 100%; cursor: pointer; justify-content: center; }
+    .share-btn-option:hover { transform: translateY(-2px); }
+    .share-wa { background-color: #E0F8E8; color: #128C7E; }
+    .share-fb { background-color: #E7F0FF; color: #1877F2; }
+    .share-copy { background-color: #f4f4f4; color: #5a3e2b; }
+    .close-share { margin-top: 15px; color: #888; font-size: 12px; cursor: pointer; text-decoration: underline; }
 
-        /* MODAL COMPARTIR */
-        .share-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 320px; border-radius: 16px; padding: 25px; z-index: 2100; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; display: none; }
-        .share-modal.active { display: block; animation: popIn 0.3s ease; }
-        @keyframes popIn { from { transform: translate(-50%, -40%); opacity: 0; } to { transform: translate(-50%, -50%); opacity: 1; } }
-        .share-title { font-size: 18px; font-weight: 700; color: #5a3e2b; margin-bottom: 20px; }
-        .share-options { display: flex; flex-direction: column; gap: 10px; }
-        .share-btn-option { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px; transition: transform 0.2s; border: none; width: 100%; cursor: pointer; justify-content: center; }
-        .share-btn-option:hover { transform: translateY(-2px); }
-        .share-wa { background-color: #E0F8E8; color: #128C7E; }
-        .share-fb { background-color: #E7F0FF; color: #1877F2; }
-        .share-copy { background-color: #f4f4f4; color: #5a3e2b; }
-        .close-share { margin-top: 15px; color: #888; font-size: 12px; cursor: pointer; text-decoration: underline; }
+    /* MODAL ABOUT US */
+    .about-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 500px; max-height: 85vh; border-radius: 16px; z-index: 2200; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; overflow: hidden; flex-direction: column; }
+    .about-modal.active { display: flex; animation: popIn 0.3s ease; }
+    .about-header { padding: 20px; background-color: #5a3e2b; color: white; display: flex; justify-content: space-between; align-items: center; }
+    .about-header h3 { font-size: 16px; font-weight: 700; }
+    .about-content { padding: 25px; overflow-y: auto; color: #5a3e2b; font-size: 14px; line-height: 1.7; }
+    .about-content h4 { color: #c97e58; font-size: 18px; margin-bottom: 15px; text-align: center; }
+    .about-content p { margin-bottom: 15px; }
+    .about-content strong { color: #c97e58; }
+    .about-content a { color: #c97e58; font-weight: 700; text-decoration: none; border-bottom: 1px dotted #c97e58; }
+    .about-content a:hover { color: #5a3e2b; border-bottom: 1px solid #5a3e2b; }
 
-        /* MODAL ABOUT US */
-        .about-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 500px; max-height: 85vh; border-radius: 16px; z-index: 2200; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; overflow: hidden; flex-direction: column; }
-        .about-modal.active { display: flex; animation: popIn 0.3s ease; }
-        .about-header { padding: 20px; background-color: #5a3e2b; color: white; display: flex; justify-content: space-between; align-items: center; }
-        .about-header h3 { font-size: 16px; font-weight: 700; }
-        .about-content { padding: 25px; overflow-y: auto; color: #5a3e2b; font-size: 14px; line-height: 1.7; }
-        .about-content h4 { color: #c97e58; font-size: 18px; margin-bottom: 15px; text-align: center; }
-        .about-content p { margin-bottom: 15px; }
-        .about-content strong { color: #c97e58; }
-        .about-content a { color: #c97e58; font-weight: 700; text-decoration: none; border-bottom: 1px dotted #c97e58; }
-        .about-content a:hover { color: #5a3e2b; border-bottom: 1px solid #5a3e2b; }
-
-    </style>
+</style>
 </head>
 <body>
-
 <div class="poster-container">
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">
-            <div class="logo-icon"><i class="material-icons">local_cafe</i></div>
-            <div class="logo-text">Aguapanela Dulce Imaginación<br><span>E-SHOP</span></div>
-        </div>
-        
-        <div class="header-right">
-            <!-- Botón Nosotrxs -->
-            <div class="nav-btn" onclick="openAboutModal()">
-                <i class="material-icons">favorite_border</i>
-                <span>Nosotrxs</span>
-            </div>
-
-            <!-- Carrito -->
-            <div class="cart-trigger nav-btn" onclick="toggleCart()">
-                <i class="material-icons" style="font-size: 24px;">shopping_cart</i>
-                <div class="cart-count" id="cartCount">0</div>
-                <span>Carrito</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- BANNER PRINCIPAL (SLIDER AUTOMÁTICO) -->
-    <section class="banner-section">
-        <div class="banner-slider" id="mainBannerSlider">
-            <!-- Tus 3 imágenes aquí. La primera tiene la clase 'active' -->
-            <img src="img/og-image-1.jpg" alt="Banner 1" class="banner-img active" onerror="this.style.display='none'">
-            <img src="img/og-image-2.jpg" alt="Banner 2" class="banner-img" onerror="this.style.display='none'">
-            <img src="img/og-image-3.jpg" alt="Banner 3" class="banner-img" onerror="this.style.display='none'">
-        </div>
-    </section>
-
-    <!-- Hero -->
-    <section class="hero">
-        <h1 class="hero-title">Diseños Especiales</h1>
-        <p class="hero-subtitle">Libretas, stickers, tote bags y amigurumis hechos con amor por Aguapanela Dulce Imaginación.</p>
-        <a href="#catalogo" class="cta-button">Ver Catálogo</a>
-    </section>
-
-    <!-- Categorías -->
-    <section class="categories">
-        <div class="section-title"><i class="material-icons">category</i> Categorías</div>
-        <div class="category-cards">
-            <div class="category-card active" onclick="filterProducts('Todo', this)">
-                <i class="material-icons category-icon">grid_view</i>
-                <div class="category-name">Todo</div>
-            </div>
-            <div class="category-card" onclick="filterProducts('Tote Bags', this)">
-                <i class="material-icons category-icon">shopping_bag</i>
-                <div class="category-name">Tote Bags</div>
-            </div>
-            <div class="category-card" onclick="filterProducts('Amigurumis', this)">
-                <i class="material-icons category-icon">toys</i>
-                <div class="category-name">Amigurumis</div>
-            </div>
-            <div class="category-card" onclick="filterProducts('Libretas', this)">
-                <i class="material-icons category-icon">book</i>
-                <div class="category-name">Libretas</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Catálogo -->
-    <section class="products" id="catalogo">
-        <div id="productContainer" class="product-grid"></div>
-    </section>
-
-    <!-- SECTION: CONFIANZA -->
-    <section class="trust-section">
-        <h2 class="trust-title">
-            <i class="material-icons">verified</i>
-            ¿Por Qué Elegirnos?
-        </h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="icon-circle"><i class="material-icons">local_shipping</i></div>
-                <div class="feature-content">
-                    <h4>Envío Gratis</h4>
-                    <p>En pedidos mayores a <span class="price-highlight">$120.000 COP</span></p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="icon-circle"><i class="material-icons">spa</i></div>
-                <div class="feature-content">
-                    <h4>100% Sostenible</h4>
-                    <p>Materiales de calidad amigables con el planeta</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="icon-circle"><i class="material-icons">lock</i></div>
-                <div class="feature-content">
-                    <h4>Pago Seguro</h4>
-                    <p>Tus datos están protegidos</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="icon-circle"><i class="material-icons">thumb_up_alt</i></div>
-                <div class="feature-content">
-                    <h4>Calidad</h4>
-                    <p>Garantía en cada uno de nuestros productos</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-story-container">
-            <div class="story-btn" onclick="openAboutModal()">
-                <i class="material-icons">auto_stories</i>
-                <span>Nuestra Historia</span>
-            </div>
-        </div>
-
-        <div class="social-icons">
-            <a href="https://www.facebook.com/AguapanelaDulceImaginacion" target="_blank" class="social-icon">
-                <i class="material-icons">facebook</i>
-            </a>
-            <a href="https://instagram.com/aguapaneladulceimaginacion" target="_blank" class="social-icon">
-                <iconify-icon icon="mdi:instagram" width="24" height="24" style="color: white;"></iconify-icon>
-            </a>
-            <a href="https://wa.me/573122665870" target="_blank" class="social-icon wa-footer">
-                <iconify-icon icon="ic:baseline-whatsapp" width="24" height="24" style="color: white;"></iconify-icon>
-            </a>
-            <a href="mailto:dulceimaginacion.startup@gmail.com" class="social-icon mail-footer">
-                <i class="material-icons">alternate_email</i>
-            </a>
-        </div>
-        <div class="copyright">© 2025-2026 Aguapanela Dulce Imaginación. Todos los derechos reservados.</div>
-    </footer>
+<!-- Header -->
+<header class="header">
+<div class="logo">
+<div class="logo-icon"><i class="material-icons">local_cafe</i></div>
+<div class="logo-text">Aguapanela Dulce Imaginación<br><span>E-SHOP</span></div>
 </div>
+code
+Code
+<div class="header-right">
+        <!-- Botón Nosotrxs -->
+        <div class="nav-btn" onclick="openAboutModal()">
+            <i class="material-icons">favorite_border</i>
+            <span>Nosotrxs</span>
+        </div>
 
-<!-- LIGHTBOX, MODALES Y OVERLAY (Igual que antes) -->
+        <!-- Carrito -->
+        <div class="cart-trigger nav-btn" onclick="toggleCart()">
+            <i class="material-icons" style="font-size: 24px;">shopping_cart</i>
+            <div class="cart-count" id="cartCount">0</div>
+            <span>Carrito</span>
+        </div>
+    </div>
+</header>
+
+<!-- BANNER PRINCIPAL (SLIDER AUTOMÁTICO) -->
+<section class="banner-section">
+    <div class="banner-slider" id="mainBannerSlider">
+        <img src="img/og-image-1.jpg" alt="Banner 1" class="banner-img active" onerror="this.style.display='none'">
+        <img src="img/og-image-2.jpg" alt="Banner 2" class="banner-img" onerror="this.style.display='none'">
+        <img src="img/og-image-3.jpg" alt="Banner 3" class="banner-img" onerror="this.style.display='none'">
+    </div>
+</section>
+
+<!-- Hero -->
+<section class="hero">
+    <h1 class="hero-title">Diseños Únicos y Creativos</h1>
+    <p class="hero-subtitle">Libretas, tote bags y amigurumis hechos con amor por Aguapanela Dulce Imaginación.</p>
+    <a href="#catalogo" class="cta-button">Ver Catálogo</a>
+</section>
+
+<!-- Categorías -->
+<section class="categories">
+    <div class="section-title"><i class="material-icons">category</i> Categorías</div>
+    <div class="category-cards">
+        <div class="category-card active" onclick="filterProducts('Todo', this)">
+            <i class="material-icons category-icon">grid_view</i>
+            <div class="category-name">Todo</div>
+        </div>
+        <div class="category-card" onclick="filterProducts('Tote Bags', this)">
+            <i class="material-icons category-icon">shopping_bag</i>
+            <div class="category-name">Tote Bags</div>
+        </div>
+        <div class="category-card" onclick="filterProducts('Amigurumis', this)">
+            <i class="material-icons category-icon">toys</i>
+            <div class="category-name">Amigurumis</div>
+        </div>
+        <div class="category-card" onclick="filterProducts('Libretas', this)">
+            <i class="material-icons category-icon">book</i>
+            <div class="category-name">Libretas</div>
+        </div>
+    </div>
+</section>
+
+<!-- Catálogo -->
+<section class="products" id="catalogo">
+    <div id="productContainer" class="product-grid"></div>
+</section>
+
+<!-- SECTION: CONFIANZA -->
+<section class="trust-section">
+    <h2 class="trust-title">
+        <i class="material-icons">verified</i>
+        ¿Por Qué Elegirnos?
+    </h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="icon-circle"><i class="material-icons">local_shipping</i></div>
+            <div class="feature-content">
+                <h4>Envío Gratis</h4>
+                <p>En pedidos mayores a <span class="price-highlight">$120.000 COP</span></p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="icon-circle"><i class="material-icons">spa</i></div>
+            <div class="feature-content">
+                <h4>100% Sostenible</h4>
+                <p>Materiales de calidad amigables con el planeta</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="icon-circle"><i class="material-icons">lock</i></div>
+            <div class="feature-content">
+                <h4>Pago Seguro</h4>
+                <p>Tus datos están protegidos</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="icon-circle"><i class="material-icons">thumb_up_alt</i></div>
+            <div class="feature-content">
+                <h4>Calidad</h4>
+                <p>Garantía en cada uno de nuestros productos</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-story-container">
+        <div class="story-btn" onclick="openAboutModal()">
+            <i class="material-icons">auto_stories</i>
+            <span>Nuestra Historia</span>
+        </div>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/AguapanelaDulceImaginacion" target="_blank" class="social-icon">
+            <i class="material-icons">facebook</i>
+        </a>
+        <a href="https://instagram.com/aguapaneladulceimaginacion" target="_blank" class="social-icon">
+            <iconify-icon icon="mdi:instagram" width="24" height="24" style="color: white;"></iconify-icon>
+        </a>
+        <a href="https://wa.me/573122665870" target="_blank" class="social-icon wa-footer">
+            <iconify-icon icon="ic:baseline-whatsapp" width="24" height="24" style="color: white;"></iconify-icon>
+        </a>
+        <a href="mailto:dulceimaginacion.startup@gmail.com" class="social-icon mail-footer">
+            <i class="material-icons">alternate_email</i>
+        </a>
+    </div>
+    <div class="copyright">© 2025-2026 Aguapanela Dulce Imaginación. Todos los derechos reservados.</div>
+</footer>
+</div>
+<!-- LIGHTBOX, MODALES Y OVERLAY -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <div class="close-lightbox" onclick="closeLightbox(event)">&times;</div>
-    <div class="lightbox-content">
-        <img id="lightbox-img" class="lightbox-img" src="" onclick="toggleZoom(event)">
-    </div>
+<div class="close-lightbox" onclick="closeLightbox(event)">&times;</div>
+<div class="lightbox-content">
+<img id="lightbox-img" class="lightbox-img" src="" onclick="toggleZoom(event)">
 </div>
-
+</div>
 <div class="about-modal" id="aboutModal">
-    <div class="about-header">
-        <h3>Sobre Nosotros</h3>
-        <i class="material-icons" style="cursor:pointer" onclick="closeAboutModal()">close</i>
-    </div>
-    <div class="about-content">
-        <h4>Hecho con Amor ❤️</h4>
-        <p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas y sentimientos se transforman en piezas únicas y llenas de vida. Como la aguapanela, nuestra esencia es cálida, reconfortante y siempre te dejará un dulce recuerdo.</p>
-        <p>Nuestra historia es un legado de amor y creatividad, inspirada por la chispa de <a href="https://www.facebook.com/dianita.ortega.376" target="_blank">Diana</a> y la sabiduría de nuestra Madre <strong>Guiller</strong>, así como la pasión de Felipe (<a href="https://www.facebook.com/nellydafelly" target="_blank">Felly</a>). Juntos, hemos cultivado un espacio donde la imaginación no tiene límites y cada detalle cuenta una historia.</p>
-        <p>En AguaPanela Dulce Imaginación, creemos que los mejores regalos son aquellos que nacen del alma. Por eso, te invitamos a soñar con nosotrxs y personalizar todo aquello que desees: desde stickers personalizados, detalles y regalos que tocan el corazón, hasta camisas que visten tus ideas, estampados vibrantes, totebags para llevar tus historias a todos los lugares, amigurumis para acompañarte, mugs que alegran tus mañanas, llaveros 3D que guardan tus momentos, diseño gráfico que da voz a tus proyectos y cartas que susurran tus sentimientos más profundos.</p>
-        <p>Cada producto que creamos es una extensión de ti, una forma de expresar lo que llevas dentro. Ven y déjanos endulzar tus ideas y plasmarlas en algo verdaderamente especial. ¡Estamos aquí para hacer tu imaginación realidad!</p>
-    </div>
+<div class="about-header">
+<h3>Sobre Nosotros</h3>
+<i class="material-icons" style="cursor:pointer" onclick="closeAboutModal()">close</i>
 </div>
-
+<div class="about-content">
+<h4>Hecho con Amor ❤️</h4>
+<p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas y sentimientos se transforman en piezas únicas y llenas de vida.</p>
+<p>En AguaPanela Dulce Imaginación, creemos que los mejores regalos son aquellos que nacen del alma. Por eso, te invitamos a soñar con nosotrxs y personalizar todo aquello que desees: stickers, totebags, amigurumis y mucho más.</p>
+</div>
+</div>
+<!-- NUEVO MODAL DE COMPARTIR OPTIMIZADO -->
 <div class="share-modal" id="shareModal">
-    <div class="share-title">Compartir Producto</div>
-    <div class="share-options">
-        <button class="share-btn-option share-wa" onclick="shareAction('native')">
-            <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> WhatsApp (Estado / Contacto)
-        </button>
-        <button class="share-btn-option share-fb" onclick="shareAction('fb')">
-            <iconify-icon icon="ic:baseline-facebook" width="20"></iconify-icon> Facebook
-        </button>
-        <button class="share-btn-option share-copy" onclick="shareAction('copy')">
-            <iconify-icon icon="material-symbols:content-copy" width="20"></iconify-icon> <span id="copyText">Copiar enlace</span>
-        </button>
-    </div>
-    <div class="close-share" onclick="closeShareModal()">Cancelar</div>
-</div>
+<div class="share-title">Compartir este tesoro</div>
+<span class="share-subtitle" id="shareProductName"></span>
+code
+Code
+<div class="share-options">
+    <!-- Opción NATIVA (Móviles) -->
+    <button class="share-btn-option share-wa" onclick="shareAction('native')">
+        <iconify-icon icon="mdi:share-variant" width="20"></iconify-icon> Compartir (App Móvil)
+    </button>
 
+    <!-- Opción WhatsApp Directo -->
+    <button class="share-btn-option share-wa" style="background-color:#25D366; color:white;" onclick="shareAction('whatsapp')">
+        <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> Enviar por WhatsApp
+    </button>
+
+    <!-- Opción Facebook -->
+    <button class="share-btn-option share-fb" onclick="shareAction('facebook')">
+        <iconify-icon icon="ic:baseline-facebook" width="20"></iconify-icon> Publicar en Facebook
+    </button>
+
+    <!-- Opción Copiar -->
+    <button class="share-btn-option share-copy" onclick="shareAction('copy')">
+        <iconify-icon icon="material-symbols:content-copy" width="20"></iconify-icon> <span id="copyText">Copiar enlace</span>
+    </button>
+</div>
+<div class="close-share" onclick="closeShareModal()">Cancelar</div>
+</div>
 <div class="overlay" id="overlay" onclick="closeAllModals()"></div>
-
 <div class="cart-modal" id="cartModal">
-    <div class="cart-header">
-        <h3>Tu Carrito</h3>
-        <i class="material-icons" style="cursor:pointer" onclick="toggleCart()">close</i>
-    </div>
-    <div class="cart-items" id="cartItemsContainer"></div>
-    <div class="cart-footer">
-        <div id="shippingAlert" class="free-shipping-alert"></div>
-        <div class="summary-row"><span>Subtotal</span><span id="subtotalPrice">$0</span></div>
-        <div class="summary-row"><span>Envío</span><span id="shippingPrice">$0</span></div>
-        <div class="total-row"><span style="flex-grow:1">Total</span><span id="totalPrice">$0</span></div>
-        <button class="checkout-btn" onclick="checkoutWhatsApp()">
-            <iconify-icon icon="ic:baseline-whatsapp" width="24" height="24"></iconify-icon> Completar Pedido
-        </button>
-    </div>
+<div class="cart-header">
+<h3>Tu Carrito</h3>
+<i class="material-icons" style="cursor:pointer" onclick="toggleCart()">close</i>
 </div>
-
+<div class="cart-items" id="cartItemsContainer"></div>
+<div class="cart-footer">
+<div id="shippingAlert" class="free-shipping-alert"></div>
+<div class="summary-row"><span>Subtotal</span><span id="subtotalPrice">$0</span></div>
+<div class="summary-row"><span>Envío</span><span id="shippingPrice">$0</span></div>
+<div class="total-row"><span style="flex-grow:1">Total</span><span id="totalPrice">$0</span></div>
+<button class="checkout-btn" onclick="checkoutWhatsApp()">
+<iconify-icon icon="ic:baseline-whatsapp" width="24" height="24"></iconify-icon> Completar Pedido
+</button>
+</div>
+</div>
 <script>
-    const CONFIG = {
-        phone: "573122665870",
-        shippingCost: 15000,
-        freeShippingThreshold: 120000,
-        repoUrl: "https://dulceimaginacion.github.io/" // Esta es la URL de tu página principal
-    };
+const CONFIG = {
+phone: "573122665870",
+shippingCost: 15000,
+freeShippingThreshold: 120000,
+// Usamos la URL actual para asegurar que funcione
+repoUrl: "https://dulceimaginacion.github.io/"
+};
 
-    const totePrices = [
-        { name: "Mini (20x22cm)", price: 20000 },
-        { name: "Pequeño (26x33cm)", price: 26000 },
-        { name: "Mediano (31x36cm)", price: 32000 },
-        { name: "Grande (35x42cm)", price: 36000 },
-        { name: "Grandote (38x45cm)", price: 42000 }
-    ];
+const totePrices = [
+{ name: "Mini (20x22cm)", price: 20000 },
+{ name: "Pequeño (26x33cm)", price: 26000 },
+{ name: "Mediano (31x36cm)", price: 32000 },
+{ name: "Grande (35x42cm)", price: 36000 },
+{ name: "Grandote (38x45cm)", price: 42000 }
+];
 
-    const products = [
-        { id: 101, name: "Amigurumi Capybara", category: "Amigurumis", price: 22000, images: ["img/ami_capi1.png"] },
-        { id: 102, name: "Cerezas Tejidas", category: "Amigurumis", price: 18000, images: ["img/ami_cerezas.png"] },
-        { id: 103, name: "Amigurumi Pingüino", category: "Amigurumis", price: 22000, images: ["img/ami_pingu1.png"] },
-        { id: 201, name: "Libreta Cali Mirá Ve", category: "Libretas", price: 12000, images: ["img/libreta_cali.png"] },
-        { id: 301, name: "Tote Bag Capybara Faces", category: "Tote Bags", variable: true, images: ["img/tote_capi_faces_1.png", "img/tote_capi_faces_2.png"] },
-        { id: 302, name: "Tote Bag Capybara Flowers", category: "Tote Bags", variable: true, images: ["img/tote_capi_flower_1.png", "img/tote_capi_flower_2.png"] },
-        { id: 303, name: "Tote Bag Harry Potter", category: "Tote Bags", variable: true, images: ["img/tote_harry_1.png", "img/tote_harry_2.png"] },
-        { id: 304, name: "Tote Bag Mariposas", category: "Tote Bags", variable: true, images: ["img/tote_mariposa_1.png", "img/tote_mariposa_2.png"] },
-        { id: 305, name: "Tote Bag El Principito", category: "Tote Bags", variable: true, images: ["img/tote_principito_1.png", "img/tote_principito_2.png"] },
-        { id: 306, name: "Tote Bag Van Gogh", category: "Tote Bags", variable: true, images: ["img/tote_vangogh_1.png", "img/tote_vangogh_2.png"] },
-        { id: 307, name: "Tote Bag Totoro", category: "Tote Bags", variable: true, images: ["img/tote_totoro.png"] },
-        { id: 308, name: "Tote Bag David", category: "Tote Bags", variable: true, images: ["img/tote_david.png"] },
-        { id: 309, name: "Tote Bag BMO", category: "Tote Bags", variable: true, images: ["img/tote_bmo.png"] },
-        { id: 310, name: "Tote Bag Mafalda Bow", category: "Tote Bags", variable: true, images: ["img/tote_mafalda_bow.png"] },
-        { id: 311, name: "Tote Bag Mafalda Vivos", category: "Tote Bags", variable: true, images: ["img/tote_mafalda_vivos.png"] },
-        { id: 312, name: "Tote Bag Capybara Mago", category: "Tote Bags", variable: true, images: ["img/tote_capi_mago.png"] },
-        { id: 313, name: "Tote Bag Chihiro", category: "Tote Bags", variable: true, images: ["img/tote_chihiro.png"] }
-    ];
+const products = [
+{ id: 101, name: "Amigurumi Capybara", category: "Amigurumis", price: 22000, images: ["img/ami_capi1.png"] },
+{ id: 102, name: "Cerezas Tejidas", category: "Amigurumis", price: 18000, images: ["img/ami_cerezas.png"] },
+{ id: 103, name: "Amigurumi Pingüino", category: "Amigurumis", price: 22000, images: ["img/ami_pingu1.png"] },
+{ id: 201, name: "Libreta Cali Mirá Ve", category: "Libretas", price: 12000, images: ["img/libreta_cali.png"] },
+{ id: 301, name: "Tote Bag Capybara Faces", category: "Tote Bags", variable: true, images: ["img/tote_capi_faces_1.png", "img/tote_capi_faces_2.png"] },
+{ id: 302, name: "Tote Bag Capybara Flowers", category: "Tote Bags", variable: true, images: ["img/tote_capi_flower_1.png", "img/tote_capi_flower_2.png"] },
+{ id: 303, name: "Tote Bag Harry Potter", category: "Tote Bags", variable: true, images: ["img/tote_harry_1.png", "img/tote_harry_2.png"] },
+{ id: 304, name: "Tote Bag Mariposas", category: "Tote Bags", variable: true, images: ["img/tote_mariposa_1.png", "img/tote_mariposa_2.png"] },
+{ id: 305, name: "Tote Bag El Principito", category: "Tote Bags", variable: true, images: ["img/tote_principito_1.png", "img/tote_principito_2.png"] },
+{ id: 306, name: "Tote Bag Van Gogh", category: "Tote Bags", variable: true, images: ["img/tote_vangogh_1.png", "img/tote_vangogh_2.png"] },
+{ id: 307, name: "Tote Bag Totoro", category: "Tote Bags", variable: true, images: ["img/tote_totoro.png"] },
+{ id: 308, name: "Tote Bag David", category: "Tote Bags", variable: true, images: ["img/tote_david.png"] },
+{ id: 309, name: "Tote Bag BMO", category: "Tote Bags", variable: true, images: ["img/tote_bmo.png"] },
+{ id: 310, name: "Tote Bag Mafalda Bow", category: "Tote Bags", variable: true, images: ["img/tote_mafalda_bow.png"] },
+{ id: 311, name: "Tote Bag Mafalda Vivos", category: "Tote Bags", variable: true, images: ["img/tote_mafalda_vivos.png"] },
+{ id: 312, name: "Tote Bag Capybara Mago", category: "Tote Bags", variable: true, images: ["img/tote_capi_mago.png"] },
+{ id: 313, name: "Tote Bag Chihiro", category: "Tote Bags", variable: true, images: ["img/tote_chihiro.png"] }
+];
 
-    let cart = [];
-    let currentShareProduct = null;
+let cart = [];
+let currentShareProduct = null;
 
-    function init() {
-        renderProducts('Todo');
-        startImageSlideshow();
-        startMainBannerSlideshow(); // Inicia el banner principal
-        document.addEventListener('contextmenu', e => {
-            if (e.target.tagName === 'IMG' || e.target.classList.contains('lightbox-img')) e.preventDefault();
-        });
-    }
+function init() {
+renderProducts('Todo');
+startImageSlideshow();
+startMainBannerSlideshow();
 
-    function filterProducts(category, element) {
-        document.querySelectorAll('.category-card').forEach(el => el.classList.remove('active'));
-        element.classList.add('active');
-        renderProducts(category);
-    }
+// ACTIVAR LA DETECCION DE ENLACE COMPARTIDO
+checkSharedUrl();
 
-    function renderProducts(category) {
-        const container = document.getElementById('productContainer');
-        container.innerHTML = '';
-        const filtered = category === 'Todo' ? products : products.filter(p => p.category === category);
+document.addEventListener('contextmenu', e => {
+if (e.target.tagName === 'IMG' || e.target.classList.contains('lightbox-img')) e.preventDefault();
+});
+}
 
-        if(filtered.length === 0) {
-            container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:20px; color:#999;">No hay productos en esta categoría.</div>';
-            return;
-        }
+// --- FUNCIÓN PARA DETECTAR Y RESALTAR PRODUCTO ---
+function checkSharedUrl() {
+const params = new URLSearchParams(window.location.search);
+const productId = params.get('product'); // Busca ?product=ID
 
-        filtered.forEach(p => {
-            let imagesHtml = p.images.map((src, i) => 
-                `<img src="${src}" class="product-img ${i === 0 ? '' : 'hidden'}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" onclick="openLightbox('${src}')">
-                 <div class="img-placeholder" style="display:none">Foto no encontrada<br>${src}</div>`
-            ).join('');
+if (productId) {
+// Esperar un momento a que el DOM se construya
+setTimeout(() => {
+const addBtn = document.querySelector(`button[onclick="addToCart(${productId})"]`);
+if (addBtn) {
+const productElement = addBtn.closest('.product-card');
+if (productElement) {
+// Scroll suave
+productElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+// Añadir clase para la animación de pulso
+productElement.classList.add('highlighted');
+}
+}
+}, 500);
+}
+}
 
-            let priceHtml = p.variable 
-                ? `<div class="product-price" id="price-display-${p.id}">Desde $${formatPrice(totePrices[0].price)}</div>`
-                : `<div class="product-price">$${formatPrice(p.price)}</div>`;
-                
-            let controlHtml = p.variable 
-                ? `<select class="size-select" id="size-${p.id}" onchange="updatePriceDisplay(${p.id})">
-                    ${totePrices.map((tp, idx) => `<option value="${idx}">${tp.name} - $${formatPrice(tp.price)}</option>`).join('')}
-                   </select>` 
-                : '';
+function filterProducts(category, element) {
+document.querySelectorAll('.category-card').forEach(el => el.classList.remove('active'));
+element.classList.add('active');
+renderProducts(category);
+}
 
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-                <div class="product-image-wrapper" id="slider-${p.id}">${imagesHtml}</div>
-                <div class="product-info">
-                    <div class="product-cat">${p.category}</div>
-                    <div class="product-name">${p.name}</div>
-                    ${priceHtml}
-                    ${controlHtml}
-                    <div class="btn-row">
-                        <button class="add-btn" onclick="addToCart(${p.id})">AÑADIR</button>
-                        <button class="icon-btn whatsapp-btn" onclick="askProduct(${p.id})"><iconify-icon icon="ic:baseline-whatsapp" width="18"></iconify-icon></button>
-                        <button class="icon-btn share-btn" onclick="openShareModal(${p.id})"><iconify-icon icon="material-symbols:share" width="18"></iconify-icon></button>
-                    </div>
-                </div>`;
-            container.appendChild(card);
-        });
-    }
+function renderProducts(category) {
+const container = document.getElementById('productContainer');
+container.innerHTML = '';
+const filtered = category === 'Todo' ? products : products.filter(p => p.category === category);
 
-    function updatePriceDisplay(id) {
-        const select = document.getElementById(`size-${id}`);
-        const priceDisplay = document.getElementById(`price-display-${id}`);
-        priceDisplay.innerText = `$${formatPrice(totePrices[select.value].price)}`;
-    }
+if(filtered.length === 0) {
+container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:20px; color:#999;">No hay productos en esta categoría.</div>';
+return;
+}
 
-    function addToCart(id) {
-        const product = products.find(p => p.id === id);
-        let itemToAdd = { ...product };
-        if (product.variable) {
-            const select = document.getElementById(`size-${id}`);
-            const variant = totePrices[select.value];
-            itemToAdd.uniqueId = `${id}-${select.value}`;
-            itemToAdd.price = variant.price;
-            itemToAdd.variantName = variant.name;
-        } else {
-            itemToAdd.uniqueId = `${id}-default`;
-            itemToAdd.variantName = "";
-        }
-        const existing = cart.find(i => i.uniqueId === itemToAdd.uniqueId);
-        existing ? existing.qty++ : (itemToAdd.qty = 1, cart.push(itemToAdd));
-        updateCartUI();
-        toggleCart();
-    }
+filtered.forEach(p => {
+let imagesHtml = p.images.map((src, i) =>
+`<img src="${src}" class="product-img ${i === 0 ? '' : 'hidden'}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" onclick="openLightbox('${src}')">
+<div class="img-placeholder" style="display:none">Foto no encontrada<br>${src}</div>`
+).join('');
 
-    function updateCartUI() {
-        const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-        document.getElementById('cartCount').innerText = totalQty;
-        
-        const container = document.getElementById('cartItemsContainer');
-        if (cart.length === 0) {
-            container.innerHTML = '<div style="text-align:center; padding:40px; color:#aaa"><i class="material-icons" style="font-size:40px">shopping_basket</i><br>Carrito vacío</div>';
-        } else {
-            container.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    <img src="${item.images[0]}" onerror="this.src='https://placehold.co/50'">
-                    <div class="item-info">
-                        <div class="item-name">${item.name}</div>
-                        ${item.variantName ? `<span class="item-variant">${item.variantName}</span>` : ''}
-                        <div class="item-price">$${formatPrice(item.price * item.qty)}</div>
-                    </div>
-                    <div class="item-controls">
-                        <button class="qty-btn" onclick="changeQty('${item.uniqueId}', -1)">-</button>
-                        <span style="font-size:12px; font-weight:bold">${item.qty}</span>
-                        <button class="qty-btn" onclick="changeQty('${item.uniqueId}', 1)">+</button>
-                    </div>
-                </div>`).join('');
-        }
+let priceHtml = p.variable
+? `<div class="product-price" id="price-display-${p.id}">Desde $${formatPrice(totePrices[0].price)}</div>`
+: `<div class="product-price">$${formatPrice(p.price)}</div>`;
 
-        const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-        let shipping = subtotal >= CONFIG.freeShippingThreshold ? 0 : CONFIG.shippingCost;
-        if (cart.length === 0) shipping = 0;
+let controlHtml = p.variable
+? `<select class="size-select" id="size-${p.id}" onchange="updatePriceDisplay(${p.id})">
+${totePrices.map((tp, idx) => `<option value="${idx}">${tp.name} - $${formatPrice(tp.price)}</option>`).join('')}
+</select>`
+: '';
 
-        const alertEl = document.getElementById('shippingAlert');
-        if (subtotal >= CONFIG.freeShippingThreshold) {
-            alertEl.innerText = "¡Genial! Tienes ENVÍO GRATIS 🎉";
-            alertEl.classList.add('success');
-        } else {
-            alertEl.innerText = `Agrega $${formatPrice(CONFIG.freeShippingThreshold - subtotal)} más para Envío GRATIS`;
-            alertEl.classList.remove('success');
-        }
+const card = document.createElement('div');
+card.className = 'product-card';
+// IMPORTANTE: Aseguramos que el ID del botón AddToCart sea correcto para el resaltado
+card.innerHTML = `
+<div class="product-image-wrapper" id="slider-${p.id}">${imagesHtml}</div>
+<div class="product-info">
+<div class="product-cat">${p.category}</div>
+<div class="product-name">${p.name}</div>
+${priceHtml}
+${controlHtml}
+<div class="btn-row">
+<button class="add-btn" onclick="addToCart(${p.id})">AÑADIR</button>
+<button class="icon-btn whatsapp-btn" onclick="askProduct(${p.id})"><iconify-icon icon="ic:baseline-whatsapp" width="18"></iconify-icon></button>
+<button class="icon-btn share-btn" onclick="openShareModal(${p.id})"><iconify-icon icon="material-symbols:share" width="18"></iconify-icon></button>
+</div>
+</div>`;
+container.appendChild(card);
+});
+}
 
-        document.getElementById('subtotalPrice').innerText = `$${formatPrice(subtotal)}`;
-        document.getElementById('shippingPrice').innerText = shipping === 0 ? "GRATIS" : `$${formatPrice(shipping)}`;
-        document.getElementById('totalPrice').innerText = `$${formatPrice(subtotal + shipping)}`;
-    }
+function updatePriceDisplay(id) {
+const select = document.getElementById(`size-${id}`);
+const priceDisplay = document.getElementById(`price-display-${id}`);
+priceDisplay.innerText = `$${formatPrice(totePrices[select.value].price)}`;
+}
 
-    function changeQty(uniqueId, delta) {
-        const idx = cart.findIndex(i => i.uniqueId === uniqueId);
-        if (idx === -1) return;
-        cart[idx].qty += delta;
-        if (cart[idx].qty <= 0) cart.splice(idx, 1);
-        updateCartUI();
-    }
+function addToCart(id) {
+const product = products.find(p => p.id === id);
+let itemToAdd = { ...product };
+if (product.variable) {
+const select = document.getElementById(`size-${id}`);
+const variant = totePrices[select.value];
+itemToAdd.uniqueId = `${id}-${select.value}`;
+itemToAdd.price = variant.price;
+itemToAdd.variantName = variant.name;
+} else {
+itemToAdd.uniqueId = `${id}-default`;
+itemToAdd.variantName = "";
+}
+const existing = cart.find(i => i.uniqueId === itemToAdd.uniqueId);
+existing ? existing.qty++ : (itemToAdd.qty = 1, cart.push(itemToAdd));
+updateCartUI();
+toggleCart();
+}
 
-    function checkoutWhatsApp() {
-        if (cart.length === 0) return alert("El carrito está vacío");
-        let msg = "Hola ADI! 👋 Me gustaría pedir lo siguiente:\n\n";
-        cart.forEach(i => msg += `- ${i.name} ${i.variantName ? `(${i.variantName})` : ''} x${i.qty} - $${formatPrice(i.price * i.qty)}\n`);
-        const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-        const shipping = subtotal >= CONFIG.freeShippingThreshold ? 0 : CONFIG.shippingCost;
-        msg += `\nSubtotal: $${formatPrice(subtotal)}`;
-        msg += `\nEnvío: ${shipping === 0 ? "GRATIS 🎉" : "$" + formatPrice(shipping)}`;
-        msg += `\n*TOTAL: $${formatPrice(subtotal + shipping)}*`;
-        msg += `\n\nQuedo pendiente para el pago. ¡Gracias!`;
-        window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+function updateCartUI() {
+const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+document.getElementById('cartCount').innerText = totalQty;
 
-    function askProduct(id) {
-        const p = products.find(i => i.id === id);
-        window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent("Hola! Me interesa saber más sobre: " + p.name)}`, '_blank');
-    }
+const container = document.getElementById('cartItemsContainer');
+if (cart.length === 0) {
+container.innerHTML = '<div style="text-align:center; padding:40px; color:#aaa"><i class="material-icons" style="font-size:40px">shopping_basket</i><br>Carrito vacío</div>';
+} else {
+container.innerHTML = cart.map(item => `
+<div class="cart-item">
+<img src="${item.images[0]}" onerror="this.src='https://placehold.co/50'">
+<div class="item-info">
+<div class="item-name">${item.name}</div>
+${item.variantName ? `<span class="item-variant">${item.variantName}</span>` : ''}
+<div class="item-price">$${formatPrice(item.price * item.qty)}</div>
+</div>
+<div class="item-controls">
+<button class="qty-btn" onclick="changeQty('${item.uniqueId}', -1)">-</button>
+<span style="font-size:12px; font-weight:bold">${item.qty}</span>
+<button class="qty-btn" onclick="changeQty('${item.uniqueId}', 1)">+</button>
+</div>
+</div>`).join('');
+}
 
-    /* --- LÓGICA COMPARTIR --- */
-    function openShareModal(id) {
-        currentShareProduct = products.find(p => p.id === id);
-        if (currentShareProduct) {
-            document.getElementById('shareModal').classList.add('active');
-            document.getElementById('overlay').classList.add('active');
-        }
-    }
+const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+let shipping = subtotal >= CONFIG.freeShippingThreshold ? 0 : CONFIG.shippingCost;
+if (cart.length === 0) shipping = 0;
 
-    function closeShareModal() {
-        document.getElementById('shareModal').classList.remove('active');
-        if (!document.getElementById('cartModal').classList.contains('open') && !document.getElementById('aboutModal').classList.contains('active')) {
-            document.getElementById('overlay').classList.remove('active');
-        }
-    }
+const alertEl = document.getElementById('shippingAlert');
+if (subtotal >= CONFIG.freeShippingThreshold) {
+alertEl.innerText = "¡Genial! Tienes ENVÍO GRATIS 🎉";
+alertEl.classList.add('success');
+} else {
+alertEl.innerText = `Agrega $${formatPrice(CONFIG.freeShippingThreshold - subtotal)} más para Envío GRATIS`;
+alertEl.classList.remove('success');
+}
 
-    async function shareAction(type) {
-        if (!currentShareProduct) {
-            alert("Error: Producto no seleccionado");
-            return;
-        }
+document.getElementById('subtotalPrice').innerText = `$${formatPrice(subtotal)}`;
+document.getElementById('shippingPrice').innerText = shipping === 0 ? "GRATIS" : `$${formatPrice(shipping)}`;
+document.getElementById('totalPrice').innerText = `$${formatPrice(subtotal + shipping)}`;
+}
 
-        // === INICIO DE LA CORRECCIÓN ===
-        // Usamos la URL base de la página para compartir
-        const pageShareUrl = CONFIG.repoUrl; 
-        
-        // El texto ahora solo incluye la información del producto y la URL de la página.
-        // Las plataformas de mensajería y redes sociales tomarán la imagen y el título
-        // de los metadatos Open Graph definidos en el <head> de la página.
-        const text = `¡Mira este hermoso diseño de ADI! 🌟\n\n*${currentShareProduct.name}*\nPrecio: $${formatPrice(currentShareProduct.price)}\n\nVisita nuestra tienda aquí: ${pageShareUrl}`;
+function changeQty(uniqueId, delta) {
+const idx = cart.findIndex(i => i.uniqueId === uniqueId);
+if (idx === -1) return;
+cart[idx].qty += delta;
+if (cart[idx].qty <= 0) cart.splice(idx, 1);
+updateCartUI();
+}
 
-        try {
-            if (type === 'native') {
-                if (navigator.share) {
-                    try {
-                        // Pasamos la URL de la página principal
-                        await navigator.share({ title: currentShareProduct.name, text: text, url: pageShareUrl });
-                    } catch (err) { console.log('Error sharing or cancelled', err); }
-                } else {
-                    // Para WhatsApp, también pasamos la URL de la página principal
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                }
-            } else if (type === 'fb') {
-                // Para Facebook, pasamos la URL de la página principal
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageShareUrl)}&quote=${encodeURIComponent(text)}`, '_blank');
-            } else if (type === 'copy') {
-                // Para copiar, el texto ya contiene la URL de la página
-                if (navigator.clipboard && window.isSecureContext) {
-                    navigator.clipboard.writeText(text).then(() => { showCopyFeedback(); }).catch(err => { manualCopyFallback(text); });
-                } else { manualCopyFallback(text); }
-            }
-            if(type !== 'copy' && type !== 'native') closeShareModal();
-        } catch (e) { console.error("Error en compartir:", e); }
-    }
-    // === FIN DE LA CORRECCIÓN ===
+function checkoutWhatsApp() {
+if (cart.length === 0) return alert("El carrito está vacío");
+let msg = "Hola ADI! 👋 Me gustaría pedir lo siguiente:\n\n";
+cart.forEach(i => msg += `- ${i.name} ${i.variantName ? `(${i.variantName})` : ''} x${i.qty} - $${formatPrice(i.price * i.qty)}\n`);
+const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+const shipping = subtotal >= CONFIG.freeShippingThreshold ? 0 : CONFIG.shippingCost;
+msg += `\nSubtotal: $${formatPrice(subtotal)}`;
+msg += `\nEnvío: ${shipping === 0 ? "GRATIS 🎉" : "$" + formatPrice(shipping)}`;
+msg += `\n*TOTAL: $${formatPrice(subtotal + shipping)}*`;
+msg += `\n\nQuedo pendiente para el pago. ¡Gracias!`;
+window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent(msg)}`, '_blank');
+}
 
-    function showCopyFeedback() {
-        const copySpan = document.getElementById('copyText');
-        const originalText = copySpan.innerText;
-        copySpan.innerText = "¡Copiado!";
-        setTimeout(() => { copySpan.innerText = originalText; closeShareModal(); }, 1500);
-    }
+function askProduct(id) {
+const p = products.find(i => i.id === id);
+window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent("Hola! Me interesa saber más sobre: " + p.name)}`, '_blank');
+}
 
-    function manualCopyFallback(text) {
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-        textArea.style.position = "fixed";
-        textArea.style.left = "-9999px";
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        try { document.execCommand('copy'); showCopyFeedback(); } catch (err) { alert("No se pudo copiar automáticamente."); }
-        document.body.removeChild(textArea);
-    }
+/* --- LÓGICA COMPARTIR MEJORADA --- */
+function openShareModal(id) {
+currentShareProduct = products.find(p => p.id === id);
+if (currentShareProduct) {
+document.getElementById('shareProductName').innerText = currentShareProduct.name;
+document.getElementById('shareModal').classList.add('active');
+document.getElementById('overlay').classList.add('active');
+}
+}
 
-    function openAboutModal() {
-        document.getElementById('aboutModal').classList.add('active');
-        document.getElementById('overlay').classList.add('active');
-    }
+function closeShareModal() {
+document.getElementById('shareModal').classList.remove('active');
+if (!document.getElementById('cartModal').classList.contains('open') && !document.getElementById('aboutModal').classList.contains('active')) {
+document.getElementById('overlay').classList.remove('active');
+}
+}
 
-    function closeAboutModal() {
-        document.getElementById('aboutModal').classList.remove('active');
-        if (!document.getElementById('cartModal').classList.contains('open') && !document.getElementById('shareModal').classList.contains('active')) {
-            document.getElementById('overlay').classList.remove('active');
-        }
-    }
+async function shareAction(type) {
+if (!currentShareProduct) return;
 
-    function formatPrice(num) { return num.toLocaleString('es-CO'); }
-    
-    function toggleCart() {
-        document.getElementById('cartModal').classList.toggle('open');
-        const overlay = document.getElementById('overlay');
-        if (!document.getElementById('shareModal').classList.contains('active') && !document.getElementById('aboutModal').classList.contains('active')) {
-            overlay.classList.toggle('active');
-        }
-    }
+// Limpiamos la URL para evitar acumulación de parámetros
+const cleanBaseUrl = window.location.href.split('?')[0];
+// Creamos el "Deep Link"
+const specificUrl = `${cleanBaseUrl}?product=${currentShareProduct.id}`;
 
-    function closeAllModals() {
-        document.getElementById('cartModal').classList.remove('open');
-        document.getElementById('shareModal').classList.remove('active');
-        document.getElementById('aboutModal').classList.remove('active');
-        document.getElementById('overlay').classList.remove('active');
-    }
+const textTitle = `✨ ¡Mira esto de Aguapanela Dulce Imaginación! ✨`;
+const textBody = `Me encantó este diseño: *${currentShareProduct.name}*\nPrecio: $${formatPrice(currentShareProduct.price)}`;
+const textFooter = `Pídelo aquí 👇\n${specificUrl}`;
 
-    function openLightbox(src) {
-        const lb = document.getElementById('lightbox');
-        const img = document.getElementById('lightbox-img');
-        img.src = src;
-        img.classList.remove('zoomed');
-        lb.classList.add('active');
-    }
-    function closeLightbox(e) {
-        if (e.target.id === 'lightbox' || e.target.classList.contains('close-lightbox')) {
-            document.getElementById('lightbox').classList.remove('active');
-        }
-    }
-    function toggleZoom(e) {
-        e.stopPropagation();
-        document.getElementById('lightbox-img').classList.toggle('zoomed');
-    }
+const fullText = `${textTitle}\n\n${textBody}\n\n${textFooter}`;
 
-    function startImageSlideshow() {
-        setInterval(() => {
-            products.forEach(p => {
-                if (p.images.length > 1) {
-                    const wrapper = document.getElementById(`slider-${p.id}`);
-                    if (!wrapper) return;
-                    const imgs = wrapper.querySelectorAll('img.product-img');
-                    if(imgs.length === 0) return;
-                    let visibleIdx = -1;
-                    imgs.forEach((img, idx) => {
-                        if (!img.classList.contains('hidden')) visibleIdx = idx;
-                        img.classList.add('hidden');
-                    });
-                    let nextIdx = (visibleIdx + 1) % imgs.length;
-                    imgs[nextIdx].classList.remove('hidden');
-                }
-            });
-        }, 3000);
-    }
+try {
+if (type === 'native') {
+if (navigator.share) {
+await navigator.share({
+title: currentShareProduct.name,
+text: textBody,
+url: specificUrl
+});
+} else {
+// Si falla o no existe (ej: PC), fallback a WhatsApp
+shareAction('whatsapp');
+}
+}
+else if (type === 'whatsapp') {
+const waUrl = `https://wa.me/?text=${encodeURIComponent(fullText)}`;
+window.open(waUrl, '_blank');
+}
+else if (type === 'facebook') {
+const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(specificUrl)}&quote=${encodeURIComponent(textBody)}`;
+window.open(fbUrl, '_blank');
+}
+else if (type === 'copy') {
+if (navigator.clipboard && window.isSecureContext) {
+await navigator.clipboard.writeText(fullText);
+showCopyFeedback();
+} else {
+manualCopyFallback(fullText);
+}
+}
 
-    // --- LÓGICA DEL BANNER PRINCIPAL (SIMPLIFICADA) ---
-    let currentBannerIndex = 0;
-    function startMainBannerSlideshow() {
-        const bannerSlider = document.getElementById('mainBannerSlider');
-        if (!bannerSlider) return;
-        const bannerImages = bannerSlider.querySelectorAll('.banner-img');
-        if (bannerImages.length === 0) return;
-        
-        setInterval(() => {
-            bannerImages[currentBannerIndex].classList.remove('active');
-            currentBannerIndex = (currentBannerIndex + 1) % bannerImages.length;
-            bannerImages[currentBannerIndex].classList.add('active');
-        }, 3500);
-    }
+if (type !== 'copy') closeShareModal();
 
-    init();
+} catch (error) {
+console.log('Error compartiendo:', error);
+}
+}
+
+function showCopyFeedback() {
+const copySpan = document.getElementById('copyText');
+const originalText = copySpan.innerText;
+copySpan.innerText = "¡Copiado!";
+setTimeout(() => { copySpan.innerText = originalText; closeShareModal(); }, 1500);
+}
+
+function manualCopyFallback(text) {
+const textArea = document.createElement("textarea");
+textArea.value = text;
+textArea.style.position = "fixed";
+textArea.style.left = "-9999px";
+document.body.appendChild(textArea);
+textArea.focus();
+textArea.select();
+try { document.execCommand('copy'); showCopyFeedback(); } catch (err) { alert("No se pudo copiar automáticamente."); }
+document.body.removeChild(textArea);
+}
+
+function openAboutModal() {
+document.getElementById('aboutModal').classList.add('active');
+document.getElementById('overlay').classList.add('active');
+}
+
+function closeAboutModal() {
+document.getElementById('aboutModal').classList.remove('active');
+if (!document.getElementById('cartModal').classList.contains('open') && !document.getElementById('shareModal').classList.contains('active')) {
+document.getElementById('overlay').classList.remove('active');
+}
+}
+
+function formatPrice(num) { return num.toLocaleString('es-CO'); }
+
+function toggleCart() {
+document.getElementById('cartModal').classList.toggle('open');
+const overlay = document.getElementById('overlay');
+if (!document.getElementById('shareModal').classList.contains('active') && !document.getElementById('aboutModal').classList.contains('active')) {
+overlay.classList.toggle('active');
+}
+}
+
+function closeAllModals() {
+document.getElementById('cartModal').classList.remove('open');
+document.getElementById('shareModal').classList.remove('active');
+document.getElementById('aboutModal').classList.remove('active');
+document.getElementById('overlay').classList.remove('active');
+}
+
+function openLightbox(src) {
+const lb = document.getElementById('lightbox');
+const img = document.getElementById('lightbox-img');
+img.src = src;
+img.classList.remove('zoomed');
+lb.classList.add('active');
+}
+function closeLightbox(e) {
+if (e.target.id === 'lightbox' || e.target.classList.contains('close-lightbox')) {
+document.getElementById('lightbox').classList.remove('active');
+}
+}
+function toggleZoom(e) {
+e.stopPropagation();
+document.getElementById('lightbox-img').classList.toggle('zoomed');
+}
+
+function startImageSlideshow() {
+setInterval(() => {
+products.forEach(p => {
+if (p.images.length > 1) {
+const wrapper = document.getElementById(`slider-${p.id}`);
+if (!wrapper) return;
+const imgs = wrapper.querySelectorAll('img.product-img');
+if(imgs.length === 0) return;
+let visibleIdx = -1;
+imgs.forEach((img, idx) => {
+if (!img.classList.contains('hidden')) visibleIdx = idx;
+img.classList.add('hidden');
+});
+let nextIdx = (visibleIdx + 1) % imgs.length;
+imgs[nextIdx].classList.remove('hidden');
+}
+});
+}, 3000);
+}
+
+// Banner Logic
+let currentBannerIndex = 0;
+function startMainBannerSlideshow() {
+const bannerSlider = document.getElementById('mainBannerSlider');
+if (!bannerSlider) return;
+const bannerImages = bannerSlider.querySelectorAll('.banner-img');
+if (bannerImages.length === 0) return;
+
+setInterval(() => {
+bannerImages[currentBannerIndex].classList.remove('active');
+currentBannerIndex = (currentBannerIndex + 1) % bannerImages.length;
+bannerImages[currentBannerIndex].classList.add('active');
+}, 3500);
+}
+
+init();
 </script>
 </body>
 </html>
-
-
-
