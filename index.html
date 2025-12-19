@@ -136,6 +136,7 @@
         70% { box-shadow: 0 0 0 15px rgba(201, 126, 88, 0); transform: scale(1.02); }
         100% { box-shadow: 0 0 0 0 rgba(201, 126, 88, 0); transform: scale(1); }
     }
+
     .product-card.highlighted {
         animation: highlightPulse 2s ease-in-out 3;
         border: 2px solid #c97e58;
@@ -151,7 +152,9 @@
     .product-cat { font-size: 9px; text-transform: uppercase; color: #8b6f47; letter-spacing: 1px; margin-bottom: 4px;}
     .product-name { font-size: 13px; font-weight: 700; color: #5a3e2b; line-height: 1.3; margin-bottom: 5px; height: 34px; overflow: hidden;}
     .product-price { font-size: 15px; font-weight: 700; color: #c97e58; margin-bottom: 8px; }
+    
     .size-select { width: 100%; padding: 5px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 11px; color: #5a3e2b; background-color: #fff; }
+    
     .btn-row { display: flex; gap: 5px; margin-top: auto; }
     .add-btn { flex: 1; background-color: #5a3e2b; color: white; border: none; padding: 8px 0; border-radius: 8px; font-size: 10px; cursor: pointer; font-weight: 500; }
     .icon-btn { width: 32px; height: 32px; border: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
@@ -182,7 +185,9 @@
     .social-icon { width: 40px; height: 40px; background-color: #5a3e2b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
     .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
     .social-icon.wa-footer { background-color: #25D366; }
+    .social-icon.wa-footer:hover { background-color: #128C7E; }
     .social-icon.mail-footer { background-color: #c97e58; } 
+    .social-icon.mail-footer:hover { background-color: #5a3e2b; }
 
     /* Overlays & Modals */
     .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
@@ -241,55 +246,72 @@
     .about-content a { color: #c97e58; font-weight: 700; text-decoration: none; border-bottom: 1px dotted #c97e58; }
 
     /* ================================================================= */
-    /* --- ESTILOS DEL CHATBOT FLOTANTE --- */
+    /* --- ESTILOS DEL CHATBOT "KAWAII & PRO" --- */
     /* ================================================================= */
     #chatbot-toggle {
         position: fixed; bottom: 25px; right: 25px;
-        width: 65px; height: 65px;
+        width: 70px; height: 70px;
         background-color: #c97e58; /* Color de la marca */
         color: white;
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        cursor: pointer; z-index: 1600; /* Por encima de todo, menos lightbox */
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: none;
+        box-shadow: 0 8px 30px rgba(201, 126, 88, 0.4);
+        cursor: pointer; z-index: 1600;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Rebote Kawaii */
+        border: 4px solid white; /* Borde blanco estilo sticker */
+        animation: breath 3s infinite ease-in-out;
     }
     #chatbot-toggle:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(201, 126, 88, 0.6);
+        transform: scale(1.1) rotate(-10deg);
+        box-shadow: 0 15px 35px rgba(201, 126, 88, 0.6);
     }
+    
+    @keyframes breath {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
     #chatbot-toggle i { font-size: 32px; transition: transform 0.3s; }
-    #chatbot-toggle.open i { transform: rotate(90deg); content: ""; }
-    /* Icono de cerrar (X) por CSS */
-    #chatbot-toggle.open::after {
+    #chatbot-toggle.open { background-color: #5a3e2b; }
+    #chatbot-toggle.open i { transform: rotate(180deg) scale(0); opacity: 0; }
+    
+    /* Icono X animado */
+    #chatbot-toggle::after {
         content: "close";
         font-family: 'Material Icons';
-        font-size: 30px;
+        font-size: 32px;
         position: absolute;
+        opacity: 0;
+        transform: rotate(-180deg) scale(0);
+        transition: all 0.3s;
     }
-    #chatbot-toggle.open i { opacity: 0; }
+    #chatbot-toggle.open::after {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
 
-    /* POPUP DEL CHAT */
+    /* POPUP DEL CHAT - ESTILO FLOTANTE */
     #chatbot-popup {
-        position: fixed; bottom: 100px; right: 25px;
-        width: 360px; height: 550px;
-        max-width: 90vw; max-height: 75vh;
+        position: fixed; bottom: 110px; right: 25px;
+        width: 380px; height: 600px;
+        max-width: 90vw; max-height: 70vh;
         background-color: white;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        border-radius: 30px; /* Bordes muy redondos */
+        box-shadow: 0 20px 50px rgba(90, 62, 43, 0.25);
         z-index: 1599;
         overflow: hidden;
         transform-origin: bottom right;
         transform: scale(0); opacity: 0;
         pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto Pop al abrir */
+        border: 5px solid white;
+        outline: 1px solid #f0e6dc;
     }
     #chatbot-popup.open {
         transform: scale(1); opacity: 1;
         pointer-events: auto;
     }
-    #chatbot-popup iframe { width: 100%; height: 100%; border: none; }
+    #chatbot-popup iframe { width: 100%; height: 100%; border: none; background: white; }
     /* ================================================================= */
 
 </style>
@@ -439,9 +461,7 @@
 
 <!-- Popup con el iFrame de Gradio -->
 <div id="chatbot-popup">
-    <!-- !!! REEMPLAZA ESTA URL CON LA DE TU SPACE DE HUGGING FACE !!! -->
-    <!-- Ejemplo: https://huggingface.co/spaces/tunombre/tuproyecto -->
-    <!-- Agrega ?__theme=light al final para forzar modo claro -->
+    <!-- URL CONFIGURADA: https://huggingface.co/spaces/DaBlackSheep/IAguapanela -->
     <iframe 
         src="https://huggingface.co/spaces/DaBlackSheep/IAguapanela?__theme=light" 
         title="Asistente IAguapanela"
@@ -928,4 +948,3 @@ init();
 </script>
 </body>
 </html>
-
