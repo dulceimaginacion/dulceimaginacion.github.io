@@ -185,9 +185,7 @@
     .social-icon { width: 40px; height: 40px; background-color: #5a3e2b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
     .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
     .social-icon.wa-footer { background-color: #25D366; }
-    .social-icon.wa-footer:hover { background-color: #128C7E; }
     .social-icon.mail-footer { background-color: #c97e58; } 
-    .social-icon.mail-footer:hover { background-color: #5a3e2b; }
 
     /* Overlays & Modals */
     .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
@@ -451,7 +449,7 @@
 </div>
 
 <!-- ======================================================= -->
-<!-- --- ELEMENTOS FLOTANTES DEL CHAT --- -->
+<!-- --- ELEMENTOS FLOTANTES DEL CHAT (Integración Final) --- -->
 <!-- ======================================================= -->
 
 <!-- Botón Flotante (Icono de Tacita de Café) -->
@@ -461,16 +459,18 @@
 
 <!-- Popup con el iFrame de Gradio -->
 <div id="chatbot-popup">
-    <!-- URL CONFIGURADA: https://huggingface.co/spaces/DaBlackSheep/IAguapanela -->
+    <!-- URL CORRECTA DE HF.SPACE -->
     <iframe 
-        src="https://dablacksheep-iaguapanela.hf.space?__theme=light"?__theme=light" 
-        title="IAguapanela"
-        loading="lazy">
+        src="https://dablacksheep-iaguapanela.hf.space?embed=true&__theme=light" 
+        title="Asistente IAguapanela"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
     </iframe>
 </div>
 <!-- ======================================================= -->
 
-<!-- LIGHTBOX, MODALES Y OVERLAY -->
+<!-- LIGHTBOX, MODALES Y SCRIPTS (El cuerpo de tu JS original) -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
 <div class="close-lightbox" onclick="closeLightbox(event)">&times;</div>
 <div class="lightbox-content">
@@ -478,10 +478,8 @@
 </div>
 </div>
 <div class="about-modal" id="aboutModal">
-<div class="about-header">
-<h3>Sobre Nosotros</h3>
-<i class="material-icons" style="cursor:pointer" onclick="closeAboutModal()">close</i>
-</div>
+<!-- ... (Contenido del modal About Us) ... -->
+<div class="about-header"><h3>Sobre Nosotros</h3><i class="material-icons" style="cursor:pointer" onclick="closeAboutModal()">close</i></div>
 <div class="about-content">
  <h4>Hecho con Amor ❤️</h4>
         <p>¡Hola! Somos <strong>AguaPanela Dulce Imaginación</strong>, un lugar de realismo mágico nacido en el corazón de Cali, Colombia, donde tus ideas y sentimientos se transforman en piezas únicas y llenas de vida. Como la aguapanela, nuestra esencia es cálida, reconfortante y siempre te dejará un dulce recuerdo.</p>
@@ -492,38 +490,21 @@
 </div>
 <!-- NUEVO MODAL DE COMPARTIR OPTIMIZADO -->
 <div class="share-modal" id="shareModal">
+<!-- ... (Contenido del modal Share) ... -->
 <div class="share-title">Compartir este tesoro</div>
 <span class="share-subtitle" id="shareProductName"></span>
 
 <div class="share-options">
-    <!-- Opción NATIVA (Móviles) -->
-    <button class="share-btn-option share-wa" onclick="shareAction('native')">
-        <iconify-icon icon="mdi:share-variant" width="20"></iconify-icon> Compartir (App Móvil)
-    </button>
-
-    <!-- Opción WhatsApp Directo -->
-    <button class="share-btn-option share-wa" style="background-color:#25D366; color:white;" onclick="shareAction('whatsapp')">
-        <iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> Enviar por WhatsApp
-    </button>
-
-    <!-- Opción Facebook -->
-    <button class="share-btn-option share-fb" onclick="shareAction('facebook')">
-        <iconify-icon icon="ic:baseline-facebook" width="20"></iconify-icon> Publicar en Facebook
-    </button>
-
-    <!-- Opción Copiar -->
-    <button class="share-btn-option share-copy" onclick="shareAction('copy')">
-        <iconify-icon icon="material-symbols:content-copy" width="20"></iconify-icon> <span id="copyText">Copiar enlace</span>
-    </button>
+    <button class="share-btn-option share-wa" onclick="shareAction('native')"><iconify-icon icon="mdi:share-variant" width="20"></iconify-icon> Compartir (App Móvil)</button>
+    <button class="share-btn-option share-wa" style="background-color:#25D366; color:white;" onclick="shareAction('whatsapp')"><iconify-icon icon="ic:baseline-whatsapp" width="20"></iconify-icon> Enviar por WhatsApp</button>
+    <button class="share-btn-option share-fb" onclick="shareAction('facebook')"><iconify-icon icon="ic:baseline-facebook" width="20"></iconify-icon> Publicar en Facebook</button>
+    <button class="share-btn-option share-copy" onclick="shareAction('copy')"><iconify-icon icon="material-symbols:content-copy" width="20"></iconify-icon> <span id="copyText">Copiar enlace</span></button>
 </div>
 <div class="close-share" onclick="closeShareModal()">Cancelar</div>
 </div>
 <div class="overlay" id="overlay" onclick="closeAllModals()"></div>
 <div class="cart-modal" id="cartModal">
-<div class="cart-header">
-<h3>Tu Carrito</h3>
-<i class="material-icons" style="cursor:pointer" onclick="toggleCart()">close</i>
-</div>
+<div class="cart-header"><h3>Tu Carrito</h3><i class="material-icons" style="cursor:pointer" onclick="toggleCart()">close</i></div>
 <div class="cart-items" id="cartItemsContainer"></div>
 <div class="cart-footer">
 <div id="shippingAlert" class="free-shipping-alert"></div>
@@ -579,10 +560,7 @@ function init() {
 renderProducts('Todo');
 startImageSlideshow();
 startMainBannerSlideshow();
-
-// ACTIVAR LA DETECCION DE ENLACE COMPARTIDO
 checkSharedUrl();
-
 document.addEventListener('contextmenu', e => {
 if (e.target.tagName === 'IMG' || e.target.classList.contains('lightbox-img')) e.preventDefault();
 });
@@ -591,18 +569,15 @@ if (e.target.tagName === 'IMG' || e.target.classList.contains('lightbox-img')) e
 // --- FUNCIÓN PARA DETECTAR Y RESALTAR PRODUCTO ---
 function checkSharedUrl() {
 const params = new URLSearchParams(window.location.search);
-const productId = params.get('product'); // Busca ?product=ID
+const productId = params.get('product');
 
 if (productId) {
-// Esperar un momento a que el DOM se construya
 setTimeout(() => {
 const addBtn = document.querySelector(`button[onclick="addToCart(${productId})"]`);
 if (addBtn) {
 const productElement = addBtn.closest('.product-card');
 if (productElement) {
-// Scroll suave
 productElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-// Añadir clase para la animación de pulso
 productElement.classList.add('highlighted');
 }
 }
@@ -644,7 +619,6 @@ ${totePrices.map((tp, idx) => `<option value="${idx}">${tp.name} - $${formatPric
 
 const card = document.createElement('div');
 card.className = 'product-card';
-// IMPORTANTE: Aseguramos que el ID del botón AddToCart sea correcto para el resaltado
 card.innerHTML = `
 <div class="product-image-wrapper" id="slider-${p.id}">${imagesHtml}</div>
 <div class="product-info">
@@ -948,5 +922,3 @@ init();
 </script>
 </body>
 </html>
-
-
