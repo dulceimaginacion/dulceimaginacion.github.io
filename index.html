@@ -5,12 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aguapanela Dulce Imaginación - E-SHOP</title>
 
-<!-- --- METADATOS (Vista previa general para redes) --- -->
+<!-- --- METADATOS --- -->
 <meta property="og:title" content="Aguapanela Dulce Imaginación | E-SHOP">
 <meta property="og:description" content="Diseños Especiales, stickers, libretas, tote bags y amigurumis hechos con amor en Cali.">
 <meta property="og:image" content="https://dulceimaginacion.github.io/img/og-image-1.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://dulceimaginacion.github.io/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#c97e58">
@@ -132,15 +130,14 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
     }
 
-    /* --- ANIMACIÓN DE RESALTADO --- */
+    /* Animación de Resaltado */
     @keyframes highlightPulse {
         0% { box-shadow: 0 0 0 0 rgba(201, 126, 88, 0.7); transform: scale(1.02); }
         70% { box-shadow: 0 0 0 15px rgba(201, 126, 88, 0); transform: scale(1.02); }
         100% { box-shadow: 0 0 0 0 rgba(201, 126, 88, 0); transform: scale(1); }
     }
-
     .product-card.highlighted {
-        animation: highlightPulse 2s ease-in-out 3; /* Pulsa 3 veces */
+        animation: highlightPulse 2s ease-in-out 3;
         border: 2px solid #c97e58;
         z-index: 10;
     }
@@ -154,16 +151,10 @@
     .product-cat { font-size: 9px; text-transform: uppercase; color: #8b6f47; letter-spacing: 1px; margin-bottom: 4px;}
     .product-name { font-size: 13px; font-weight: 700; color: #5a3e2b; line-height: 1.3; margin-bottom: 5px; height: 34px; overflow: hidden;}
     .product-price { font-size: 15px; font-weight: 700; color: #c97e58; margin-bottom: 8px; }
-    
     .size-select { width: 100%; padding: 5px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 11px; color: #5a3e2b; background-color: #fff; }
-    
     .btn-row { display: flex; gap: 5px; margin-top: auto; }
-    .add-btn {
-        flex: 1; background-color: #5a3e2b; color: white; border: none; padding: 8px 0; border-radius: 8px; font-size: 10px; cursor: pointer; font-weight: 500;
-    }
-    .icon-btn {
-        width: 32px; height: 32px; border: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;
-    }
+    .add-btn { flex: 1; background-color: #5a3e2b; color: white; border: none; padding: 8px 0; border-radius: 8px; font-size: 10px; cursor: pointer; font-weight: 500; }
+    .icon-btn { width: 32px; height: 32px; border: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     .whatsapp-btn { background-color: #25D366; color: white; }
     .share-btn { background-color: #f0e6dc; color: #5a3e2b; }
     .share-btn:hover { background-color: #c97e58; color: white; }
@@ -191,9 +182,7 @@
     .social-icon { width: 40px; height: 40px; background-color: #5a3e2b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
     .social-icon:hover { transform: translateY(-3px); background-color: #c97e58;}
     .social-icon.wa-footer { background-color: #25D366; }
-    .social-icon.wa-footer:hover { background-color: #128C7E; }
     .social-icon.mail-footer { background-color: #c97e58; } 
-    .social-icon.mail-footer:hover { background-color: #5a3e2b; }
 
     /* Overlays & Modals */
     .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
@@ -227,7 +216,7 @@
     .lightbox-img.zoomed { transform: scale(2); cursor: zoom-out; }
     .close-lightbox { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; cursor: pointer; z-index: 2001; background: rgba(0,0,0,0.3); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-    /* MODAL COMPARTIR */
+    /* Modales */
     .share-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 340px; border-radius: 16px; padding: 25px; z-index: 2100; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; display: none; }
     .share-modal.active { display: block; animation: popIn 0.3s ease; }
     @keyframes popIn { from { transform: translate(-50%, -40%); opacity: 0; } to { transform: translate(-50%, -50%); opacity: 1; } }
@@ -241,7 +230,6 @@
     .share-copy { background-color: #f4f4f4; color: #5a3e2b; }
     .close-share { margin-top: 15px; color: #888; font-size: 12px; cursor: pointer; text-decoration: underline; }
 
-    /* MODAL ABOUT US */
     .about-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 90%; max-width: 500px; max-height: 85vh; border-radius: 16px; z-index: 2200; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: none; overflow: hidden; flex-direction: column; }
     .about-modal.active { display: flex; animation: popIn 0.3s ease; }
     .about-header { padding: 20px; background-color: #5a3e2b; color: white; display: flex; justify-content: space-between; align-items: center; }
@@ -251,143 +239,217 @@
     .about-content p { margin-bottom: 15px; }
     .about-content strong { color: #c97e58; }
     .about-content a { color: #c97e58; font-weight: 700; text-decoration: none; border-bottom: 1px dotted #c97e58; }
-    .about-content a:hover { color: #5a3e2b; border-bottom: 1px solid #5a3e2b; }
+
+    /* ================================================================= */
+    /* --- ESTILOS DEL CHATBOT FLOTANTE --- */
+    /* ================================================================= */
+    #chatbot-toggle {
+        position: fixed; bottom: 25px; right: 25px;
+        width: 65px; height: 65px;
+        background-color: #c97e58; /* Color de la marca */
+        color: white;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        cursor: pointer; z-index: 1600; /* Por encima de todo, menos lightbox */
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: none;
+    }
+    #chatbot-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(201, 126, 88, 0.6);
+    }
+    #chatbot-toggle i { font-size: 32px; transition: transform 0.3s; }
+    #chatbot-toggle.open i { transform: rotate(90deg); content: ""; }
+    /* Icono de cerrar (X) por CSS */
+    #chatbot-toggle.open::after {
+        content: "close";
+        font-family: 'Material Icons';
+        font-size: 30px;
+        position: absolute;
+    }
+    #chatbot-toggle.open i { opacity: 0; }
+
+    /* POPUP DEL CHAT */
+    #chatbot-popup {
+        position: fixed; bottom: 100px; right: 25px;
+        width: 360px; height: 550px;
+        max-width: 90vw; max-height: 75vh;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        z-index: 1599;
+        overflow: hidden;
+        transform-origin: bottom right;
+        transform: scale(0); opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    #chatbot-popup.open {
+        transform: scale(1); opacity: 1;
+        pointer-events: auto;
+    }
+    #chatbot-popup iframe { width: 100%; height: 100%; border: none; }
+    /* ================================================================= */
 
 </style>
 </head>
 <body>
 <div class="poster-container">
-<!-- Header -->
-<header class="header">
-<div class="logo">
-<div class="logo-icon"><i class="material-icons">local_cafe</i></div>
-<div class="logo-text">Aguapanela Dulce Imaginación<br><span>E-SHOP</span></div>
+    <!-- Header -->
+    <header class="header">
+    <div class="logo">
+    <div class="logo-icon"><i class="material-icons">local_cafe</i></div>
+    <div class="logo-text">Aguapanela Dulce Imaginación<br><span>E-SHOP</span></div>
+    </div>
+
+    <div class="header-right">
+            <!-- Botón Nosotrxs -->
+            <div class="nav-btn" onclick="openAboutModal()">
+                <i class="material-icons">favorite_border</i>
+                <span>Nosotrxs</span>
+            </div>
+
+            <!-- Carrito -->
+            <div class="cart-trigger nav-btn" onclick="toggleCart()">
+                <i class="material-icons" style="font-size: 24px;">shopping_cart</i>
+                <div class="cart-count" id="cartCount">0</div>
+                <span>Carrito</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER PRINCIPAL (SLIDER AUTOMÁTICO) -->
+    <section class="banner-section">
+        <div class="banner-slider" id="mainBannerSlider">
+            <img src="img/og-image-1.jpg" alt="Banner 1" class="banner-img active" onerror="this.style.display='none'">
+            <img src="img/og-image-2.jpg" alt="Banner 2" class="banner-img" onerror="this.style.display='none'">
+            <img src="img/og-image-3.jpg" alt="Banner 3" class="banner-img" onerror="this.style.display='none'">
+        </div>
+    </section>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-title">Diseños Especiales</h1>
+        <p class="hero-subtitle">Libretas, stickers, tote bags y amigurumis hechos con amor por Aguapanela Dulce Imaginación.</p>
+        <a href="#catalogo" class="cta-button">Ver Catálogo</a>
+    </section>
+
+    <!-- Categorías -->
+    <section class="categories">
+        <div class="section-title"><i class="material-icons">category</i> Categorías</div>
+        <div class="category-cards">
+            <div class="category-card active" onclick="filterProducts('Todo', this)">
+                <i class="material-icons category-icon">grid_view</i>
+                <div class="category-name">Todo</div>
+            </div>
+            <div class="category-card" onclick="filterProducts('Tote Bags', this)">
+                <i class="material-icons category-icon">shopping_bag</i>
+                <div class="category-name">Tote Bags</div>
+            </div>
+            <div class="category-card" onclick="filterProducts('Amigurumis', this)">
+                <i class="material-icons category-icon">toys</i>
+                <div class="category-name">Amigurumis</div>
+            </div>
+            <div class="category-card" onclick="filterProducts('Libretas', this)">
+                <i class="material-icons category-icon">book</i>
+                <div class="category-name">Libretas</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="products" id="catalogo">
+        <div id="productContainer" class="product-grid"></div>
+    </section>
+
+    <!-- SECTION: CONFIANZA -->
+    <section class="trust-section">
+        <h2 class="trust-title">
+            <i class="material-icons">verified</i>
+            ¿Por Qué Elegirnos?
+        </h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon-circle"><i class="material-icons">local_shipping</i></div>
+                <div class="feature-content">
+                    <h4>Envío Gratis</h4>
+                    <p>En pedidos mayores a <span class="price-highlight">$520.000 COP</span></p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle"><i class="material-icons">spa</i></div>
+                <div class="feature-content">
+                    <h4>100% Sostenible</h4>
+                    <p>Materiales de calidad amigables con el planeta</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle"><i class="material-icons">lock</i></div>
+                <div class="feature-content">
+                    <h4>Pago Seguro</h4>
+                    <p>Tus datos están protegidos</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle"><i class="material-icons">thumb_up_alt</i></div>
+                <div class="feature-content">
+                    <h4>Calidad</h4>
+                    <p>Garantía en cada uno de nuestros productos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-story-container">
+            <div class="story-btn" onclick="openAboutModal()">
+                <i class="material-icons">auto_stories</i>
+                <span>Nuestra Historia</span>
+            </div>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/AguapanelaDulceImaginacion" target="_blank" class="social-icon">
+                <i class="material-icons">facebook</i>
+            </a>
+            <a href="https://instagram.com/aguapaneladulceimaginacion" target="_blank" class="social-icon">
+                <iconify-icon icon="mdi:instagram" width="24" height="24" style="color: white;"></iconify-icon>
+            </a>
+            <a href="https://wa.me/573122665870" target="_blank" class="social-icon wa-footer">
+                <iconify-icon icon="ic:baseline-whatsapp" width="24" height="24" style="color: white;"></iconify-icon>
+            </a>
+            <a href="mailto:dulceimaginacion.startup@gmail.com" class="social-icon mail-footer">
+                <i class="material-icons">alternate_email</i>
+            </a>
+        </div>
+        <div class="copyright">© 2025-2026 Aguapanela Dulce Imaginación. Todos los derechos reservados.</div>
+    </footer>
 </div>
 
-<div class="header-right">
-        <!-- Botón Nosotrxs -->
-        <div class="nav-btn" onclick="openAboutModal()">
-            <i class="material-icons">favorite_border</i>
-            <span>Nosotrxs</span>
-        </div>
+<!-- ======================================================= -->
+<!-- --- ELEMENTOS FLOTANTES DEL CHAT --- -->
+<!-- ======================================================= -->
 
-        <!-- Carrito -->
-        <div class="cart-trigger nav-btn" onclick="toggleCart()">
-            <i class="material-icons" style="font-size: 24px;">shopping_cart</i>
-            <div class="cart-count" id="cartCount">0</div>
-            <span>Carrito</span>
-        </div>
-    </div>
-</header>
+<!-- Botón Flotante (Icono de Tacita de Café) -->
+<button id="chatbot-toggle" onclick="toggleChatbot()">
+    <i class="material-icons" id="chat-icon">local_cafe</i>
+</button>
 
-<!-- BANNER PRINCIPAL (SLIDER AUTOMÁTICO) -->
-<section class="banner-section">
-    <div class="banner-slider" id="mainBannerSlider">
-        <img src="img/og-image-1.jpg" alt="Banner 1" class="banner-img active" onerror="this.style.display='none'">
-        <img src="img/og-image-2.jpg" alt="Banner 2" class="banner-img" onerror="this.style.display='none'">
-        <img src="img/og-image-3.jpg" alt="Banner 3" class="banner-img" onerror="this.style.display='none'">
-    </div>
-</section>
-
-<!-- Hero -->
-<section class="hero">
-    <h1 class="hero-title">Diseños Especiales</h1>
-    <p class="hero-subtitle">Libretas, stickers, tote bags y amigurumis hechos con amor por Aguapanela Dulce Imaginación.</p>
-    <a href="#catalogo" class="cta-button">Ver Catálogo</a>
-</section>
-
-<!-- Categorías -->
-<section class="categories">
-    <div class="section-title"><i class="material-icons">category</i> Categorías</div>
-    <div class="category-cards">
-        <div class="category-card active" onclick="filterProducts('Todo', this)">
-            <i class="material-icons category-icon">grid_view</i>
-            <div class="category-name">Todo</div>
-        </div>
-        <div class="category-card" onclick="filterProducts('Tote Bags', this)">
-            <i class="material-icons category-icon">shopping_bag</i>
-            <div class="category-name">Tote Bags</div>
-        </div>
-        <div class="category-card" onclick="filterProducts('Amigurumis', this)">
-            <i class="material-icons category-icon">toys</i>
-            <div class="category-name">Amigurumis</div>
-        </div>
-        <div class="category-card" onclick="filterProducts('Libretas', this)">
-            <i class="material-icons category-icon">book</i>
-            <div class="category-name">Libretas</div>
-        </div>
-    </div>
-</section>
-
-<!-- Catálogo -->
-<section class="products" id="catalogo">
-    <div id="productContainer" class="product-grid"></div>
-</section>
-
-<!-- SECTION: CONFIANZA -->
-<section class="trust-section">
-    <h2 class="trust-title">
-        <i class="material-icons">verified</i>
-        ¿Por Qué Elegirnos?
-    </h2>
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="icon-circle"><i class="material-icons">local_shipping</i></div>
-            <div class="feature-content">
-                <h4>Envío Gratis</h4>
-                <p>En pedidos mayores a <span class="price-highlight">$520.000 COP</span></p>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="icon-circle"><i class="material-icons">spa</i></div>
-            <div class="feature-content">
-                <h4>100% Sostenible</h4>
-                <p>Materiales de calidad amigables con el planeta</p>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="icon-circle"><i class="material-icons">lock</i></div>
-            <div class="feature-content">
-                <h4>Pago Seguro</h4>
-                <p>Tus datos están protegidos</p>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="icon-circle"><i class="material-icons">thumb_up_alt</i></div>
-            <div class="feature-content">
-                <h4>Calidad</h4>
-                <p>Garantía en cada uno de nuestros productos</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-story-container">
-        <div class="story-btn" onclick="openAboutModal()">
-            <i class="material-icons">auto_stories</i>
-            <span>Nuestra Historia</span>
-        </div>
-    </div>
-
-    <div class="social-icons">
-        <a href="https://www.facebook.com/AguapanelaDulceImaginacion" target="_blank" class="social-icon">
-            <i class="material-icons">facebook</i>
-        </a>
-        <a href="https://instagram.com/aguapaneladulceimaginacion" target="_blank" class="social-icon">
-            <iconify-icon icon="mdi:instagram" width="24" height="24" style="color: white;"></iconify-icon>
-        </a>
-        <a href="https://wa.me/573122665870" target="_blank" class="social-icon wa-footer">
-            <iconify-icon icon="ic:baseline-whatsapp" width="24" height="24" style="color: white;"></iconify-icon>
-        </a>
-        <a href="mailto:dulceimaginacion.startup@gmail.com" class="social-icon mail-footer">
-            <i class="material-icons">alternate_email</i>
-        </a>
-    </div>
-    <div class="copyright">© 2025-2026 Aguapanela Dulce Imaginación. Todos los derechos reservados.</div>
-</footer>
+<!-- Popup con el iFrame de Gradio -->
+<div id="chatbot-popup">
+    <!-- !!! REEMPLAZA ESTA URL CON LA DE TU SPACE DE HUGGING FACE !!! -->
+    <!-- Ejemplo: https://huggingface.co/spaces/tunombre/tuproyecto -->
+    <!-- Agrega ?__theme=light al final para forzar modo claro -->
+    <iframe 
+        src="URL_DE_TU_SPACE_AQUI?__theme=light" 
+        title="Asistente IAguapanela"
+        loading="lazy">
+    </iframe>
 </div>
+<!-- ======================================================= -->
+
 <!-- LIGHTBOX, MODALES Y OVERLAY -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
 <div class="close-lightbox" onclick="closeLightbox(event)">&times;</div>
@@ -787,6 +849,9 @@ document.getElementById('cartModal').classList.remove('open');
 document.getElementById('shareModal').classList.remove('active');
 document.getElementById('aboutModal').classList.remove('active');
 document.getElementById('overlay').classList.remove('active');
+// Cerrar chat si está abierto
+document.getElementById('chatbot-popup').classList.remove('open');
+document.getElementById('chatbot-toggle').classList.remove('open');
 }
 
 function openLightbox(src) {
@@ -841,12 +906,25 @@ bannerImages[currentBannerIndex].classList.add('active');
 }, 3500);
 }
 
+// ==========================================
+// --- FUNCIÓN DEL CHATBOT FLOTANTE ---
+// ==========================================
+function toggleChatbot() {
+    const popup = document.getElementById('chatbot-popup');
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const isOpen = popup.classList.toggle('open');
+    toggleBtn.classList.toggle('open', isOpen);
+    
+    if (isOpen) {
+         // Cerrar otros modales si el chat se abre
+         document.getElementById('cartModal').classList.remove('open');
+         document.getElementById('shareModal').classList.remove('active');
+         document.getElementById('aboutModal').classList.remove('active');
+         document.getElementById('overlay').classList.remove('active');
+    }
+}
+
 init();
 </script>
 </body>
 </html>
-
-
-
-
-
