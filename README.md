@@ -46,8 +46,8 @@ Al igual que una buena aguapanela, usamos ingredientes puros y sencillos:
 
 Detrás de cada línea de código y cada producto hay una historia de amor familiar:
 
-*   **Diana:** La chispa creativa.
 *   **Guiller (Madre):** La sabiduría y el corazón.
+*   **Diana:** La chispa creativa.
 *   **Andrés (Felly):** La pasión y la técnica.
 
 ---
